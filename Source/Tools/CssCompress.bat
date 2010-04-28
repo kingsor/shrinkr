@@ -1,0 +1,3 @@
+java -jar yuicompressor-2.3.6.jar "../Shrinkr.Web.MicrosoftStack/Content/form.css" -o "../Shrinkr.Web.MicrosoftStack/Content/form.min.css" --type css
+java -jar yuicompressor-2.3.6.jar "../Shrinkr.Web.MicrosoftStack/Content/openid.css" -o "../Shrinkr.Web.MicrosoftStack/Content/openid.min.css" --type css
+java -jar yuicompressor-2.3.6.jar "../Shrinkr.Web.MicrosoftStack/Content/site.css" -o "../Shrinkr.Web.MicrosoftStack/Content/site.min.css" --type css

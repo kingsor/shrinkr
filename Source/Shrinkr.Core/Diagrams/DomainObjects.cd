@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shrinkr.DomainObjects.User">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <Members>
+      <Method Name="CreateApiKey" Hidden="true" />
+      <Property Name="InternalRole" Hidden="true" />
+      <Method Name="User" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ApiSetting" Type="Shrinkr.DomainObjects.ApiSetting">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.177" Y="0.143" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAACADAAIgQAGGEAAAQRAIAgAACACAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ApiSetting" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.ApiSetting">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAQAICAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>DomainObjects\ApiSetting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.ShortUrl">
+    <Position X="9" Y="0.5" Width="1.75" />
+    <Members>
+      <Property Name="InternalSpamStatus" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAIAAEAAAAEAIAABAgAAAAABCAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\ShortUrl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.Alias">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="Alias" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="User" Type="Shrinkr.DomainObjects.User">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.368" Y="0.06" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ShortUrl" Type="Shrinkr.DomainObjects.ShortUrl">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.268" Y="0.102" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAIAQAACCEAAQAAAAAAACAAAAAAAACAAA=</HashCode>
+      <FileName>DomainObjects\Alias.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="ShortUrl" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.Visit">
+    <Position X="6.25" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Alias" Type="Shrinkr.DomainObjects.Alias">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.124" Y="0.285" Height="0.182" Width="0.579" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAIAIAAAACAAAAAAAAAAAAAAAAAAAACGAAA=</HashCode>
+      <FileName>DomainObjects\Visit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Alias" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.BannedDomain" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\BannedDomain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.167" Collapsed="true" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.BannedIPAddress" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>DomainObjects\BannedIPAddress.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.ReservedAlias" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\ReservedAlias.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Shrinkr.DomainObjects.BadWord">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\BadWord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Shrinkr.DomainObjects.IEntity">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\IEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Shrinkr.DomainObjects.Role">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObjects\Role.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Shrinkr.DomainObjects.SpamStatus">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAgAAAAAAAAAAAAAAKAAAAAACAAA=</HashCode>
+      <FileName>DomainObjects\SpamStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
