@@ -5,7 +5,7 @@
         <Configuration>Release</Configuration>
     </PropertyGroup>
     <PropertyGroup>
-        <packagePath>$(MSBuildProjectDirectory)\..\Drops</packagePath>
+        <packageRootPath>$(MSBuildProjectDirectory)\..\..\Drops</packageRootPath>
         <referencePath>$(MSBuildProjectDirectory)\References</referencePath>
 
         <solution>$(MSBuildProjectDirectory)\Shrinkr.MicrosoftStack.sln</solution>
@@ -40,7 +40,7 @@
             <Output TaskParameter="FormattedTime" PropertyName="buildDate" />
         </Time>
         <PropertyGroup>
-            <artifactPath>$(MSBuildProjectDirectory)\Build\Artifacts\$(buildDate)-MicrosoftStack</artifactPath>
+            <artifactPath>$(MSBuildProjectDirectory)\Build\Artifacts\MicrosoftStack-$(buildDate)</artifactPath>
         </PropertyGroup>
         <MakeDir Directories="$(artifactPath)"/>
     </Target>
@@ -55,7 +55,7 @@
     </Target>
 
     <UsingTask AssemblyFile="$(MSBuildProjectDirectory)\Build\StyleCop\Microsoft.StyleCop.dll" TaskName="StyleCopTask"/>
-    <Target Name="StyleCop" DependsOnTargets="Clean">
+    <Target Name="StyleCop">
         <CreateItem Include="$(corePath)\**\*.cs">
             <Output TaskParameter="Include" ItemName="styleCopFiles"/>
         </CreateItem>
@@ -85,7 +85,7 @@
         />
     </Target>
 
-    <Target Name="Build" DependsOnTargets="StyleCop">
+    <Target Name="Build">
         <MSBuild Projects="$(core)" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <MSBuild Projects="$(coreTest)" Targets="Build" Properties="Configuration=$(Configuration)"/>
         <MSBuild Projects="$(ef)" Targets="Build" Properties="Configuration=$(Configuration)"/>
@@ -94,7 +94,7 @@
         <MSBuild Projects="$(webUI)" Targets="Build" Properties="Configuration=$(Configuration)"/>
     </Target>
 
-    <Target Name="FxCop" DependsOnTargets="Build">
+    <Target Name="FxCop">
         <PropertyGroup>
             <fxCopOutput>$(artifactPath)\FxCop.xml</fxCopOutput>
             <fxCopTotalErrors>0</fxCopTotalErrors>
@@ -114,14 +114,26 @@
     </PropertyGroup>
     <UsingTask AssemblyFile="$(xunitMSBuild)" TaskName="Xunit.Runner.MSBuild.xunit"/>
     <UsingTask AssemblyFile="$(xunitMSBuild)" TaskName="Xunit.Runner.MSBuild.CombineXunitXml"/>
-    <Target Name="Test" DependsOnTargets="FxCop">
+    <Target Name="Test">
         <xunit Assembly="$(coreTestPath)\bin\$(Configuration)\$(coreTestFile).dll" xml="$(artifactPath)\$(coreTestFile).xml"/>
         <xunit Assembly="$(webCommonTestPath)\bin\$(Configuration)\$(webCommonTestFile).dll" xml="$(artifactPath)\$(webCommonTestFile).xml"/>
         <CombineXunitXml OutputFile="$(artifactPath)\Xunit.xml" InputFiles="$(artifactPath)\$(coreTestFile).xml;$(artifactPath)\$(webCommonTestFile).xml"/>
         <Delete Files="$(artifactPath)\$(coreTestFile).xml;$(artifactPath)\$(webCommonTestFile).xml"/>
     </Target>
 
-    <Target Name="Deploy" DependsOnTargets="Test">
+    <Target Name="Deploy">
+        <PropertyGroup>
+            <packagePath>$(packageRootPath)\MicrosoftStack-$(buildDate)</packagePath>
+            <packageFile>$(packageRootPath)\MicrosoftStack-$(buildDate).zip</packageFile>
+        </PropertyGroup>
+        <MakeDir Directories="$(packagePath)"/>
+        <MSBuild Projects="$(webUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(packagePath)\Shrinkr.zip"/>
+        <CallTarget Targets="Clean"/>
+        <CreateItem Include="$(packagePath)\*.*">
+            <Output TaskParameter="Include" ItemName="zipFiles"/>
+        </CreateItem>
+        <Zip Files="@(zipFiles)" ZipFileName="$(packageFile)" Flatten="true" ZipLevel="9"/>
+        <Delete Files="$(packagePath)\*.*"/>
+        <RemoveDir Directories="$(packagePath)"/>
     </Target>
-
 </Project>
