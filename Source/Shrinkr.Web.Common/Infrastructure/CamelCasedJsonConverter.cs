@@ -7,10 +7,9 @@
     using System.Reflection;
     using System.Web.Script.Serialization;
 
+    using DomainObjects;
     using Microsoft.Practices.ServiceLocation;
     using MvcExtensions;
-
-    using DomainObjects;
 
     public class CamelCasedJsonConverter : JavaScriptConverter
     {

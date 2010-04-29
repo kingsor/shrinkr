@@ -16,10 +16,13 @@
         private readonly Mock<HttpContextBase> httpContext;
         private readonly ControllerContext controllerContext;
         private readonly ApiResult apiResult;
+
         public ApiResultTests()
         {
             apiResult = new ApiResult(ApiResponseFormat.Text);
+
             httpContext = MvcTestHelper.CreateHttpContext();
+
             controllerContext = new ControllerContext(httpContext.Object, new RouteData(), new Mock<ControllerBase>().Object);
         }
 
@@ -30,15 +33,18 @@
         public void ExecuteResult_should_set_response_content_type_to_correct_response_format_type(ApiResponseFormat responseFormat, string expectedContentType)
         {
             var result = new ApiResult(responseFormat);
+
             result.ExecuteResult(controllerContext);
-            httpContext.VerifySet(c=>c.Response.ContentType = expectedContentType);
+
+            httpContext.VerifySet(c => c.Response.ContentType = expectedContentType);
         }
 
         [Fact]
         public void ExecuteResult_should_clear_response()
         {
             apiResult.ExecuteResult(controllerContext);
-            httpContext.Verify(c=>c.Response.Clear());
+
+            httpContext.Verify(c => c.Response.Clear());
         }
 
         [Theory]

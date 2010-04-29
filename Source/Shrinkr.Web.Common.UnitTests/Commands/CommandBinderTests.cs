@@ -12,18 +12,18 @@ namespace Shrinkr.Web.UnitTests
         [Fact]
         public void Should_populate_ip_address_url_referrer_and_user_name()
         {
-            const string ipAddress = "192.168.0.1";
-            const string url = "http://dotnetshoutout.com/";
-            const string userName = "joe";
+            const string IPAddress = "192.168.0.1";
+            const string Url = "http://dotnetshoutout.com/";
+            const string UserName = "joe";
 
             var httpContext = MvcTestHelper.CreateHttpContext();
 
-            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
+            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(IPAddress);
             httpContext.SetupGet(c => c.Request.Url).Returns(new Uri("http://localhost"));
-            httpContext.SetupGet(c => c.Request.UrlReferrer).Returns(new Uri(url));
+            httpContext.SetupGet(c => c.Request.UrlReferrer).Returns(new Uri(Url));
             httpContext.SetupGet(c => c.Request.ApplicationPath).Returns(string.Empty);
             httpContext.SetupGet(c => c.User.Identity.IsAuthenticated).Returns(true);
-            httpContext.SetupGet(c => c.User.Identity.Name).Returns(userName);
+            httpContext.SetupGet(c => c.User.Identity.Name).Returns(UserName);
 
             var routeData = new RouteData();
             routeData.Values.Add("controller", "dummy");
@@ -44,9 +44,9 @@ namespace Shrinkr.Web.UnitTests
 
             var command = (DummyUserCommand) new UserCommandBinder().BindModel(controllerContext, bindingContext);
 
-            Assert.Equal(ipAddress, command.IPAddress);
-            Assert.Equal(url, command.Referrer);
-            Assert.Equal(userName, command.UserName);
+            Assert.Equal(IPAddress, command.IPAddress);
+            Assert.Equal(Url, command.Referrer);
+            Assert.Equal(UserName, command.UserName);
         }
 
         private class DummyUserCommand : UserCommand

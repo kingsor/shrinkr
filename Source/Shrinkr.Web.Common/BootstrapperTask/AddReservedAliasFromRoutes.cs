@@ -6,11 +6,10 @@
     using System.Web.Mvc;
     using System.Web.Routing;
 
-    using Microsoft.Practices.ServiceLocation;
-    using MvcExtensions;
-
     using DomainObjects;
     using Infrastructure;
+    using Microsoft.Practices.ServiceLocation;
+    using MvcExtensions;
     using Repositories;
 
     public class AddReservedAliasFromRoutes : BootstrapperTask

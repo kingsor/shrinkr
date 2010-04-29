@@ -14,7 +14,7 @@
         [InlineData("openid_username", "openid_username_remember")]
         public void Should_be_able_to_bind_for_identifier(string userParameterName, string rememberMeParameterName)
         {
-            var form = new NameValueCollection { { userParameterName, "joe"}, { rememberMeParameterName, "true"} };
+            var form = new NameValueCollection { { userParameterName, "joe" }, { rememberMeParameterName, "true" } };
 
             var httpContext = MvcTestHelper.CreateHttpContext();
 

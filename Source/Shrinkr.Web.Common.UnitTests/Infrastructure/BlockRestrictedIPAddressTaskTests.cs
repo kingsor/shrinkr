@@ -87,20 +87,22 @@
         [Fact]
         public void Execute_should_add_matched_blocked_ip_to_cache()
         {
-            const string ipAddress = "192.168.0.2";
-            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
-            bannedIpAddressRepo.Setup(r => r.IsMatching(ipAddress)).Returns(true);
+            const string IPAddress = "192.168.0.2";
+
+            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(IPAddress);
+            bannedIpAddressRepo.Setup(r => r.IsMatching(IPAddress)).Returns(true);
 
             blockRestrictedIpAddress.Execute(executionContext);
 
             HashSet<string> blockedIps = GetBlockedIpAddressesCache();
 
-            Assert.True(blockedIps.Contains(ipAddress));
+            Assert.True(blockedIps.Contains(IPAddress));
         }
 
         private static void CacheBlockedIpAddress(string ipAddress)
         {
             var localIpCache = GetBlockedIpAddressesCache();
+
             localIpCache.Add(ipAddress);
         }
 

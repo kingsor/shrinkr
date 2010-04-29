@@ -1,10 +1,9 @@
-﻿using Shrinkr.DataTransferObjects;
-
-namespace Shrinkr.Web.UnitTests
+﻿namespace Shrinkr.Web.UnitTests
 {
     using System.Security.Principal;
     using System.Web.Mvc;
 
+    using DataTransferObjects;
     using DomainObjects;
     using Services;
 
@@ -105,7 +104,7 @@ namespace Shrinkr.Web.UnitTests
 
             attribute.AllowedRole = Role.Administrator;
 
-            Assert.False(attribute.IsAuthorized(new AuthorizationContext {HttpContext = httpContext.Object}));
+            Assert.False(attribute.IsAuthorized(new AuthorizationContext { HttpContext = httpContext.Object }));
         }
     }
 }

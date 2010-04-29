@@ -2,9 +2,8 @@
 {
     using System.Web.Mvc;
 
-    using MvcExtensions;
-
     using DataTransferObjects;
+    using MvcExtensions;
     using Services;
 
     public class UserController : Controller

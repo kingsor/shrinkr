@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Full" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <UsingTask AssemblyFile="E:\My Works\Projects\Shrinkr\References\xunit\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit"/>
+    <Import Project="$(MSBuildProjectDirectory)\Build\CommunityTasks\MSBuild.Community.Tasks.Targets"/>
     <PropertyGroup Condition="'$(Condition)' == ''">
         <Configuration>Debug</Configuration>
     </PropertyGroup>
@@ -11,6 +11,7 @@
     <Target Name="Build" DependsOnTargets="Clean">
         <MSBuild Projects="Shrinkr.sln" Targets="Build" Properties="Configuration=$(Configuration)"/>
     </Target>
+    <UsingTask AssemblyFile="E:\My Works\Projects\Shrinkr\References\xunit\xunit.runner.msbuild.dll" TaskName="Xunit.Runner.MSBuild.xunit"/>
     <Target Name="Test" DependsOnTargets="Build">
         <xunit Assembly="Shrinkr.Core.UnitTests\bin\$(Configuration)\Shrinkr.Core.UnitTests.dll" />
         <xunit Assembly="Shrinkr.Web.Common.UnitTests\bin\$(Configuration)\Shrinkr.Web.Common.UnitTests.dll" />

@@ -38,9 +38,9 @@ namespace Shrinkr.UnitTests
         [Fact]
         public void Should_be_able_to_capture()
         {
-            const string url = "http://images.pageglimpse.com/v1/thumbnails/request?devkey=myKey&url=http://shrinkr.com";
+            const string Url = "http://images.pageglimpse.com/v1/thumbnails/request?devkey=myKey&url=http://shrinkr.com";
 
-            http.Setup(h => h.GetAsync(url, It.IsAny<string>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<Action<HttpResponse>>(), It.IsAny<Action<Exception>>())).Verifiable();
+            http.Setup(h => h.GetAsync(Url, It.IsAny<string>(), It.IsAny<int>(), It.IsAny<bool>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<IDictionary<string, string>>(), It.IsAny<Action<HttpResponse>>(), It.IsAny<Action<Exception>>())).Verifiable();
 
             thumbnail.Capture("http://shrinkr.com");
 

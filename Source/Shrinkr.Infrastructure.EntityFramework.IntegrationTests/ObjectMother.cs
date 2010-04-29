@@ -33,7 +33,7 @@
 
         public static Visit CreateVisit()
         {
-            return new Visit { IPAddress = "192.168.0.1", Referrer = new Referrer { Url = Random(), Domain = Random()} };
+            return new Visit { IPAddress = "192.168.0.1", Referrer = new Referrer { Url = Random(), Domain = Random() } };
         }
 
         public static Visit CreateVisitWithParent()

@@ -2,6 +2,7 @@
 {
     using Xunit;
     using Xunit.Extensions;
+
     public class PageCalculatorTests
     {
         [Theory]
@@ -13,6 +14,7 @@
         public void TotalPage_should_return_correct_result(int total, int itemsPerPage, int expected)
         {
             int actual = PageCalculator.TotalPage(total, itemsPerPage);
+
             Assert.Equal(expected, actual);
         }
 
@@ -28,6 +30,7 @@
         public void StartIndex_should_return_correct_result(int? page, int itemsPerPage, int expected)
         {
             int actual = PageCalculator.StartIndex(page, itemsPerPage);
+
             Assert.Equal(expected, actual);
         }
     }

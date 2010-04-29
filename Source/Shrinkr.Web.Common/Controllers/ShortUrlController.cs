@@ -1,12 +1,12 @@
 ﻿namespace Shrinkr.Web
 {
+    using System;
     using System.Web.Mvc;
-
-    using MvcExtensions;
 
     using DataTransferObjects;
     using DomainObjects;
     using Infrastructure;
+    using MvcExtensions;
     using Services;
 
     public class ShortUrlController : Controller
@@ -61,7 +61,7 @@
         {
             Check.Argument.IsNotNull(command, "command");
 
-            bool sameDomain = !string.IsNullOrWhiteSpace(command.Referrer) && command.Referrer.StartsWith(Url.ApplicationRoot());
+            bool sameDomain = !string.IsNullOrWhiteSpace(command.Referrer) && command.Referrer.StartsWith(Url.ApplicationRoot(), StringComparison.OrdinalIgnoreCase);
 
             if (!sameDomain)
             {

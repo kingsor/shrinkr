@@ -8,9 +8,9 @@ namespace Shrinkr.Infrastructure.EntityFramework.IntegrationTests
 
     public abstract class DatabaseTest : IDisposable
     {
-        protected readonly DatabaseFactory databasefactory;
-        protected readonly QueryFactory queryFactory;
-        protected readonly UnitOfWork unitOfWork;
+        protected readonly DatabaseFactory Databasefactory;
+        protected readonly QueryFactory QueryFactory;
+        protected readonly UnitOfWork UnitOfWork;
 
         protected DatabaseTest()
         {
@@ -21,15 +21,15 @@ namespace Shrinkr.Infrastructure.EntityFramework.IntegrationTests
 
             var providerFactory = DbProviderFactories.GetFactory(providerName);
 
-            databasefactory = new DatabaseFactory(providerFactory, connectionString);
-            queryFactory = new QueryFactory(true, true);
+            Databasefactory = new DatabaseFactory(providerFactory, connectionString);
+            QueryFactory = new QueryFactory(true, true);
 
-            unitOfWork = new UnitOfWork(databasefactory);
+            UnitOfWork = new UnitOfWork(Databasefactory);
         }
 
         public virtual void Dispose()
         {
-            databasefactory.Dispose();
+            Databasefactory.Dispose();
         }
     }
 }

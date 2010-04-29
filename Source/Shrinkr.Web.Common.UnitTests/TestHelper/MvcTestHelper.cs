@@ -50,7 +50,7 @@ namespace Shrinkr.Web.UnitTests
             if (!string.IsNullOrWhiteSpace(requestPath))
             {
                 httpContext.SetupGet(c => c.Request.AppRelativeCurrentExecutionFilePath).Returns(requestPath);
-                httpContext.SetupGet(c => c.Request.Url).Returns(new Uri("{0}{1}".FormatWith(AppPathModifier, requestPath.Replace("~", ""))));
+                httpContext.SetupGet(c => c.Request.Url).Returns(new Uri("{0}{1}".FormatWith(AppPathModifier, requestPath.Replace("~", string.Empty))));
             }
 
             httpContext.SetupGet(c => c.Request.PathInfo).Returns(string.Empty);

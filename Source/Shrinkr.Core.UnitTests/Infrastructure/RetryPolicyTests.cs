@@ -13,7 +13,7 @@ namespace Shrinkr.UnitTests
         {
             bool flag = false;
 
-            RetryPolicy.Retry(() => flag = true, () => (flag), 2, TimeSpan.Zero);
+            RetryPolicy.Retry(() => flag = true, () => flag, 2, TimeSpan.Zero);
 
             Assert.True(flag);
         }
@@ -23,7 +23,7 @@ namespace Shrinkr.UnitTests
         {
             int counter = 0;
 
-            RetryPolicy.Retry(() => counter += 1, () => (false), 3, TimeSpan.FromSeconds(1));
+            RetryPolicy.Retry(() => counter += 1, () => false, 3, TimeSpan.FromSeconds(1));
 
             Assert.Equal(3, counter);
         }

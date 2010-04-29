@@ -4,10 +4,9 @@
     using System.Security.Principal;
     using System.Web.Mvc;
 
-    using MvcExtensions;
-
     using DataTransferObjects;
     using DomainObjects;
+    using MvcExtensions;
     using Services;
 
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = false), CLSCompliant(false)]

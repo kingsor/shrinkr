@@ -1,6 +1,6 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework
 {
-    public interface IQuery<out TResult>
+    public interface IQuery<TResult>
     {
         TResult Execute(Database database);
     }

@@ -12,7 +12,8 @@
 
         public VisitDTOTests()
         {
-            visit = new Visit {
+            visit = new Visit
+                             {
                                 IPAddress = "192.168.0.2",
                                 Referrer = new Referrer { Domain = "twitter.com", Url = "http://twitter.com/manzurrashid" },
                                 Alias = new Alias
@@ -25,7 +26,7 @@
                                                            Title = "Kool Url Shrinking Service"
                                                        }
                                         }
-                              };
+                             };
 
             dto = new VisitDTO(visit);
         }

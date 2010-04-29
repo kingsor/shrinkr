@@ -11,7 +11,7 @@
         [Fact]
         public void IsNullOrEmpty_should_return_true_for_null_collection()
         {
-            const List<int> x = null;
+            List<int> x = null;
 
             Assert.True(x.IsNullOrEmpty());
         }

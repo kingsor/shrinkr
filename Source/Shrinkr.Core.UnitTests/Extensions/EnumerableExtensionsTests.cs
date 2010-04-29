@@ -9,10 +9,10 @@ namespace Shrinkr.UnitTests
         [Fact]
         public void Each_should_call_the_provided_action()
         {
-            var list = new[]{ 4 };
+            var list = new[] { 4 };
             bool isCalled = false;
 
-            list.Each(i=> isCalled = true);
+            list.Each(i => isCalled = true);
 
             Assert.True(isCalled);
         }

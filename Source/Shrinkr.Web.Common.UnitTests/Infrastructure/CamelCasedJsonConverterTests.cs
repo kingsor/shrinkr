@@ -31,13 +31,13 @@ namespace Shrinkr.Web.UnitTests
             #pragma warning disable 169
 
             public readonly string Field1 = "foo";
-            public string Field2 = "bar";
-
-            private string fieled3;
             public static string Field4;
+            public string Field2 = "bar";
 
             [ScriptIgnore]
             public string Field5;
+
+            private string fieled3;
 
             #pragma warning restore 169
 
@@ -47,30 +47,18 @@ namespace Shrinkr.Web.UnitTests
                 Property2 = "bar";
             }
 
-            // ReSharper disable MemberCanBePrivate.Local
-            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            public static string Property4 { get; set; }
 
             public string Property1 { get; set; }
 
             public string Property2 { get; set; }
 
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
-            // ReSharper restore MemberCanBePrivate.Local
-
-            // ReSharper disable UnusedMember.Local
-
-            private string Property3 { get; set; }
-
-            public static string Property4 { get; set; }
-
-            // ReSharper disable UnusedAutoPropertyAccessor.Local
             public string Property5 { private get; set; }
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
 
             [ScriptIgnore]
             public string Property6 { get; set; }
 
-            // ReSharper restore UnusedMember.Local
+            private string Property3 { get; set; }
         }
     }
 }

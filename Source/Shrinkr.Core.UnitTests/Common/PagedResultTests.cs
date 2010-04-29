@@ -8,7 +8,7 @@
     {
         private const int Total = 100;
 
-        private readonly string[] Languages = new[] {"C#", "VB.NET", "Ruby", "Java", "C++", "Python", "Perl", "PHP"};
+        private readonly string[] Languages = new[] { "C#", "VB.NET", "Ruby", "Java", "C++", "Python", "Perl", "PHP" };
 
         private readonly PagedResult<string> pagedResult;
 

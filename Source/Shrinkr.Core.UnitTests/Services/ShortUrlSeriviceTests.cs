@@ -40,7 +40,7 @@
 
         private readonly ShortUrlService shortUrlService;
 
-        public ShortUrlSeriviceTests ()
+        public ShortUrlSeriviceTests()
         {
             userRepository = new Mock<IUserRepository>();
             shortUrlRepository = new Mock<IShortUrlRepository>();
@@ -73,8 +73,8 @@
         [InlineData(null, ApiKey)]
         public void Should_not_be_able_to_create_when_url_is_blank(string userName, string apiKey)
         {
-            var result = !string.IsNullOrEmpty(userName) ? 
-                         shortUrlService.CreateWithUserName(null, AliasName, IPAddress, userName):
+            var result = !string.IsNullOrEmpty(userName) ?
+                         shortUrlService.CreateWithUserName(null, AliasName, IPAddress, userName) :
                          shortUrlService.CreateWithApiKey(null, AliasName, IPAddress, apiKey);
 
             Assert.Equal("url", result.RuleViolations[0].ParameterName);
@@ -391,7 +391,7 @@
 
             var shortUrl = new Mock<ShortUrl>();
             shortUrl.SetupGet(su => su.Id).Returns(1);
-            shortUrl.SetupGet(su => su.Aliases).Returns(new List<Alias>{ new Alias { Name = "foo", User = user.Object, ShortUrl = shortUrl.Object }});
+            shortUrl.SetupGet(su => su.Aliases).Returns(new List<Alias> { new Alias { Name = "foo", User = user.Object, ShortUrl = shortUrl.Object } });
 
             shortUrlRepository.Setup(r => r.GetByHash(It.IsAny<string>())).Returns(shortUrl.Object);
 
@@ -629,7 +629,7 @@
             alias.SetupGet(a => a.Name).Returns(AliasName);
 
             var shortUrl = new Mock<ShortUrl>();
-            shortUrl.SetupGet(su => su.Aliases).Returns(new List<Alias> {alias.Object});
+            shortUrl.SetupGet(su => su.Aliases).Returns(new List<Alias> { alias.Object });
 
             alias.SetupGet(a => a.ShortUrl).Returns(shortUrl.Object);
             shortUrlRepository.Setup(r => r.GetByAliasName(It.IsAny<string>())).Returns(shortUrl.Object);
@@ -714,10 +714,10 @@
         public void Should_be_able_to_find_by_user()
         {
             const int ShortUrlCount = 5;
-            const long id = long.MaxValue;
+            const long Id = long.MaxValue;
 
             var user = new Mock<User>();
-            user.SetupGet(u => u.Id).Returns(id);
+            user.SetupGet(u => u.Id).Returns(Id);
 
             userRepository.Setup(repository => repository.GetByName(It.IsAny<string>())).Returns(user.Object);
 

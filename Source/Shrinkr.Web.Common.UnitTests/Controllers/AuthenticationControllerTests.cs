@@ -77,7 +77,7 @@
             
             controller.LogOn();
 
-            formsAuth.Verify(f=>f.SetAuthenticationCookie(It.IsAny<string>(), It.IsAny<bool>()));
+            formsAuth.Verify(f => f.SetAuthenticationCookie(It.IsAny<string>(), It.IsAny<bool>()));
         }
 
         [Fact]
@@ -185,7 +185,7 @@
 
             controller.LogOn(new LogOnCommand { UserName = "http://kazimanzurrashid.myopenid.com/", RememberMe = false });
 
-            authRequest.Verify(r=>r.RedirectToProvider());
+            authRequest.Verify(r => r.RedirectToProvider());
         }
 
         [Fact]

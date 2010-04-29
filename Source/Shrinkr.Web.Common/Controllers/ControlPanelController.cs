@@ -5,13 +5,12 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using MvcExtensions;
-    using Telerik.Web.Mvc;
-
     using DataTransferObjects;
     using DomainObjects;
     using Infrastructure;
+    using MvcExtensions;
     using Services;
+    using Telerik.Web.Mvc;
 
     public class ControlPanelController : Controller
     {

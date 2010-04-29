@@ -14,15 +14,16 @@
         [Fact]
         public void Should_be_able_to_bind()
         {
-            string apiKey = Guid.NewGuid().ToString();
-            const string ipAddress = "192.168.0.1";
-            const string url = "http://dotnetshoutout.com/";
-            const string alias = "dns";
+            const string IPAddress = "192.168.0.1";
+            const string Url = "http://dotnetshoutout.com/";
+            const string Alias = "dns";
+
+            var apiKey = Guid.NewGuid().ToString();
 
             var httpContext = MvcTestHelper.CreateHttpContext();
 
-            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
-            httpContext.SetupGet(c => c.Request.QueryString).Returns(new NameValueCollection { { "ApiKey", apiKey }, { "Url", url }, { "Alias", alias }, { "format", "xml"} });
+            httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(IPAddress);
+            httpContext.SetupGet(c => c.Request.QueryString).Returns(new NameValueCollection { { "ApiKey", apiKey }, { "Url", Url }, { "Alias", Alias }, { "format", "xml" } });
 
             var routeData = new RouteData();
             routeData.Values.Add("controller", "dummy");
@@ -50,9 +51,9 @@
             var command = (DummyCommand) new ApiCommandBinder().BindModel(controllerContext, bindingContext);
 
             Assert.Equal(apiKey, command.ApiKey);
-            Assert.Equal(url, command.Url);
-            Assert.Equal(alias, command.Alias);
-            Assert.Equal(ipAddress, command.IPAddress);
+            Assert.Equal(Url, command.Url);
+            Assert.Equal(Alias, command.Alias);
+            Assert.Equal(IPAddress, command.IPAddress);
             Assert.Equal(ApiResponseFormat.Xml, command.ResponseFormat);
         }
 
@@ -67,7 +68,7 @@
         {
             var httpContext = MvcTestHelper.CreateHttpContext();
 
-            httpContext.SetupGet(c => c.Request.AcceptTypes).Returns(accpetTypes.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries));
+            httpContext.SetupGet(c => c.Request.AcceptTypes).Returns(accpetTypes.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             httpContext.SetupGet(c => c.Request.UserHostAddress).Returns("192,168.0.1");
 
             var routeData = new RouteData();
@@ -85,7 +86,7 @@
 
             var bindingContext = new ModelBindingContext
                                      {
-                                         ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(null, typeof (DummyCommand)),
+                                         ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(null, typeof(DummyCommand)),
                                          ValueProvider = valueProvider.Object,
                                          ModelName = "command",
                                          FallbackToEmptyPrefix = true

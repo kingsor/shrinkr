@@ -13,7 +13,7 @@
         [Fact]
         public void Rule_violations_constructor_should_not_throw_exception()
         {
-            Assert.DoesNotThrow(() => new UserResult(new List<RuleViolation>{ new RuleViolation("foo", "bar")}));
+            Assert.DoesNotThrow(() => new UserResult(new List<RuleViolation> { new RuleViolation("foo", "bar") }));
         }
 
         [Fact]

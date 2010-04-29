@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Shrinkr.UnitTests
+﻿namespace Shrinkr.UnitTests
 {
+    using System;
+
     using Infrastructure;
 
     using Xunit;

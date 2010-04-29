@@ -48,8 +48,8 @@
         {
             controller.MockHttpContext("/", "~/Create", "POST");
 
-            var shortUrl = new ShortUrl {Url = "http://shirnkr.com/someurl"};
-            var shortUrlDto = new ShortUrlDTO(new Alias{ ShortUrl = shortUrl}, 3, "http://shirnkr.com/visit", "http://shirnkr.com/preview" );
+            var shortUrl = new ShortUrl { Url = "http://shirnkr.com/someurl" };
+            var shortUrlDto = new ShortUrlDTO(new Alias { ShortUrl = shortUrl }, 3, "http://shirnkr.com/visit", "http://shirnkr.com/preview");
             var result = new ShortUrlResult(shortUrlDto);
 
             shortUrlService.Setup(svc => svc.CreateWithUserName(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(result);
@@ -63,7 +63,7 @@
         {
             controller.MockHttpContext("/", "~/Create", "POST");
 
-            var violations = new List<RuleViolation>{new RuleViolation("someParam","Error Message")};
+            var violations = new List<RuleViolation> { new RuleViolation("someParam", "Error Message") };
             var result = new ShortUrlResult(violations);
 
             shortUrlService.Setup(svc => svc.CreateWithUserName(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(result);
@@ -93,7 +93,7 @@
 
             var view = controller.Preview(new ShortUrlVisitCommand());
 
-            Assert.IsType(typeof (NotFoundResult), view);
+            Assert.IsType(typeof(NotFoundResult), view);
         }
 
         [Fact]
@@ -131,7 +131,7 @@
 
             controller.Visit(new ShortUrlVisitCommand { Referrer = "http://shrinkr.com" });
 
-            Assert.Equal(1,controller.ModelState.Count);
+            Assert.Equal(1, controller.ModelState.Count);
         }
 
         [Fact]
@@ -157,13 +157,13 @@
         [InlineData(true, typeof(PermanentRedirectResult))]
         public void Visit_should_redirect_correctly(bool permanent, Type resultType)
         {
-            const string url = "http://shrinkr.com/url";
+            const string Url = "http://shrinkr.com/url";
 
             controller.MockHttpContext("/", "~/Visit", "GET");
 
             var shortUrl = new Mock<ShortUrl>();
             shortUrl.SetupGet(s => s.InternalSpamStatus).Returns((int)SpamStatus.Clean);
-            shortUrl.SetupGet(s => s.Url).Returns(url);
+            shortUrl.SetupGet(s => s.Url).Returns(Url);
 
             var alias = new Mock<Alias>();
             alias.Setup(a => a.ShortUrl).Returns(shortUrl.Object);
@@ -179,7 +179,7 @@
             var result = controller.Visit(new ShortUrlVisitCommand());
 
             Assert.IsType(resultType, result);
-            Assert.Equal(url, ((RedirectResult) result).Url);
+            Assert.Equal(Url, ((RedirectResult) result).Url);
         }
 
         [Fact]
@@ -204,7 +204,7 @@
         {
             controller.MockHttpContext("/", "~/List", "GET");
 
-            var alias = new Alias {ShortUrl = new ShortUrl()};
+            var alias = new Alias { ShortUrl = new ShortUrl() };
             var pagedResult = new PagedResult<ShortUrlDTO>(new List<ShortUrlDTO> { new ShortUrlDTO(alias, 3, "http://url.com", "http://url.com") }, 10);
             var urlResult = new ShortUrlListResult(pagedResult);
 
@@ -213,7 +213,7 @@
 
             shortUrlService.Setup(svc => svc.FindByUser(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(urlResult);
 
-            var view = (AdaptiveViewResult) controller.List(new ShortUrlListCommand{Page=1});
+            var view = (AdaptiveViewResult) controller.List(new ShortUrlListCommand { Page = 1 });
 
             Assert.Equal(1, view.ViewData.ModelState.Count);
         }
@@ -230,7 +230,7 @@
 
             shortUrlService.Setup(svc => svc.FindByUser(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(urlResult);
 
-            var view = (controller.List(new ShortUrlListCommand()));
+            var view = controller.List(new ShortUrlListCommand());
 
             Assert.IsType(typeof(AdaptiveViewResult), view);
         }

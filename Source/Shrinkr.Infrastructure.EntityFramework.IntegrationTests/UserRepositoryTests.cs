@@ -11,7 +11,7 @@
 
         public UserRepositoryTests()
         {
-            repository = new UserRepository(databasefactory, queryFactory);
+            repository = new UserRepository(Databasefactory, QueryFactory);
         }
 
         [Fact, AutoRollback]
@@ -20,7 +20,7 @@
             var user = ObjectMother.CreateUser();
 
             repository.Add(user);
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             Assert.NotEqual(0, user.Id);
         }
@@ -30,9 +30,9 @@
         {
             var user = ObjectMother.CreateUser();
             repository.Add(user);
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
             repository.Delete(user);
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             Assert.Null(repository.GetById(user.Id));
         }
@@ -43,7 +43,7 @@
             var user = ObjectMother.CreateUser();
 
             repository.Add(user);
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             Assert.NotNull(repository.GetById(user.Id));
         }
@@ -55,7 +55,7 @@
             user.ApiSetting.Key = Guid.NewGuid().ToString();
 
             repository.Add(user);
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             Assert.NotNull(repository.GetByApiKey(user.ApiSetting.Key));
         }
@@ -75,7 +75,7 @@
             repository.Add(user2);
             repository.Add(user3);
 
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             var count = repository.GetCreatedCount(SystemTime.Now().AddDays(-4), SystemTime.Now());
 
@@ -97,7 +97,7 @@
             repository.Add(user2);
             repository.Add(user3);
 
-            unitOfWork.Commit();
+            UnitOfWork.Commit();
 
             var count = repository.GetVisitedCount(SystemTime.Now().AddDays(-4), SystemTime.Now());
 
