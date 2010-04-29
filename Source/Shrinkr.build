@@ -142,16 +142,28 @@
     <Target Name="Deploy">
         <PropertyGroup>
             <packagePath>$(packageRootPath)\$(buildDate)</packagePath>
-            <msPackageFile>$(packageRootPath)\MicrosoftStack-$(buildDate).zip</msPackageFile>
+            <msPackageFile>$(packageRootPath)\$(buildDate).Shrinkr.MicrosoftStack.zip</msPackageFile>
+            <csPackageFile>$(packageRootPath)\$(buildDate).Shrinkr.CommunityStack.zip</csPackageFile>
         </PropertyGroup>
+
         <MakeDir Directories="$(packagePath)"/>
         <MSBuild Projects="$(msWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(packagePath)\Shrinkr.zip"/>
         <CreateItem Include="$(packagePath)\*.*">
-            <Output TaskParameter="Include" ItemName="zipFiles"/>
+            <Output TaskParameter="Include" ItemName="msZipFiles"/>
         </CreateItem>
-        <Zip Files="@(zipFiles)" ZipFileName="$(msPackageFile)" Flatten="true" ZipLevel="9"/>
+        <Zip Files="@(msZipFiles)" ZipFileName="$(msPackageFile)" Flatten="true" ZipLevel="9"/>
         <Delete Files="$(packagePath)\*.*"/>
         <RemoveDir Directories="$(packagePath)"/>
+
+        <MakeDir Directories="$(packagePath)"/>
+        <MSBuild Projects="$(csWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(packagePath)\Shrinkr.zip"/>
+        <CreateItem Include="$(packagePath)\*.*">
+            <Output TaskParameter="Include" ItemName="csZipFiles"/>
+        </CreateItem>
+        <Zip Files="@(csZipFiles)" ZipFileName="$(csPackageFile)" Flatten="true" ZipLevel="9"/>
+        <Delete Files="$(packagePath)\*.*"/>
+        <RemoveDir Directories="$(packagePath)"/>
+
         <CallTarget Targets="Clean"/>
     </Target>
 </Project>

@@ -35,7 +35,7 @@
     <DeployIisAppPath>Default Web Site/Shrinkr</DeployIisAppPath>
     <DesktopBuildPackageLocation>obj\Debug\Package\Shrinkr.Web.CommunityStack.zip</DesktopBuildPackageLocation>
     <PackageAsSingleFile>true</PackageAsSingleFile>
-    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,20 +52,55 @@
     <DeployIisAppPath>Default Web Site/Shrinkr</DeployIisAppPath>
     <DesktopBuildPackageLocation>obj\Release\Package\Shrinkr.Web.CommunityStack.zip</DesktopBuildPackageLocation>
     <PackageAsSingleFile>true</PackageAsSingleFile>
-    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\References\dotnetopenauth\DotNetOpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\References\elmah\Elmah.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\References\nhibernate\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MvcExtensions">
       <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
     </Reference>
     <Reference Include="MvcExtensions.Ninject">
       <HintPath>..\References\mvcextensions\MvcExtensions.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\nhibernate\NHibernate.Linq.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\References\ninject\Ninject.dll</HintPath>
@@ -107,6 +142,214 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\SharedFiles\Web\App_Data\GoogleSafeBrowsing\malware.xml">
+      <Link>App_Data\GoogleSafeBrowsing\malware.xml</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\App_Data\GoogleSafeBrowsing\phishing.xml">
+      <Link>App_Data\GoogleSafeBrowsing\phishing.xml</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\App_Data\Shrinkr.mdf">
+      <Link>App_Data\Shrinkr.mdf</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\App_Data\Shrinkr_log.ldf">
+      <Link>App_Data\Shrinkr_log.ldf</Link>
+      <DependentUpon>Shrinkr.mdf</DependentUpon>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\Forest\loading.gif">
+      <Link>Content\Forest\loading.gif</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\Forest\sprite.png">
+      <Link>Content\Forest\sprite.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\Forest\treeview-line.png">
+      <Link>Content\Forest\treeview-line.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\Forest\treeview-nodes.png">
+      <Link>Content\Forest\treeview-nodes.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\form.min.css">
+      <Link>Content\form.min.css</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\bg-header.png">
+      <Link>Content\images\bg-header.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\bg-main-corner-sprite.png">
+      <Link>Content\images\bg-main-corner-sprite.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\bg-main.png">
+      <Link>Content\images\bg-main.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\forms\button.gif">
+      <Link>Content\images\forms\button.gif</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\forms\error.png">
+      <Link>Content\images\forms\error.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\forms\exclamation.png">
+      <Link>Content\images\forms\exclamation.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\forms\success.png">
+      <Link>Content\images\forms\success.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\forms\warning.png">
+      <Link>Content\images\forms\warning.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\aolW.png">
+      <Link>Content\images\openid\aolW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\blogger.png">
+      <Link>Content\images\openid\blogger.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\claimid.png">
+      <Link>Content\images\openid\claimid.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\facebookW.png">
+      <Link>Content\images\openid\facebookW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\fadegrey.png">
+      <Link>Content\images\openid\fadegrey.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\flickr.png">
+      <Link>Content\images\openid\flickr.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\flickrW.png">
+      <Link>Content\images\openid\flickrW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\googleW.png">
+      <Link>Content\images\openid\googleW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\livejournal.png">
+      <Link>Content\images\openid\livejournal.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\myopenid.png">
+      <Link>Content\images\openid\myopenid.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\myopenidW.png">
+      <Link>Content\images\openid\myopenidW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\myspaceW.png">
+      <Link>Content\images\openid\myspaceW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\openidico.png">
+      <Link>Content\images\openid\openidico.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\openidW.png">
+      <Link>Content\images\openid\openidW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\technorati.png">
+      <Link>Content\images\openid\technorati.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\verisign.png">
+      <Link>Content\images\openid\verisign.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\vidoop.png">
+      <Link>Content\images\openid\vidoop.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\wordpress.png">
+      <Link>Content\images\openid\wordpress.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\openid\yahooW.png">
+      <Link>Content\images\openid\yahooW.png</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\images\pg-preview-na.jpg">
+      <Link>Content\images\pg-preview-na.jpg</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\openid.min.css">
+      <Link>Content\openid.min.css</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\site.min.css">
+      <Link>Content\site.min.css</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\telerik.common.min.css">
+      <Link>Content\telerik.common.min.css</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Content\telerik.forest.min.css">
+      <Link>Content\telerik.forest.min.css</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.calendar.min.js">
+      <Link>Scripts\2010.1.309\telerik.calendar.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.common.min.js">
+      <Link>Scripts\2010.1.309\telerik.common.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.datepicker.min.js">
+      <Link>Scripts\2010.1.309\telerik.datepicker.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.draganddrop.min.js">
+      <Link>Scripts\2010.1.309\telerik.draganddrop.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.grid.editing.min.js">
+      <Link>Scripts\2010.1.309\telerik.grid.editing.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.grid.filtering.min.js">
+      <Link>Scripts\2010.1.309\telerik.grid.filtering.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.grid.grouping.min.js">
+      <Link>Scripts\2010.1.309\telerik.grid.grouping.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.grid.min.js">
+      <Link>Scripts\2010.1.309\telerik.grid.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.menu.min.js">
+      <Link>Scripts\2010.1.309\telerik.menu.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.panelbar.min.js">
+      <Link>Scripts\2010.1.309\telerik.panelbar.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.tabstrip.min.js">
+      <Link>Scripts\2010.1.309\telerik.tabstrip.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.textbox.min.js">
+      <Link>Scripts\2010.1.309\telerik.textbox.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\2010.1.309\telerik.treeview.min.js">
+      <Link>Scripts\2010.1.309\telerik.treeview.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\administrativeItem.min.js">
+      <Link>Scripts\administrativeItem.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\badWord.min.js">
+      <Link>Scripts\badWord.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\bannedDomain.min.js">
+      <Link>Scripts\bannedDomain.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\bannedIpAddress.min.js">
+      <Link>Scripts\bannedIpAddress.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\createShortUrl.min.js">
+      <Link>Scripts\createShortUrl.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery-1.4.2.min.js">
+      <Link>Scripts\jquery-1.4.2.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery.color.min.js">
+      <Link>Scripts\jquery.color.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery.form.min.js">
+      <Link>Scripts\jquery.form.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery.openid.min.js">
+      <Link>Scripts\jquery.openid.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery.validate.min.js">
+      <Link>Scripts\jquery.validate.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\jquery.watermark.min.js">
+      <Link>Scripts\jquery.watermark.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\profile.min.js">
+      <Link>Scripts\profile.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\reservedAlias.min.js">
+      <Link>Scripts\reservedAlias.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\url.min.js">
+      <Link>Scripts\url.min.js</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Scripts\user.min.js">
+      <Link>Scripts\user.min.js</Link>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -137,6 +380,17 @@
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SharedFiles\Web\connectionString.config">
+      <Link>connectionString.config</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\dotNetOpenAuth.config">
+      <Link>dotNetOpenAuth.config</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\shrinkr.config">
+      <Link>shrinkr.config</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
