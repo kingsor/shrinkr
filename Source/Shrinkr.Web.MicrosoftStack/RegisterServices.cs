@@ -1,4 +1,4 @@
-namespace Shrinkr.Web
+namespace Shrinkr.Web.MicrosoftStack
 {
     using System;
     using System.Collections.Generic;

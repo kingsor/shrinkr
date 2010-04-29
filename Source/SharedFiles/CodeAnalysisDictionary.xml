@@ -8,6 +8,7 @@
             <Word>Xrds</Word>
             <Word>Phishing</Word>
             <Word>Malware</Word>
+            <Word>Json</Word>			
         </Recognized>
     </Words>
 </Dictionary>

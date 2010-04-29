@@ -1,34 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Shrinkr.Web.CommunityStack
+﻿namespace Shrinkr.Web.CommunityStack
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+    using System.Net;
+    using System.Web;
 
-    public class MvcApplication : System.Web.HttpApplication
+    using MvcExtensions.Ninject;
+
+    using Elmah;
+
+    public class MvcApplication : NinjectMvcApplication
     {
-        public static void RegisterRoutes(RouteCollection routes)
+        public void ErrorLog_Filtering(object sender, ExceptionFilterEventArgs e)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            Check.Argument.IsNotNull(e, "e");
 
-            routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-            );
+            HttpException exception = e.Exception.GetBaseException() as HttpException;
 
-        }
-
-        protected void Application_Start()
-        {
-            AreaRegistration.RegisterAllAreas();
-
-            RegisterRoutes(RouteTable.Routes);
+            if ((exception != null) && (exception.GetHttpCode() == (int) HttpStatusCode.NotFound))
+            {
+                e.Dismiss();
+            }
         }
     }
 }
