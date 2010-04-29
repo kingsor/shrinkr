@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Web.Common.UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Infrastructure.EntityFramework.IntegrationTests", "Shrinkr.Infrastructure.EntityFramework.IntegrationTests\Shrinkr.Infrastructure.EntityFramework.IntegrationTests.csproj", "{44326097-B85F-4653-9DF1-82EDC98A0216}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A75CD3B9-9028-4AA4-8301-76F2EA79E07F}"
+	ProjectSection(SolutionItems) = preProject
+		MicrosoftStack.bat = MicrosoftStack.bat
+		MicrosoftStack.build = MicrosoftStack.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 8
