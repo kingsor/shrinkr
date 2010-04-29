@@ -292,9 +292,6 @@
       <Word>xsi</Word>
       <Word>xsl</Word>
       <Word>xslt</Word>
-      <Word>Mvc</Word>
-      <Word>Ninject</Word>
-      <Word>Json</Word>	  
     </Recognized>
     <Deprecated>
       <!-- 
