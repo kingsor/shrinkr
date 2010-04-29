@@ -2,15 +2,15 @@
 {
     public class GoogleSafeBrowsingSettings
     {
-        public GoogleSafeBrowsingSettings(string apiKey, string endPoint, string phishingFile, string malwareFile)
+        public GoogleSafeBrowsingSettings(string apiKey, string endpoint, string phishingFile, string malwareFile)
         {
             Check.Argument.IsNotNullOrEmpty(apiKey, "apiKey");
-            Check.Argument.IsNotNullOrEmpty(endPoint, "endPoint");
+            Check.Argument.IsNotNullOrEmpty(endpoint, "endpoint");
             Check.Argument.IsNotNullOrEmpty(phishingFile, "phishingFile");
             Check.Argument.IsNotNullOrEmpty(malwareFile, "malwareFile");
 
             ApiKey = apiKey;
-            EndPoint = endPoint;
+            Endpoint = endpoint;
             PhishingFile = phishingFile;
             MalwareFile = malwareFile;
         }
@@ -21,7 +21,7 @@
             private set;
         }
 
-        public string EndPoint
+        public string Endpoint
         {
             get;
             private set;

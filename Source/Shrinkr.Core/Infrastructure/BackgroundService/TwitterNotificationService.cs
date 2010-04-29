@@ -63,7 +63,7 @@
 
                 foreach (string recipient in twitter.Recipients)
                 {
-                    http.PostAsync(twitter.EndPoint, twitter.UserName, twitter.Password, new Dictionary<string, string> { { "user", recipient }, { "text", message } });
+                    http.PostAsync(twitter.Endpoint, twitter.UserName, twitter.Password, new Dictionary<string, string> { { "user", recipient }, { "text", message } });
                 }
             }
         }

@@ -5,19 +5,19 @@
 
     public class ThumbnailConfigurationElement : ConfigurationElement
     {
-        [ConfigurationProperty("endPoint", IsRequired = true)]
-        public string EndPoint
+        [ConfigurationProperty("endpoint", IsRequired = true)]
+        public string Endpoint
         {
             [DebuggerStepThrough]
             get
             {
-                return (string) base["endPoint"];
+                return (string) base["endpoint"];
             }
 
             [DebuggerStepThrough]
             set
             {
-                base["endPoint"] = value;
+                base["endpoint"] = value;
             }
         }
 

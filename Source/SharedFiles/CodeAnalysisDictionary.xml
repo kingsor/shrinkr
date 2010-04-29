@@ -6,6 +6,8 @@
             <Word>Elmah</Word>
             <Word>IPs</Word>
             <Word>Xrds</Word>
+            <Word>Phishing</Word>
+            <Word>Malware</Word>
         </Recognized>
     </Words>
 </Dictionary>

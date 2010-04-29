@@ -7,6 +7,8 @@
 // Error List, point to "Suppress Message(s)", and click 
 // "In Project Suppression File". 
 // You do not need to add suppressions to this file manually. 
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Infrastructure.EntityFramework.Database.#ObjectSet`1()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", Scope = "member", Target = "Shrinkr.Infrastructure.EntityFramework.IQueryFactory.#CreateShortUrlsByUserId(System.Int64,System.Int32,System.Int32)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", MessageId = "1#", Scope = "member", Target = "Shrinkr.Infrastructure.EntityFramework.Query.BannedDomainMatchingQuery.#.ctor(System.Boolean,System.String)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1054:UriParametersShouldNotBeStrings", MessageId = "0#", Scope = "member", Target = "Shrinkr.Infrastructure.EntityFramework.IQueryFactory.#CreateBannedDomainMatching(System.String)")]

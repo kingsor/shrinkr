@@ -60,7 +60,7 @@
 
         public void Update()
         {
-            string endPoint = setting.Google.EndPoint + "?client=api&apikey={0}&version=".FormatWith(setting.Google.ApiKey);
+            string endPoint = setting.Google.Endpoint + "?client=api&apikey={0}&version=".FormatWith(setting.Google.ApiKey);
             string phishingEndPoint = endPoint + "goog-black-hash:";
             string malwareEndPoint = endPoint + "goog-malware-hash:";
 

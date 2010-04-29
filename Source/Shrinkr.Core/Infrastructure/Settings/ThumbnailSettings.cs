@@ -2,13 +2,13 @@
 {
     public class ThumbnailSettings
     {
-        public ThumbnailSettings(string apiKey, string endPoint)
+        public ThumbnailSettings(string apiKey, string endpoint)
         {
             Check.Argument.IsNotNullOrEmpty(apiKey, "apiKey");
-            Check.Argument.IsNotNullOrEmpty(endPoint, "endPoint");
+            Check.Argument.IsNotNullOrEmpty(endpoint, "endPoint");
 
             ApiKey = apiKey;
-            EndPoint = endPoint;
+            Endpoint = endpoint;
         }
 
         public string ApiKey
@@ -17,7 +17,7 @@
             private set;
         }
 
-        public string EndPoint
+        public string Endpoint
         {
             get;
             private set;

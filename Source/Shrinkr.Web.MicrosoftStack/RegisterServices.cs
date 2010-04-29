@@ -115,15 +115,15 @@ namespace Shrinkr.Web
 
             ApiSettings api = new ApiSettings(section.Api.Allowed, section.Api.DailyLimit);
 
-            ThumbnailSettings thumbnail = new ThumbnailSettings(section.Thumbnail.ApiKey, section.Thumbnail.EndPoint);
+            ThumbnailSettings thumbnail = new ThumbnailSettings(section.Thumbnail.ApiKey, section.Thumbnail.Endpoint);
 
-            GoogleSafeBrowsingSettings google = new GoogleSafeBrowsingSettings(section.Google.ApiKey, section.Google.EndPoint, httpContext.Server.MapPath(section.Google.PhishingFile), httpContext.Server.MapPath(section.Google.MalwareFile));
+            GoogleSafeBrowsingSettings google = new GoogleSafeBrowsingSettings(section.Google.ApiKey, section.Google.Endpoint, httpContext.Server.MapPath(section.Google.PhishingFile), httpContext.Server.MapPath(section.Google.MalwareFile));
 
             TwitterSettings twitter = null;
 
             if (section.Twitter != null)
             {
-                twitter = new TwitterSettings(section.Twitter.UserName, section.Twitter.Password, section.Twitter.EndPoint, section.Twitter.MessageTemplate, section.Twitter.MaximumMessageLength, section.Twitter.Recipients.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+                twitter = new TwitterSettings(section.Twitter.UserName, section.Twitter.Password, section.Twitter.Endpoint, section.Twitter.MessageTemplate, section.Twitter.MaximumMessageLength, section.Twitter.Recipients.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
             }
 
             IList<User> defaultUsers = new List<User>();

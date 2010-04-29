@@ -20,14 +20,14 @@ namespace Shrinkr.Infrastructure
         {
             Check.Argument.IsNotNullOrEmpty(url, "shortUrl");
 
-            return "{0}?devkey={1}&url={2}&size={3}&root=no".FormatWith(settings.Thumbnail.EndPoint, settings.Thumbnail.ApiKey, url, size.ToString().ToLower(Culture.Invariant));
+            return "{0}?devkey={1}&url={2}&size={3}&root=no".FormatWith(settings.Thumbnail.Endpoint, settings.Thumbnail.ApiKey, url, size.ToString().ToLower(Culture.Invariant));
         }
 
         public void Capture(string url)
         {
             Check.Argument.IsNotNullOrEmpty(url, "shortUrl");
 
-            string requestUrl = "{0}/request?devkey={1}&url={2}".FormatWith(settings.Thumbnail.EndPoint, settings.Thumbnail.ApiKey, url);
+            string requestUrl = "{0}/request?devkey={1}&url={2}".FormatWith(settings.Thumbnail.Endpoint, settings.Thumbnail.ApiKey, url);
 
             http.GetAsync(requestUrl);
         }

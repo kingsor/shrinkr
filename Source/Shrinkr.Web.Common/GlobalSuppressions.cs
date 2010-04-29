@@ -7,6 +7,11 @@
 // Error List, point to "Suppress Message(s)", and click 
 // "In Project Suppression File".
 // You do not need to add suppressions to this file manually.
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.CacheManager.#Get`1(System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.ICookie.#GetValue`1(System.String,System.Boolean)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.ICookie.#GetValue`1(System.String)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.Cookie.#GetValue`1(System.String,System.Boolean)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.Cookie.#GetValue`1(System.String)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter", Scope = "member", Target = "Shrinkr.Web.ListHtmlHelper.#Pager`1()")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Scope = "member", Target = "Shrinkr.Web.UserController.#GenerateKey(Shrinkr.Web.ProfileCommand)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1011:ConsiderPassingBaseTypesAsParameters", Scope = "member", Target = "Shrinkr.Web.UserController.#Profile(Shrinkr.Web.ProfileCommand)")]
@@ -85,6 +90,9 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes", Scope = "type", Target = "Shrinkr.Web.ShrinkrAuthorizeAttribute")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1813:AvoidUnsealedAttributes", Scope = "type", Target = "Shrinkr.Web.UpdateUserLastActivityAttribute")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Scope = "member", Target = "Shrinkr.Web.CacheManager.#InsertInCache(System.String,System.Object,System.Collections.Generic.IEnumerable`1<System.String>,System.Nullable`1<System.DateTime>,System.Nullable`1<System.TimeSpan>,System.Action`1<System.Boolean>)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2116:AptcaMethodsShouldOnlyCallAptcaMethods", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#IsFiltered(System.Web.Mvc.ExceptionContext)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2116:AptcaMethodsShouldOnlyCallAptcaMethods", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#LogException(System.Exception)")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2116:AptcaMethodsShouldOnlyCallAptcaMethods", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#RaiseErrorSignal(System.Exception)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#IsFiltered(System.Web.Mvc.ExceptionContext)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#LogException(System.Exception)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2141:TransparentMethodsMustNotSatisfyLinkDemandsFxCopRule", Scope = "member", Target = "Shrinkr.Web.ElmahHandleErrorAttribute.#RaiseErrorSignal(System.Exception)")]

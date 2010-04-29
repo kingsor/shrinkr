@@ -4,18 +4,18 @@
 
     public class TwitterSettings
     {
-        public TwitterSettings(string userName, string password, string endPoint, string messageTemplate, int maximumMessageLength, IEnumerable<string> recipients)
+        public TwitterSettings(string userName, string password, string endpoint, string messageTemplate, int maximumMessageLength, IEnumerable<string> recipients)
         {
             Check.Argument.IsNotNullOrEmpty(userName, "userName");
             Check.Argument.IsNotNullOrEmpty(password, "password");
-            Check.Argument.IsNotNullOrEmpty(endPoint, "endPoint");
+            Check.Argument.IsNotNullOrEmpty(endpoint, "endpoint");
             Check.Argument.IsNotNullOrEmpty(messageTemplate, "messageTemplate");
             Check.Argument.IsNotZeroOrNegative(maximumMessageLength, "maximumMessageLength");
             Check.Argument.IsNotNull(recipients, "recipients");
 
             UserName = userName;
             Password = password;
-            EndPoint = endPoint;
+            Endpoint = endpoint;
             MessageTemplate = messageTemplate;
             MaximumMessageLength = maximumMessageLength;
             Recipients = recipients;
@@ -33,7 +33,7 @@
             set;
         }
 
-        public string EndPoint
+        public string Endpoint
         {
             get;
             set;
