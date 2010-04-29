@@ -13,10 +13,7 @@
     <RootNamespace>Shrinkr.Web.MicrosoftStack</RootNamespace>
     <AssemblyName>Shrinkr.Web.MicrosoftStack</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>4.0</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <MvcBuildViews>false</MvcBuildViews>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -106,99 +103,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\GoogleSafeBrowsing\malware.xml" />
-    <Content Include="App_Data\GoogleSafeBrowsing\phishing.xml" />
-    <Content Include="App_Data\Shrinkr.mdf" />
-    <Content Include="App_Data\Shrinkr_log.ldf">
-      <DependentUpon>Shrinkr.mdf</DependentUpon>
-    </Content>
-    <Content Include="Content\Forest\loading.gif" />
-    <Content Include="Content\Forest\sprite.png" />
-    <Content Include="Content\Forest\treeview-line.png" />
-    <Content Include="Content\Forest\treeview-nodes.png" />
-    <Content Include="Content\images\forms\warning.png" />
-    <Content Include="Content\telerik.common.min.css" />
-    <Content Include="Content\telerik.forest.min.css" />
-    <Content Include="Content\images\bg-header.png" />
-    <Content Include="Content\images\bg-main-corner-sprite.png" />
-    <Content Include="Content\images\bg-main.png" />
-    <Content Include="Content\images\forms\button.gif" />
-    <Content Include="Content\images\forms\error.png" />
-    <Content Include="Content\images\forms\exclamation.png" />
-    <Content Include="Content\images\forms\success.png" />
-    <Content Include="Content\images\openid\aolW.png" />
-    <Content Include="Content\images\openid\blogger.png" />
-    <Content Include="Content\images\openid\claimid.png" />
-    <Content Include="Content\images\openid\facebookW.png" />
-    <Content Include="Content\images\openid\fadegrey.png" />
-    <Content Include="Content\images\openid\flickr.png" />
-    <Content Include="Content\images\openid\flickrW.png" />
-    <Content Include="Content\images\openid\googleW.png" />
-    <Content Include="Content\images\openid\livejournal.png" />
-    <Content Include="Content\images\openid\myopenid.png" />
-    <Content Include="Content\images\openid\myopenidW.png" />
-    <Content Include="Content\images\openid\myspaceW.png" />
-    <Content Include="Content\images\openid\openidico.png" />
-    <Content Include="Content\images\openid\openidW.png" />
-    <Content Include="Content\images\openid\technorati.png" />
-    <Content Include="Content\images\openid\verisign.png" />
-    <Content Include="Content\images\openid\vidoop.png" />
-    <Content Include="Content\images\openid\wordpress.png" />
-    <Content Include="Content\images\openid\yahooW.png" />
-    <Content Include="Content\images\pg-preview-na.jpg" />
-    <Content Include="connectionString.config" />
-    <Content Include="dotNetOpenAuth.config" />
-    <Content Include="Scripts\2010.1.309\telerik.calendar.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.common.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.datepicker.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.draganddrop.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.grid.editing.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.grid.filtering.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.grid.grouping.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.grid.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.menu.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.panelbar.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.tabstrip.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.textbox.min.js" />
-    <Content Include="Scripts\2010.1.309\telerik.treeview.min.js" />
-    <None Include="Scripts\jquery-1.4.2.js" />
-    <None Include="Scripts\administrativeItem.js" />
-    <Content Include="Scripts\administrativeItem.min.js" />
-    <None Include="Scripts\badWord.js" />
-    <Content Include="Scripts\badWord.min.js" />
-    <None Include="Scripts\profile.js" />
-    <None Include="Scripts\url.js" />
-    <None Include="Scripts\user.js" />
-    <Content Include="Scripts\user.min.js" />
-    <Content Include="Scripts\url.min.js" />
-    <Content Include="Scripts\profile.min.js" />
-    <Content Include="Scripts\jquery-1.4.2.min.js" />
-    <Content Include="shrinkr.config" />
-    <None Include="Scripts\createShortUrl.js" />
-    <None Include="Scripts\bannedDomain.js" />
-    <None Include="Scripts\bannedIpAddress.js" />
-    <Content Include="Scripts\bannedDomain.min.js" />
-    <Content Include="Scripts\bannedIpAddress.min.js" />
-    <None Include="Scripts\reservedAlias.js" />
-    <Content Include="Scripts\createShortUrl.min.js" />
-    <None Include="Scripts\jquery.color.js" />
-    <Content Include="Scripts\jquery.color.min.js" />
-    <None Include="Scripts\jquery.form.js" />
-    <Content Include="Scripts\jquery.form.min.js" />
-    <None Include="Scripts\jquery.openid.js" />
-    <Content Include="Scripts\jquery.openid.min.js" />
-    <None Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <None Include="Scripts\jquery.watermark.js" />
-    <Content Include="Scripts\jquery.watermark.min.js" />
-    <None Include="Content\form.css" />
-    <Content Include="Content\form.min.css" />
-    <None Include="Content\openid.css" />
-    <Content Include="Content\openid.min.css" />
-    <None Include="Content\site.css" />
-    <Content Include="Content\site.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\reservedAlias.min.js" />
     <Content Include="Views\Authentication\LogOff.aspx" />
     <Content Include="Views\Authentication\LogOn.aspx" />
     <Content Include="Views\ControlPanel\BannedIPAddresses.aspx" />
@@ -252,6 +157,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
