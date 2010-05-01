@@ -5,7 +5,7 @@
         <Configuration>Release</Configuration>
     </PropertyGroup>
     <PropertyGroup>
-        <packageRootPath>$(MSBuildProjectDirectory)\..\..\Drops</packageRootPath>
+        <packageRootPath>$(MSBuildProjectDirectory)\..\Drops</packageRootPath>
         <referencePath>$(MSBuildProjectDirectory)\References</referencePath>
 
         <solution>$(MSBuildProjectDirectory)\Shrinkr.sln</solution>

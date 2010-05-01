@@ -26,39 +26,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Web.CommunityStack", "Shrinkr.Web.CommunityStack\Shrinkr.Web.CommunityStack.csproj", "{4BD02FEC-AD58-42FB-99A6-9E03642C214D}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs04.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Shrinkr.Core.UnitTests\\Shrinkr.Core.UnitTests.csproj
-		SccProjectName1 = Shrinkr.Core.UnitTests
-		SccLocalPath1 = Shrinkr.Core.UnitTests
-		SccProjectUniqueName2 = Shrinkr.Core\\Shrinkr.Core.csproj
-		SccProjectName2 = Shrinkr.Core
-		SccLocalPath2 = Shrinkr.Core
-		SccProjectUniqueName3 = Shrinkr.Infrastructure.EntityFramework\\Shrinkr.Infrastructure.EntityFramework.csproj
-		SccProjectName3 = Shrinkr.Infrastructure.EntityFramework
-		SccLocalPath3 = Shrinkr.Infrastructure.EntityFramework
-		SccProjectUniqueName4 = Shrinkr.Web.Common.UnitTests\\Shrinkr.Web.Common.UnitTests.csproj
-		SccProjectName4 = Shrinkr.Web.Common.UnitTests
-		SccLocalPath4 = Shrinkr.Web.Common.UnitTests
-		SccProjectUniqueName5 = Shrinkr.Web.Common\\Shrinkr.Web.Common.csproj
-		SccProjectName5 = Shrinkr.Web.Common
-		SccLocalPath5 = Shrinkr.Web.Common
-		SccProjectUniqueName6 = Shrinkr.Web.MicrosoftStack\\Shrinkr.Web.MicrosoftStack.csproj
-		SccProjectName6 = Shrinkr.Web.MicrosoftStack
-		SccLocalPath6 = Shrinkr.Web.MicrosoftStack
-		SccProjectUniqueName7 = Shrinkr.Infrastructure.EntityFramework.IntegrationTests\\Shrinkr.Infrastructure.EntityFramework.IntegrationTests.csproj
-		SccProjectName7 = Shrinkr.Infrastructure.EntityFramework.IntegrationTests
-		SccLocalPath7 = Shrinkr.Infrastructure.EntityFramework.IntegrationTests
-		SccProjectUniqueName8 = Shrinkr.Infrastructure.NHibernate\\Shrinkr.Infrastructure.NHibernate.csproj
-		SccProjectName8 = Shrinkr.Infrastructure.NHibernate
-		SccLocalPath8 = Shrinkr.Infrastructure.NHibernate
-		SccProjectUniqueName9 = Shrinkr.Web.CommunityStack\\Shrinkr.Web.CommunityStack.csproj
-		SccProjectName9 = Shrinkr.Web.CommunityStack
-		SccLocalPath9 = Shrinkr.Web.CommunityStack
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
