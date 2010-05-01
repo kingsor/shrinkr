@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0A176C12-F1D9-424E-AC93-F577B960E055}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shrinkr</RootNamespace>
+    <AssemblyName>Shrinkr.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Common\CheckArgument.cs" />
+    <Compile Include="Common\Culture.cs" />
+    <Compile Include="Common\PagedResult.cs" />
+    <Compile Include="Disposable.cs" />
+    <Compile Include="DomainObjects\PossibleSpamDetectedEvent.cs" />
+    <Compile Include="DomainObjects\Referrer.cs" />
+    <Compile Include="DomainObjects\ShortUrlVisitedEvent.cs" />
+    <Compile Include="DomainObjects\UserCreatedEvent.cs" />
+    <Compile Include="Extensions\ReaderWriterLockSlimExtensions.cs" />
+    <Compile Include="Extensions\SpamStatusExtensions.cs" />
+    <Compile Include="Infrastructure\BackgroundService\BackgroundServiceBase.cs" />
+    <Compile Include="Infrastructure\BackgroundService\GoogleSafeBrowsingDataUpdater.cs" />
+    <Compile Include="Infrastructure\BackgroundService\IBackgroundService.cs" />
+    <Compile Include="Infrastructure\BackgroundService\TwitterNotificationService.cs" />
+    <Compile Include="Infrastructure\BaseX\BaseType.cs" />
+    <Compile Include="Infrastructure\Configuration\ApiConfigurationElement.cs" />
+    <Compile Include="Infrastructure\Configuration\GoogleSafeBrowsingConfigurationElement.cs" />
+    <Compile Include="Infrastructure\Configuration\TwitterConfigurationElement.cs" />
+    <Compile Include="Infrastructure\EventAggregator\EventArgs.cs" />
+    <Compile Include="DomainObjects\ShortUrlCreatedEvent.cs" />
+    <Compile Include="Extensions\HttpExtensions.cs" />
+    <Compile Include="Infrastructure\RetryPolicy.cs" />
+    <Compile Include="Infrastructure\Settings\ApiSettings.cs" />
+    <Compile Include="Infrastructure\Settings\GoogleSafeBrowsingSettings.cs" />
+    <Compile Include="Infrastructure\Settings\ThumbnailSettings.cs" />
+    <Compile Include="Infrastructure\Spam\Google\Canonicalization.cs" />
+    <Compile Include="Infrastructure\Spam\Google\GoogleSafeBrowsing.cs" />
+    <Compile Include="Infrastructure\Spam\Google\GoogleSafeBrowsingSpamDetector.cs" />
+    <Compile Include="Infrastructure\Spam\Google\IGoogleSafeBrowsing.cs" />
+    <Compile Include="Infrastructure\Spam\Google\Lookup.cs" />
+    <Compile Include="Infrastructure\SystemTime.cs" />
+    <Compile Include="DataTransferObjects\UserDTO.cs" />
+    <Compile Include="DomainObjects\Alias.cs" />
+    <Compile Include="DomainObjects\ApiSetting.cs" />
+    <Compile Include="DataTransferObjects\SystemHealthDTO.cs" />
+    <Compile Include="DomainObjects\BadWord.cs" />
+    <Compile Include="DomainObjects\BannedIPAddress.cs" />
+    <Compile Include="DomainObjects\BannedDomain.cs" />
+    <Compile Include="DomainObjects\ReservedAlias.cs" />
+    <Compile Include="DomainObjects\Role.cs" />
+    <Compile Include="DomainObjects\SpamStatus.cs" />
+    <Compile Include="DomainObjects\Visit.cs" />
+    <Compile Include="DomainObjects\IEntity.cs" />
+    <Compile Include="DomainObjects\ShortUrl.cs" />
+    <Compile Include="DataTransferObjects\ShortUrlDTO.cs" />
+    <Compile Include="DataTransferObjects\VisitDTO.cs" />
+    <Compile Include="Extensions\ShortUrlDTOExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Infrastructure\Configuration\ThumbnailConfigurationElement.cs" />
+    <Compile Include="Infrastructure\Configuration\DefaultUserConfigurationElement.cs" />
+    <Compile Include="Infrastructure\Configuration\DefaultUserConfigurationElementCollection.cs" />
+    <Compile Include="Infrastructure\Configuration\SettingConfigurationSection.cs" />
+    <Compile Include="Infrastructure\BaseX\IBaseX.cs" />
+    <Compile Include="Infrastructure\EventAggregator\DelegateReference.cs" />
+    <Compile Include="Infrastructure\EventAggregator\EventAggregator.cs" />
+    <Compile Include="Infrastructure\EventAggregator\EventBase.cs" />
+    <Compile Include="Infrastructure\EventAggregator\EventBase`1.cs" />
+    <Compile Include="Infrastructure\EventAggregator\EventSubscription.cs" />
+    <Compile Include="Infrastructure\EventAggregator\IDelegateReference.cs" />
+    <Compile Include="Infrastructure\EventAggregator\IEventAggregator.cs" />
+    <Compile Include="Infrastructure\EventAggregator\IEventSubscription.cs" />
+    <Compile Include="Infrastructure\EventAggregator\SubscriptionToken.cs" />
+    <Compile Include="Infrastructure\ICacheManager.cs" />
+    <Compile Include="Infrastructure\IUrlResolver.cs" />
+    <Compile Include="Infrastructure\ExternalContent\IExternalContentService.cs" />
+    <Compile Include="Infrastructure\ExternalContent\ExternalContent.cs" />
+    <Compile Include="Infrastructure\Http\HttpResponse.cs" />
+    <Compile Include="Infrastructure\Http\IHttp.cs" />
+    <Compile Include="Infrastructure\Settings\Settings.cs" />
+    <Compile Include="Infrastructure\Spam\ISpamDetector.cs" />
+    <Compile Include="Infrastructure\Spam\TextMatchingSpamDetector.cs" />
+    <Compile Include="Infrastructure\Thumbnail\PageGlimpseThumbnail.cs" />
+    <Compile Include="Infrastructure\Thumbnail\ThumbnailSize.cs" />
+    <Compile Include="Infrastructure\Thumbnail\IThumbnail.cs" />
+    <Compile Include="Infrastructure\ExternalContent\ExternalContentService.cs" />
+    <Compile Include="Infrastructure\Http\Http.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\BaseX\BaseX.cs" />
+    <Compile Include="Infrastructure\Settings\TwitterSettings.cs" />
+    <Compile Include="Repositories\IBadWordRepository.cs" />
+    <Compile Include="Repositories\IBannedDomainRepository.cs" />
+    <Compile Include="Repositories\IBannedIPAddressRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\IReservedAliasRepository.cs" />
+    <Compile Include="Repositories\IShortUrlRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="DomainObjects\User.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IVisitRepository.cs" />
+    <Compile Include="Services\AdministrativeActionResult.cs" />
+    <Compile Include="Services\AdministrativeService.cs" />
+    <Compile Include="Services\IAdministrativeService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\IShortUrlService.cs" />
+    <Compile Include="Services\ShortUrlResult.cs" />
+    <Compile Include="Services\ShortUrlListResult.cs" />
+    <Compile Include="Services\RuleViolation.cs" />
+    <Compile Include="Services\ServiceResultBase.cs" />
+    <Compile Include="Services\ShortUrlService.cs" />
+    <Compile Include="Services\UserResult.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\Validation.cs" />
+    <Compile Include="Services\Validation`1.cs" />
+    <Compile Include="Services\VisitResult.cs" />
+    <Compile Include="TextMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Diagrams\DataTransferObjects.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Diagrams\DomainObjects.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Diagrams\Repositories.cd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Diagrams\Services.cd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TextMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C9E96E04-4134-4D15-B3A0-75414AA34FB0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shrinkr.Core.UnitTests</RootNamespace>
+    <AssemblyName>Shrinkr.Core.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.0.423.5, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\moq\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="xunit, Version=1.1.0.1323, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\xunit\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions, Version=1.1.0.1323, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\xunit\xunit.extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Common\CheckArgumentTests.cs" />
+    <Compile Include="Infrastructure\RetryPolicyTests.cs" />
+    <Compile Include="Common\CultureTests.cs" />
+    <Compile Include="Common\PagedResultTests.cs" />
+    <Compile Include="Infrastructure\SystemTimeTests.cs" />
+    <Compile Include="DomainObjects\AliasTests.cs" />
+    <Compile Include="DomainObjects\ApiSettingTests.cs" />
+    <Compile Include="DataTransferObjects\ShortUrlDTOTests.cs" />
+    <Compile Include="DataTransferObjects\VisitDTOTests.cs" />
+    <Compile Include="DomainObjects\VisitTests.cs" />
+    <Compile Include="DomainObjects\ShortUrlTests.cs" />
+    <Compile Include="DomainObjects\UserTests.cs" />
+    <Compile Include="Extensions\CollectionExtensionsTests.cs" />
+    <Compile Include="Extensions\EnumerableExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
+    <Compile Include="Infrastructure\HttpResponseTests.cs" />
+    <Compile Include="Infrastructure\PageGlimpseThumbnailTests.cs" />
+    <Compile Include="Infrastructure\ExternalContentServiceTests.cs" />
+    <Compile Include="Infrastructure\BaseXTests.cs" />
+    <Compile Include="Infrastructure\ExternalContentTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ShortUrlSeriviceTests.cs" />
+    <Compile Include="Services\ValidationTests.cs" />
+    <Compile Include="Services\VisitResultTests.cs" />
+    <Compile Include="Services\UserResultTests.cs" />
+    <Compile Include="Services\ShortUrlResultTests.cs" />
+    <Compile Include="Services\ShortUrlListResultTests.cs" />
+    <Compile Include="Services\ServiceResultBaseTests.cs" />
+    <Compile Include="Services\RuleViolationTests.cs" />
+    <Compile Include="Services\UserServiceTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
+      <Project>{0A176C12-F1D9-424E-AC93-F577B960E055}</Project>
+      <Name>Shrinkr.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
