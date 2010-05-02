@@ -74,11 +74,14 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Mapping\AliasMap.cs" />
     <Compile Include="Mapping\BadWordMap.cs" />
     <Compile Include="Mapping\BannedDomainMap.cs" />
     <Compile Include="Mapping\BannedIPAddressMap.cs" />
     <Compile Include="Mapping\ReservedAliasMap.cs" />
+    <Compile Include="Mapping\ShortUrlMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Mapping\VisitMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
