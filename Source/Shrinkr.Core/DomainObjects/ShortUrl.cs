@@ -43,7 +43,7 @@ namespace Shrinkr.DomainObjects
             set;
         }
 
-        public SpamStatus SpamStatus
+        public virtual SpamStatus SpamStatus
         {
             [DebuggerStepThrough]
             get
