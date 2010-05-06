@@ -1,4 +1,4 @@
-﻿namespace Shrinkr.Client.Seemic.Windows
+﻿namespace Shrinkr.Client.Seemic
 {
     using System;
     using System.Windows;
