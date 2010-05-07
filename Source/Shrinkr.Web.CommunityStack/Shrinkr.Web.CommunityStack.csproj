@@ -80,11 +80,21 @@
     <Reference Include="log4net">
       <HintPath>..\References\nhibernate\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\References\unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="MvcExtensions">
       <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
     </Reference>
     <Reference Include="MvcExtensions.Ninject">
       <HintPath>..\References\mvcextensions\MvcExtensions.Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions.Unity">
+      <HintPath>..\References\mvcextensions\MvcExtensions.Unity.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -131,11 +141,15 @@
     <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BootstrapperTask\RegisterViewEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\SharedFiles\Web\App_Data\GoogleSafeBrowsing\malware.xml">
@@ -347,7 +361,9 @@
       <Link>Scripts\user.min.js</Link>
     </Content>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -364,6 +380,10 @@
     <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
       <Project>{0A176C12-F1D9-424E-AC93-F577B960E055}</Project>
       <Name>Shrinkr.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shrinkr.Infrastructure.EntityFramework\Shrinkr.Infrastructure.EntityFramework.csproj">
+      <Project>{97B78434-BEB7-4A91-A4A8-FE20A15A6299}</Project>
+      <Name>Shrinkr.Infrastructure.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shrinkr.Infrastructure.NHibernate\Shrinkr.Infrastructure.NHibernate.csproj">
       <Project>{138A8DBB-1866-436A-B141-35499641E763}</Project>
@@ -387,6 +407,27 @@
     <Content Include="..\SharedFiles\Web\shrinkr.config">
       <Link>shrinkr.config</Link>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Authentication\LogOff.spark" />
+    <None Include="Views\Authentication\LogOn.spark" />
+    <None Include="Views\ControlPanel\BadWords.spark" />
+    <None Include="Views\ControlPanel\BannedDomains.spark" />
+    <None Include="Views\ControlPanel\BannedIPAddresses.spark" />
+    <None Include="Views\ControlPanel\ReservedAliases.spark" />
+    <None Include="Views\ControlPanel\Summary.spark" />
+    <None Include="Views\ControlPanel\Url.spark" />
+    <None Include="Views\ControlPanel\Urls.spark" />
+    <None Include="Views\ControlPanel\User.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\ControlPanel\Users.spark" />
+    <None Include="Views\ShortUrl\Create.spark" />
+    <None Include="Views\ShortUrl\CreatedBox.spark" />
+    <None Include="Views\ShortUrl\CreateForm.spark" />
+    <None Include="Views\ShortUrl\List.spark" />
+    <None Include="Views\ShortUrl\Preview.spark" />
+    <None Include="Views\User\Profile.spark" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

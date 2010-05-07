@@ -6,8 +6,10 @@
     using MvcExtensions.Ninject;
 
     using Elmah;
+    using MvcExtensions.Unity;
+    using Spark.Web.Mvc;
 
-    public class MvcApplication : NinjectMvcApplication
+    public class MvcApplication : UnityMvcApplication
     {
         public void ErrorLog_Filtering(object sender, ExceptionFilterEventArgs e)
         {
