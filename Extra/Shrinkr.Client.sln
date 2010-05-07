@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Client.Console", "Console\Shrinkr.Client.Console.csproj", "{ED924FAC-DE9B-4097-BDDF-979D4DCB8C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Client.Desktop.Seesmic", "Seemic\Shrinkr.Client.Desktop.Seesmic.csproj", "{63E71500-F5ED-45CF-8886-3BA182667862}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Client.Seesmic", "Seemic\Shrinkr.Client.Seesmic.csproj", "{63E71500-F5ED-45CF-8886-3BA182667862}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

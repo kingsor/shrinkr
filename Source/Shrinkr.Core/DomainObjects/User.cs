@@ -78,7 +78,7 @@
             }
         }
 
-        public Role Role
+        public virtual Role Role
         {
             [DebuggerStepThrough]
             get
