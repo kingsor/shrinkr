@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= Culture.Current.TwoLetterISOLanguageName %>" lang="<%= Culture.Current.TwoLetterISOLanguageName %>">
+<head runat="server">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server"/></title>
+    <meta name="Rating" content="General"/>
+    <meta name="robots" content="index, follow"/>
+
+    <% Html.Telerik()
+           .StyleSheetRegistrar()
+           .StyleSheets(group => group.AddSharedGroup("appStyles"))
+           .Render(); %>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1><a href="<%= Url.Home() %>" rel="home">Shrinkr</a></h1>
+            </div>
+        </div>
+        <div id="main">
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogonUserControl"); %>
+            </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            <div id="footer">
+                Shrinkr &copy; Copyright 2010
+            </div>
+        </div>
+    </div>
+    <% Html.Telerik()
+           .ScriptRegistrar()
+           .Scripts(group => group.AddSharedGroup("publicScripts"))
+           .OnDocumentReady(() =>
+                                  {%>
+                                    $('input.largeTextBox').focus(function() { this.select(); });
+                                  <%}
+                             )
+           .Render(); %>
+</body>
+</html>

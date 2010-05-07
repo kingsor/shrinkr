@@ -1,0 +1,292 @@
+.shrinkBox
+{
+    background-color: #e8e8e8;
+    font-size: 14px;
+    padding: 40px 20px 20px 20px;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 12px;
+}
+
+.shrinkBox h2
+{
+    color: #6d6e70;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.shrinkForm
+{
+    background-color: #fff;
+    margin-top: 16px;
+    padding: 18px;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 12px;
+}
+
+.shrinkForm p
+{
+    padding:4px;
+}
+
+.shrinkForm p label
+{
+    display:block;
+    float:left;
+    width:100px;
+}
+
+ul.form
+{
+    list-style: none none outside;
+    margin: 0;
+    padding: 0;
+}
+
+ul.form li
+{
+    display: inline;
+    padding: 4px;
+    float: left;
+}
+
+.largeTextBox
+{
+    border: 4px solid #c0d679;
+    color: #494949;
+    font-size: 15px;
+    padding: 4px 10px;
+}
+
+.smallTextBox
+{
+    border: 2px solid #c0d679;
+    color: #494949;
+    font-size: 12px;
+    padding: 2px;
+}
+
+.focusTextBox
+{
+    background-color: #ddedbb;
+    border-color: #70a405;
+    color: #494949;
+}
+
+.idleTextBox
+{
+    background-color: #fff;
+    color: #6f6f6f;
+}
+
+.largeButton
+{
+    background: transparent url(images/forms/button.gif) repeat-x scroll center top;
+    border: 2px solid #779F20;
+    cursor: pointer;
+    color: #494949;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
+    font-size: 14px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.largeButton:focus
+{
+    background-position: bottom;
+}
+
+.smallButton, .command
+{
+    background: transparent url(images/forms/button.gif) repeat-x scroll center top;
+    border: 2px solid #779F20;
+    cursor: pointer;
+    color: #494949;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px;
+    font-size: 12px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+
+a.command
+{
+    color: #494949;
+    text-decoration:none;
+}
+
+.smallButton:focus
+{
+    background-position: bottom;
+}
+
+a.command:hover
+{
+    background-position: bottom;
+}
+
+.tip
+{
+    display: block;
+    font-size: smaller;
+}
+
+.validationBox, .messageBox
+{
+    margin: 8px 0;
+    padding: 20px 10px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.validationBox
+{
+    background-color: #f7cbca;
+    border: 1px solid #c52020;
+    color: #b72222;
+}
+
+.messageBox
+{
+    background-color: #c9ffca;
+    border: 1px solid #349534;
+    color: #008000;
+}
+
+.messageBox span
+{
+    background: transparent url(images/forms/success.png) no-repeat scroll 10px 10px;
+    padding: 12px 0 4px 40px;
+    font-weight: bold;
+}
+
+.messageBox ul
+{
+    margin-bottom: 0;
+    padding: 0 0 12px 60px;
+}
+
+.messageBox ul li
+{
+    padding-bottom: 4px;
+}
+
+.messageBox ul li div
+{
+    padding-top: 4px;
+}
+
+.messageBox ul li div .readOnlyTextBox
+{
+    cursor: pointer;
+    width: 260px;
+}
+
+.messageBox ul li div label
+{
+    float: left;
+    padding-top: 10px;
+    width: 60px;
+}
+
+span.warning 
+{
+    border: 1px solid;
+    font-weight: bold;
+    padding: 7px 10px 7px 30px;
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background: #FEEFB3 url(images/forms/warning.png) no-repeat scroll 5px center;
+}
+
+span.validation-summary-errors
+{
+    background: transparent url(images/forms/error.png) no-repeat scroll 10px 10px;
+    font-weight: bold;
+    padding: 12px 0 4px 40px;
+}
+
+ul.validation-summary-errors
+{
+    margin-bottom: 0;
+    padding: 0 0 12px 60px;
+}
+
+ul.list
+{
+    margin: 0;
+    padding: 0;
+}
+
+ul.list > li
+{
+    border-bottom: 2px solid #ddedbb;
+    list-style: none none;
+    padding: 8px 0;
+}
+
+ul.item li
+{
+    display: inline;
+    float: left;
+    list-style: none none;
+    padding: 4px;
+}
+
+li.preview
+{
+    width: 155px;
+}
+
+li.preview img
+{
+    height: 108px;
+    width: 150px;
+}
+
+li.visits
+{
+    text-align:center;
+    width: 105px;
+}
+
+li.title
+{
+    width:320px;
+    text-align:justify;
+}
+
+li.added
+{
+    text-align:right;
+    width: 100px;
+}
+
+.input-validation-error
+{
+    border: 4px solid #c52020;
+}
+
+.field-validation-error
+{
+    color: #b72222;
+}
+
+input[name=url]
+{
+    width: 420px;
+}
+
+input[name=alias]
+{
+    width: 180px;
+}
+
+input[name=url]
+{
+    width: 420px;
+}

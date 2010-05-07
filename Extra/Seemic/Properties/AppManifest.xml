@@ -1,0 +1,18 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:sdp="http://schemas.seesmic.com/sdp/2010/deployment">
+  <sdp:Plugin>
+    <sdp:Id>F32F71BD-807B-4ED3-8E69-212C2BB49B9B</sdp:Id>
+    <sdp:Name>Shrinkr|rdir.in Url Shortening Service.</sdp:Name>
+    <sdp:Description>Shrinking the size of URLs and provides tracking data for shortened links.</sdp:Description>
+    <sdp:Version>1.0.0.0</sdp:Version>
+    <sdp:LogoUri>Resources/shrinkr.png</sdp:LogoUri>
+    <sdp:Vendor>Shrinkr</sdp:Vendor>
+    <sdp:Copyright>Copyright © Shrinkr 2010|http://rdir.in/ .</sdp:Copyright>
+    <sdp:HomepageUrl>http://rdir.in</sdp:HomepageUrl>
+    <sdp:PlatformVersion>1.0.0.0</sdp:PlatformVersion>    
+  </sdp:Plugin>
+  <Deployment.Parts>
+  </Deployment.Parts>
+
+</Deployment>
