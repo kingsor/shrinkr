@@ -1,4 +1,4 @@
-﻿<viewdata  model="CreateUrlViewModel"  />
+﻿<viewdata  model="CreateUrlViewModel"/>
 <content name="TitleContent">
     Shrinkr
 </content>

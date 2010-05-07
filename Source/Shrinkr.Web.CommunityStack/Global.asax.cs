@@ -3,11 +3,9 @@
     using System.Net;
     using System.Web;
 
-    using MvcExtensions.Ninject;
+    using MvcExtensions.Unity;
 
     using Elmah;
-    using MvcExtensions.Unity;
-    using Spark.Web.Mvc;
 
     public class MvcApplication : UnityMvcApplication
     {

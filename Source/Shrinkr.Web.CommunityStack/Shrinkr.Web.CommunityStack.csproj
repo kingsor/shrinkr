@@ -51,34 +51,11 @@
     <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\References\dotnetopenauth\DotNetOpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\References\elmah\Elmah.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\References\nhibernate\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,26 +67,8 @@
     <Reference Include="MvcExtensions">
       <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="MvcExtensions.Ninject">
-      <HintPath>..\References\mvcextensions\MvcExtensions.Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="MvcExtensions.Unity">
       <HintPath>..\References\mvcextensions\MvcExtensions.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\References\nhibernate\NHibernate.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\References\ninject\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Spark">
       <HintPath>..\References\spark\Spark.dll</HintPath>
@@ -140,9 +99,6 @@
   <ItemGroup>
     <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="BootstrapperTask\RegisterViewEngine.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -370,7 +326,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\XmlExceptionLog\" />
@@ -384,10 +339,6 @@
     <ProjectReference Include="..\Shrinkr.Infrastructure.EntityFramework\Shrinkr.Infrastructure.EntityFramework.csproj">
       <Project>{97B78434-BEB7-4A91-A4A8-FE20A15A6299}</Project>
       <Name>Shrinkr.Infrastructure.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shrinkr.Infrastructure.NHibernate\Shrinkr.Infrastructure.NHibernate.csproj">
-      <Project>{138A8DBB-1866-436A-B141-35499641E763}</Project>
-      <Name>Shrinkr.Infrastructure.NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shrinkr.Web.Common\Shrinkr.Web.Common.csproj">
       <Project>{C93C68EF-0858-4B81-96FA-F570BD83DEEE}</Project>

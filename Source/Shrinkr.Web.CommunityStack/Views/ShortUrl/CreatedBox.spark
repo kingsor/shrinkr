@@ -1,4 +1,4 @@
-﻿<viewdata  model="CreateUrlViewModel"  />
+﻿<viewdata  model="CreateUrlViewModel"/>
 <div class="messageBox" style="display:${ (Model == null) ? "none" : string.Empty }">
     <if condition='Model != null'>
         <span>Your new urls are generated successfully.</span>
