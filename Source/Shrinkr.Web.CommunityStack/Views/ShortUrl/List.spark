@@ -1,4 +1,4 @@
-﻿<viewdata  model="PagedListViewModel[[ShortUrlDTO]]"  />
+﻿<viewdata  model="PagedListViewModel[[ShortUrlDTO]]"/>
 <content name="TitleContent">
     Shrinkr : My Urls
 </content>
@@ -17,7 +17,7 @@
                     <div class="clear"></div>
                 </li>
                 <if condition='Model.Items.Any()'>
-					        <for each="ShortUrlDTO shortUrl in Model.Items">
+                    <for each="ShortUrlDTO shortUrl in Model.Items">
                     <li>
                         <ul class="item">
                             <li class="preview"><a href="!{ Url.Preview(shortUrl.Alias) }"><img alt="!{ Html.AttributeEncode(shortUrl.Title)}" src="!{ Html.AttributeEncode(shortUrl.SmallThumbnail()) }" style="width:150px;height:108px"/></a></li>

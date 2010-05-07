@@ -1,4 +1,4 @@
-﻿<viewdata  model="ShortUrlDTO" />
+﻿<viewdata  model="ShortUrlDTO"/>
 <content name="TitleContent">
     Shrinkr : !{ Model.Title } - Preview
 </content>

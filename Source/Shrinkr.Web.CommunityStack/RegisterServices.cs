@@ -8,6 +8,7 @@ namespace Shrinkr.Web.CommunityStack
     using System.Web;
 
     using Microsoft.Practices.Unity;
+    using Spark;
 
     using MvcExtensions;
     using MvcExtensions.Unity;
@@ -42,6 +43,10 @@ namespace Shrinkr.Web.CommunityStack
                      .RegisterType<IOpenIdRelyingParty, OpenIdRelyingParty>(transient())
                      .RegisterType<IFormsAuthentication, FormsAuthentication>(singleton())
                      .RegisterType<ICookie, Cookie>(transient());
+
+            ISparkSettings sparkSettings = ConfigurationManager.GetSection("spark") as ISparkSettings;
+
+            container.RegisterInstance(sparkSettings);
 
             IBuildManager buildManager = container.Resolve<IBuildManager>();
 
