@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{138A8DBB-1866-436A-B141-35499641E763}</ProjectGuid>
+    <ProjectGuid>{88EA22B0-2498-456E-AA1F-636A94044EB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shrinkr.Infrastructure.Nhibernate</RootNamespace>
-    <AssemblyName>Shrinkr.Infrastructure.NHibernate</AssemblyName>
+    <RootNamespace>Shrinkr.Infrastructure.Nhibernate.IntegrationTests</RootNamespace>
+    <AssemblyName>Shrinkr.Infrastructure.NHibernate.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -18,27 +18,21 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core">
@@ -47,56 +41,66 @@
     <Reference Include="Castle.DynamicProxy2">
       <HintPath>..\References\nhibernate\Castle.DynamicProxy2.dll</HintPath>
     </Reference>
-    <Reference Include="FluentNHibernate">
+    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Iesi.Collections">
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate">
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
       <HintPath>..\References\nhibernate\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.Linq">
+    <Reference Include="NHibernate.Linq, Version=1.0.0.4000, Culture=neutral, PublicKeyToken=444cf6a87fdab271, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\nhibernate\NHibernate.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="xunit">
+      <HintPath>..\References\xunit\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\References\xunit\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="DatabaseConfigurationBuilder.cs" />
-    <Compile Include="DatabaseFactory.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="IDatabaseFactory.cs" />
-    <Compile Include="Mapping\AliasMap.cs" />
-    <Compile Include="Mapping\BadWordMap.cs" />
-    <Compile Include="Mapping\BannedDomainMap.cs" />
-    <Compile Include="Mapping\BannedIPAddressMap.cs" />
-    <Compile Include="Mapping\ReservedAliasMap.cs" />
-    <Compile Include="Mapping\ShortUrlMap.cs" />
-    <Compile Include="Mapping\UserMap.cs" />
-    <Compile Include="Mapping\VisitMap.cs" />
+    <Compile Include="DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
       <Project>{0A176C12-F1D9-424E-AC93-F577B960E055}</Project>
       <Name>Shrinkr.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shrinkr.Infrastructure.NHibernate\Shrinkr.Infrastructure.NHibernate.csproj">
+      <Project>{138A8DBB-1866-436A-B141-35499641E763}</Project>
+      <Name>Shrinkr.Infrastructure.NHibernate</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SharedFiles\CodeAnalysisDictionary.xml">
+      <Link>CodeAnalysisDictionary.xml</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

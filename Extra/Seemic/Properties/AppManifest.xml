@@ -8,11 +8,10 @@
     <sdp:Version>1.0.0.0</sdp:Version>
     <sdp:LogoUri>Resources/shrinkr.png</sdp:LogoUri>
     <sdp:Vendor>Shrinkr</sdp:Vendor>
-    <sdp:Copyright>Copyright © Shrinkr 2010|http://rdir.in/ .</sdp:Copyright>
+    <sdp:Copyright>Copyright © Shrinkr 2010|http://rdir.in.</sdp:Copyright>
     <sdp:HomepageUrl>http://rdir.in</sdp:HomepageUrl>
-    <sdp:PlatformVersion>1.0.0.0</sdp:PlatformVersion>    
+    <sdp:PlatformVersion>1.0.0.0</sdp:PlatformVersion>
   </sdp:Plugin>
   <Deployment.Parts>
   </Deployment.Parts>
-
 </Deployment>

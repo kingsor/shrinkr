@@ -38,7 +38,7 @@ namespace Shrinkr.DomainObjects
             set;
         }
 
-        public long? GeoCode
+        public virtual long? GeoCode
         {
             get;
             set;
