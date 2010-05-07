@@ -329,7 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\XmlExceptionLog\" />
-    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
@@ -373,6 +372,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\ControlPanel\Users.spark" />
+    <None Include="Views\Shared\Application.spark" />
+    <None Include="Views\Shared\Error.spark" />
+    <None Include="Views\Shared\LogOnUserControl.spark" />
     <None Include="Views\ShortUrl\Create.spark" />
     <None Include="Views\ShortUrl\CreatedBox.spark" />
     <None Include="Views\ShortUrl\CreateForm.spark" />
