@@ -4,6 +4,33 @@
         <name>MvcExtensions.Unity</name>
     </assembly>
     <members>
+        <member name="T:MvcExtensions.Unity.IModule">
+            <summary>
+            Represents an interface that is used to register a set of related services.
+            </summary>
+        </member>
+        <member name="M:MvcExtensions.Unity.IModule.Load(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Loads the module.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="T:MvcExtensions.Unity.UnityMvcApplication">
+            <summary>
+            Defines a <see cref="T:System.Web.HttpApplication"/> which uses <seealso cref="T:MvcExtensions.Unity.UnityBootstrapper"/>.
+            </summary>
+        </member>
+        <member name="M:MvcExtensions.Unity.UnityMvcApplication.CreateBootstrapper">
+            <summary>
+            Creates the bootstrapper.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MvcExtensions.Unity.UnityMvcApplication.OnPerRequestTasksDisposed">
+            <summary>
+            Executes after the registered <see cref="T:MvcExtensions.IPerRequestTask"/> disposes.
+            </summary>
+        </member>
         <member name="T:MvcExtensions.Unity.UnityBootstrapper">
             <summary>
             Defines a <seealso cref="T:MvcExtensions.Bootstrapper">Bootstrapper</seealso> which is backed by <seealso cref="T:MvcExtensions.Unity.UnityAdapter"/>.
@@ -25,55 +52,6 @@
             <summary>
             Loads the container specific modules.
             </summary>
-        </member>
-        <member name="T:MvcExtensions.Unity.PerRequestLifetimeManager">
-            <summary>
-            Defines a <see cref="T:Microsoft.Practices.Unity.LifetimeManager"/> which returns the same object for a web request.
-            </summary>
-        </member>
-        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.GetValue">
-            <summary>
-            Gets the value.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.SetValue(System.Object)">
-            <summary>
-            Sets the value.
-            </summary>
-            <param name="newValue">The new value.</param>
-        </member>
-        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.RemoveValue">
-            <summary>
-            Removes the value.
-            </summary>
-        </member>
-        <member name="T:MvcExtensions.Unity.UnityMvcApplication">
-            <summary>
-            Defines a <see cref="T:System.Web.HttpApplication"/> which uses <seealso cref="T:MvcExtensions.Unity.UnityBootstrapper"/>.
-            </summary>
-        </member>
-        <member name="M:MvcExtensions.Unity.UnityMvcApplication.CreateBootstrapper">
-            <summary>
-            Creates the bootstrapper.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MvcExtensions.Unity.UnityMvcApplication.OnPerRequestTasksDisposed">
-            <summary>
-            Executes after the registered <see cref="T:MvcExtensions.IPerRequestTask"/> disposes.
-            </summary>
-        </member>
-        <member name="T:MvcExtensions.Unity.IModule">
-            <summary>
-            Represents an interface that is used to register a set of related services.
-            </summary>
-        </member>
-        <member name="M:MvcExtensions.Unity.IModule.Load(Microsoft.Practices.Unity.IUnityContainer)">
-            <summary>
-            Loads the module.
-            </summary>
-            <param name="container">The container.</param>
         </member>
         <member name="T:MvcExtensions.Unity.UnityAdapter">
             <summary>
@@ -143,11 +121,38 @@
             </summary>
             <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         </member>
+        <member name="M:MvcExtensions.Unity.UnityAdapter.MvcExtensions#IFluentSyntax#GetType">
+            <summary>
+            Defines an adapter class which with backed by Unity <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer">Container</seealso>.
+            </summary>
+        </member>
         <member name="P:MvcExtensions.Unity.UnityAdapter.Container">
             <summary>
             Gets the container.
             </summary>
             <value>The container.</value>
+        </member>
+        <member name="T:MvcExtensions.Unity.PerRequestLifetimeManager">
+            <summary>
+            Defines a <see cref="T:Microsoft.Practices.Unity.LifetimeManager"/> which returns the same object for a web request.
+            </summary>
+        </member>
+        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.GetValue">
+            <summary>
+            Gets the value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.SetValue(System.Object)">
+            <summary>
+            Sets the value.
+            </summary>
+            <param name="newValue">The new value.</param>
+        </member>
+        <member name="M:MvcExtensions.Unity.PerRequestLifetimeManager.RemoveValue">
+            <summary>
+            Removes the value.
+            </summary>
         </member>
     </members>
 </doc>
