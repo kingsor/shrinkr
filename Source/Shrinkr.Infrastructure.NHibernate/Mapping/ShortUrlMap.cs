@@ -1,4 +1,4 @@
-﻿namespace Shrinkr.Infrastructure.Nhibernate.Mapping
+﻿namespace Shrinkr.Infrastructure.NHibernate.Mapping
 {
     using System;
 
@@ -19,7 +19,7 @@
             Map(s => s.Title).Not.Nullable().Length(2048);
             Map(s => s.InternalSpamStatus).Not.Nullable().Column("SpamStatus");
 
-            HasMany(s => s.Aliases).KeyColumn("ShortUrlId");
+            HasMany(s => s.Aliases).KeyColumn("ShortUrlId").Access.LowerCaseField();
 
             Table("ShortUrl");
         }

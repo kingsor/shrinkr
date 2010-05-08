@@ -1,4 +1,4 @@
-﻿namespace Shrinkr.Infrastructure.Nhibernate.Mapping
+﻿namespace Shrinkr.Infrastructure.NHibernate.Mapping
 {
     using System;
 

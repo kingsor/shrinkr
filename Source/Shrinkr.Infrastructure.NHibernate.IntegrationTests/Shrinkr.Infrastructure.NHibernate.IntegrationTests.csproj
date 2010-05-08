@@ -8,7 +8,7 @@
     <ProjectGuid>{88EA22B0-2498-456E-AA1F-636A94044EB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shrinkr.Infrastructure.Nhibernate.IntegrationTests</RootNamespace>
+    <RootNamespace>Shrinkr.Infrastructure.NHibernate.IntegrationTests</RootNamespace>
     <AssemblyName>Shrinkr.Infrastructure.NHibernate.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -79,7 +79,8 @@
     <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DatabaseTest.cs" />
+    <Compile Include="DatabaseTestBase.cs" />
+    <Compile Include="DatabaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
