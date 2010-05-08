@@ -1,4 +1,4 @@
-﻿namespace Shrinkr.Infrastructure.Nhibernate.Mapping
+﻿namespace Shrinkr.Infrastructure.NHibernate.Mapping
 {
     using System;
   
@@ -18,13 +18,16 @@
             Map(v => v.GeoCode).Nullable();
             Map(v => v.CreatedAt).Not.Nullable();
 
-            Component(a => a.Referrer, m =>
-                                           {
-                                               m.Map(r => r.Domain).Nullable().Length(440).Column("ReferrerDomain");
-                                               m.Map(r => r.Url).Nullable().Length(2048).Column("ReferrerUrl");
-                                           });
+            Component(
+                        a =>
+                            a.Referrer,
+                            m =>
+                            {
+                                m.Map(r => r.Domain).Nullable().Length(440).Column("ReferrerDomain");
+                                m.Map(r => r.Url).Nullable().Length(2048).Column("ReferrerUrl");
+                            }).Not.LazyLoad();
 
-            References(v => v.Alias).Not.Nullable().Column("AliasId");
+            References(v => v.Alias).Not.Nullable().Column("AliasId").LazyLoad();
 
             Table("Visit");
         }

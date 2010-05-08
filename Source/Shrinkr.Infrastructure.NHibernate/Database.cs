@@ -1,104 +1,108 @@
-﻿namespace Shrinkr.Infrastructure.Nhibernate
+﻿namespace Shrinkr.Infrastructure.NHibernate
 {
+    using System;
+    using System.Linq;
     using System.Diagnostics;
-
-    using NHibernate;
-    using NHibernate.Linq;
 
     using DomainObjects;
 
+    using global::NHibernate.Linq;
+    using ISession = global::NHibernate.ISession;
+
+    [CLSCompliant(false)]
     public class Database : Disposable
     {
         private readonly ISession session;
 
-        private INHibernateQueryable<User> users;
-        private INHibernateQueryable<ShortUrl> shortUrls;
-        private INHibernateQueryable<Alias> aliases;
-        private INHibernateQueryable<Visit> visits;
-
-        private INHibernateQueryable<BannedDomain> bannedDomains;
-        private INHibernateQueryable<BannedIPAddress> bannedIPAddresses;
-        private INHibernateQueryable<ReservedAlias> restrictedAliases;
-        private INHibernateQueryable<BadWord> badWords;
+        private IQueryable<User> users;
+        private IQueryable<ShortUrl> shortUrls;
+        private IQueryable<Alias> aliases;
+        private IQueryable<Visit> visits;
+        private IQueryable<BannedDomain> bannedDomains;
+        private IQueryable<BannedIPAddress> bannedIPAddresses;
+        private IQueryable<ReservedAlias> restrictedAliases;
+        private IQueryable<BadWord> badWords;
 
         public Database(ISession session)
         {
-            this.session = session;    
+            Check.Argument.IsNotNull(session, "session");
+
+            this.session = session;
         }
 
-        public INHibernateQueryable<User> Users
+        public IQueryable<User> Users
         {
             [DebuggerStepThrough]
             get
             {
-                return users ?? (users = NHibernateQueryable<User>());
+                return users ?? (users = CreateQuery<User>());
             }
         }
 
-        public INHibernateQueryable<ShortUrl> ShortUrls
+        public IQueryable<ShortUrl> ShortUrls
         {
             [DebuggerStepThrough]
             get
             {
-                return shortUrls ?? (shortUrls = NHibernateQueryable<ShortUrl>());
+                return shortUrls ?? (shortUrls = CreateQuery<ShortUrl>());
             }
         }
 
-        public INHibernateQueryable<Alias> Aliases
+        public IQueryable<Alias> Aliases
         {
             [DebuggerStepThrough]
             get
             {
-                return aliases ?? (aliases = NHibernateQueryable<Alias>());
+                return aliases ?? (aliases = CreateQuery<Alias>());
             }
         }
 
-        public INHibernateQueryable<Visit> Visits
+        public IQueryable<Visit> Visits
         {
             [DebuggerStepThrough]
             get
             {
-                return visits ?? (visits = NHibernateQueryable<Visit>());
+                return visits ?? (visits = CreateQuery<Visit>());
             }
         }
 
-        public INHibernateQueryable<BannedDomain> BannedDomains
+        public IQueryable<BannedDomain> BannedDomains
         {
             [DebuggerStepThrough]
             get
             {
-                return bannedDomains ?? (bannedDomains = NHibernateQueryable<BannedDomain>());
+                return bannedDomains ?? (bannedDomains = CreateQuery<BannedDomain>());
             }
         }
 
-        public INHibernateQueryable<BannedIPAddress> BannedIPAddresses
+        public IQueryable<BannedIPAddress> BannedIPAddresses
         {
             [DebuggerStepThrough]
             get
             {
-                return bannedIPAddresses ?? (bannedIPAddresses = NHibernateQueryable<BannedIPAddress>());
+                return bannedIPAddresses ?? (bannedIPAddresses = CreateQuery<BannedIPAddress>());
             }
         }
 
-        public INHibernateQueryable<ReservedAlias> ReservedAliases
+        public IQueryable<ReservedAlias> ReservedAliases
         {
             [DebuggerStepThrough]
             get
             {
-                return restrictedAliases ?? (restrictedAliases = NHibernateQueryable<ReservedAlias>());
+                return restrictedAliases ?? (restrictedAliases = CreateQuery<ReservedAlias>());
             }
         }
 
-        public INHibernateQueryable<BadWord> BadWords
+        public IQueryable<BadWord> BadWords
         {
             [DebuggerStepThrough]
             get
             {
-                return badWords ?? (badWords = NHibernateQueryable<BadWord>());
+                return badWords ?? (badWords = CreateQuery<BadWord>());
             }
         }
 
-        public virtual INHibernateQueryable<TEntity> NHibernateQueryable<TEntity>() where TEntity : class, IEntity
+        public virtual IQueryable<TEntity> CreateQuery<TEntity>() where TEntity : class, IEntity
         {
             return session.Linq<TEntity>();
         }
@@ -112,12 +116,13 @@
 
         protected override void DisposeCore()
         {
-            if(session != null)
+            if (session != null)
             {
-                if(session.IsOpen)
+                if (session.IsOpen)
                 {
                     session.Close();
                 }
+
                 session.Dispose();
             }
         }

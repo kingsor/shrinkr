@@ -1,4 +1,4 @@
-﻿namespace Shrinkr.Infrastructure.Nhibernate.Mapping
+﻿namespace Shrinkr.Infrastructure.NHibernate.Mapping
 {
     using System;
   
@@ -20,16 +20,19 @@
             Map(u => u.InternalRole).Not.Nullable().Column("Role");
             Map(u => u.LastActivityAt).Not.Nullable();
 
-            Component(u => u.ApiSetting, m =>
-                                             {
-                                                 m.Map(s => s.Key).Nullable().Length(36).Column("ApiKey");
-                                                 m.Map(s => s.Allowed).Nullable().Column("ApiAllowed");
-                                                 m.Map(s => s.DailyLimit).Nullable();
-                                             });
+            Component(
+                        u =>
+                            u.ApiSetting,
+                            m =>
+                                {
+                                    m.Map(s => s.Key).Nullable().Length(36).Column("ApiKey");
+                                    m.Map(s => s.Allowed).Nullable().Column("ApiAllowed");
+                                    m.Map(s => s.DailyLimit).Nullable();
+                                }).Not.LazyLoad();
 
-            HasMany(u => u.Aliases).KeyColumn("UserId");
+            HasMany(u => u.Aliases).KeyColumn("UserId").Access.LowerCaseField().LazyLoad();
 
-            Table("User");
+            Table("[User]");
         }
     }
 }

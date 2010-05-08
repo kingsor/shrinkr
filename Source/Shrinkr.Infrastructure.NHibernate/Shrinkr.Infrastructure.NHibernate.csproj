@@ -8,7 +8,7 @@
     <ProjectGuid>{138A8DBB-1866-436A-B141-35499641E763}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shrinkr.Infrastructure.Nhibernate</RootNamespace>
+    <RootNamespace>Shrinkr.Infrastructure.NHibernate</RootNamespace>
     <AssemblyName>Shrinkr.Infrastructure.NHibernate</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -75,7 +75,6 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Database.cs" />
-    <Compile Include="DatabaseConfigurationBuilder.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="IDatabaseFactory.cs" />
