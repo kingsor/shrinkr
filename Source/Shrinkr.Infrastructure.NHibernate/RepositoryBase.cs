@@ -8,6 +8,7 @@
     public abstract class RepositoryBase<TEntity> where TEntity : class, IEntity
     {
         private Database database;
+
         protected RepositoryBase(IDatabaseFactory databaseFactory)
         {
             Check.Argument.IsNotNull(databaseFactory, "databaseFactory");
@@ -20,6 +21,7 @@
             get;
             private set;
         }
+
         protected Database Database
         {
             [DebuggerStepThrough]

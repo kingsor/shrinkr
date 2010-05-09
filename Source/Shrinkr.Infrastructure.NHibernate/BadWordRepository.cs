@@ -6,7 +6,6 @@
     using DomainObjects;
     using Repositories;
 
-    //
     public class BadWordRepository : RepositoryBase<BadWord>, IBadWordRepository
     {
         private static readonly Expression<Func<Database, string, bool>> expression = (database, e) => database.BadWords.Any(word => word.Expression == e);
