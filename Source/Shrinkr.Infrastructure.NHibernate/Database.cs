@@ -1,6 +1,5 @@
 ﻿namespace Shrinkr.Infrastructure.NHibernate
 {
-    using System;
     using System.Linq;
     using System.Diagnostics;
 
@@ -8,11 +7,12 @@
 
     using global::NHibernate.Linq;
     using ISession = global::NHibernate.ISession;
+    using ITransaction = global::NHibernate.ITransaction;
 
-    [CLSCompliant(false)]
     public class Database : Disposable
     {
         private readonly ISession session;
+        private ITransaction transaction;
 
         private IQueryable<User> users;
         private IQueryable<ShortUrl> shortUrls;
@@ -26,7 +26,7 @@
         public Database(ISession session)
         {
             Check.Argument.IsNotNull(session, "session");
-
+            
             this.session = session;
         }
 
@@ -107,15 +107,57 @@
             return session.Linq<TEntity>();
         }
 
+        public virtual TEntity GetById<TEntity>(long id) where TEntity : class, IEntity
+        {
+            Check.Argument.IsNotNegative(id, "id");
+            return session.Get<TEntity>(id);
+        }
+
         public virtual void Save<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNull(entity, "entity");
-
+            EnsureTransaction();
             session.SaveOrUpdate(entity);
+        }
+
+        public virtual void Delete<TEntity>(TEntity entity) where TEntity: class, IEntity
+        {
+            Check.Argument.IsNotNull(entity, "entity");
+            EnsureTransaction();
+            session.Delete(entity);
+        }
+
+        public virtual void Commit()
+        {
+            EnsureTransaction();
+            transaction.Commit();
+        }
+
+        private void EnsureTransaction()
+        {
+            //start new transaction if
+            // 1) No transaction is initiated yet
+            // 2) Existing transaction isn't active
+            // 3) Existing transaction was committed
+            // 4) Existing transaction was rolledback
+            if(transaction == null || !transaction.IsActive || transaction.WasCommitted || transaction.WasRolledBack)
+            {
+                transaction = session.BeginTransaction();
+            }
         }
 
         protected override void DisposeCore()
         {
+            if (transaction != null)
+            {
+                if(transaction.IsActive)
+                {
+                    transaction.Rollback();
+                }
+
+                transaction.Dispose();
+                transaction = null;
+            }
             if (session != null)
             {
                 if (session.IsOpen)

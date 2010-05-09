@@ -1,12 +1,9 @@
 namespace Shrinkr.Infrastructure.NHibernate.Mapping
 {
-    using System;
-
     using FluentNHibernate.Mapping;
 
     using DomainObjects;
 
-    [CLSCompliant(false)]
     public class BadWordMap : ClassMap<BadWord>
     {
         public BadWordMap()

@@ -11,7 +11,6 @@
 
     using ISessionFactory = global::NHibernate.ISessionFactory;
 
-    [CLSCompliant(false)]
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
         private static readonly IDictionary<string, IPersistenceConfigurer> persistenceConfigurerMap = BuildPersistenceConfigurerMap();
