@@ -9,14 +9,22 @@
     {
         private Database database;
 
-        protected RepositoryBase(IDatabaseFactory databaseFactory)
+        protected RepositoryBase(IDatabaseFactory databaseFactory, IQueryFactory queryFactory)
         {
             Check.Argument.IsNotNull(databaseFactory, "databaseFactory");
-            
+            Check.Argument.IsNotNull(queryFactory, "queryFactory");
+
             DatabaseFactory = databaseFactory;
+            QueryFactory = queryFactory;
         }
 
         protected IDatabaseFactory DatabaseFactory
+        {
+            get;
+            private set;
+        }
+
+        protected IQueryFactory QueryFactory
         {
             get;
             private set;
