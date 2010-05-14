@@ -113,12 +113,14 @@
     <Content Include="..\SharedFiles\CodeAnalysisDictionary.xml">
       <Link>CodeAnalysisDictionary.xml</Link>
     </Content>
-    <Content Include="App_Data\Shrinkr.mdf">
+    <Content Include="..\SharedFiles\Web\App_Data\Shrinkr.mdf">
+      <Link>App_Data\Shrinkr.mdf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\Shrinkr_log.ldf">
-      <DependentUpon>Shrinkr.mdf</DependentUpon>
+    <Content Include="..\SharedFiles\Web\App_Data\Shrinkr_log.ldf">
+      <Link>App_Data\Shrinkr_log.ldf</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Shrinkr.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
