@@ -95,6 +95,8 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="BadWordRepositoryTests.cs" />
+    <Compile Include="BannedDomainRepositoryTests.cs" />
+    <Compile Include="BannedIPAddressRepositoryTests.cs" />
     <Compile Include="DatabaseTestBase.cs" />
     <Compile Include="DatabaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -75,6 +75,8 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="BadWordRepository.cs" />
+    <Compile Include="BannedDomainRepository.cs" />
+    <Compile Include="BannedIPAddressRepository.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -89,6 +91,8 @@
     <Compile Include="Mapping\VisitMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\BadWordMatchingQuery.cs" />
+    <Compile Include="Query\BannedDomainMatchingQuery.cs" />
+    <Compile Include="Query\BannedIpAddressMatchingQuery.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\IQueryFactory.cs" />
     <Compile Include="Query\QueryBase.cs" />

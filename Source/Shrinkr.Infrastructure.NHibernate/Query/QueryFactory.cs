@@ -19,5 +19,15 @@
         {
             return new BadWordMatchingQuery(expression);
         }
+
+        public IQuery<bool> CreateBannedDomainMatching(string url)
+        {
+            return new BannedDomainMatchingQuery(url);
+        }
+
+        public IQuery<bool> CreateBannedIPAddressMatching(string ipAddress)
+        {
+            return new BannedIPAddressMatchingQuery(ipAddress);
+        }
     }
 }
