@@ -141,14 +141,16 @@
         </PropertyGroup>
 
         <MakeDir Directories="$(tempPath)" Condition="!Exists('$(tempPath)')"/>
-
+        <RemoveDir Directories="$(tempPath)"/>
         <MSBuild Projects="$(msWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(tempPath)\Shrinkr.zip"/>
         <CreateItem Include="$(tempPath)\*.*">
             <Output TaskParameter="Include" ItemName="msZipFiles"/>
         </CreateItem>
         <Zip Files="@(msZipFiles)" ZipFileName="$(msPackageFile)" Flatten="true" ZipLevel="9"/>
         <Delete Files="$(tempPath)\*.*"/>
+        <RemoveDir Directories="$(tempPath)"/>
 
+        <MakeDir Directories="$(tempPath)"/>
         <MSBuild Projects="$(csWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(tempPath)\Shrinkr.zip"/>
         <CreateItem Include="$(tempPath)\*.*">
             <Output TaskParameter="Include" ItemName="csZipFiles"/>
