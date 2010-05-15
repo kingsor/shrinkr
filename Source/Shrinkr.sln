@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Web.CommunityStack"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.Infrastructure.NHibernate.IntegrationTests", "Shrinkr.Infrastructure.NHibernate.IntegrationTests\Shrinkr.Infrastructure.NHibernate.IntegrationTests.csproj", "{88EA22B0-2498-456E-AA1F-636A94044EB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shrinkr.AcceptanceTests", "Shrinkr.AcceptanceTests\Shrinkr.AcceptanceTests.csproj", "{19B2F63C-5A06-4B9D-BF1A-FFE6D7C5914C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{88EA22B0-2498-456E-AA1F-636A94044EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88EA22B0-2498-456E-AA1F-636A94044EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88EA22B0-2498-456E-AA1F-636A94044EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19B2F63C-5A06-4B9D-BF1A-FFE6D7C5914C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19B2F63C-5A06-4B9D-BF1A-FFE6D7C5914C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19B2F63C-5A06-4B9D-BF1A-FFE6D7C5914C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19B2F63C-5A06-4B9D-BF1A-FFE6D7C5914C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
