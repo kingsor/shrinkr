@@ -19,7 +19,7 @@
         [Fact]
         public void Add_should_be_able_to_add_bad_word()
         {
-            var badWord = new BadWord {Expression = "F**k"};
+            var badWord = new BadWord { Expression = "F**k" };
 
             repository.Add(badWord);
             

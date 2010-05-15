@@ -30,7 +30,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (bool) this["redirectPermanently"];
+                return (bool)this["redirectPermanently"];
             }
 
             [DebuggerStepThrough]
@@ -46,7 +46,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (int) this["urlPerPage"];
+                return (int)this["urlPerPage"];
             }
 
             [DebuggerStepThrough]

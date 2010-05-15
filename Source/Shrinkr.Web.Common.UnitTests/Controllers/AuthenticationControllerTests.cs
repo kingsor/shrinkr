@@ -42,7 +42,7 @@
             httpContext.SetupGet(c => c.Request.Url).Returns(new Uri(MvcTestHelper.AppPathModifier));
             httpContext.SetupGet(c => c.Request.ApplicationPath).Returns("/");
 
-            ContentResult result = (ContentResult) controller.Xrds();
+            ContentResult result = (ContentResult)controller.Xrds();
 
             Assert.Equal("application/xrds+xml", result.ContentType);
             Assert.False(string.IsNullOrWhiteSpace(result.Content));

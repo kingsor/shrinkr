@@ -14,7 +14,7 @@
         {
             Check.Argument.IsNotNull(controllerContext, "controllerContext");
 
-            ApiCommand command = (ApiCommand) base.BindModel(controllerContext, bindingContext);
+            ApiCommand command = (ApiCommand)base.BindModel(controllerContext, bindingContext);
 
             HttpContextBase httpContext = controllerContext.HttpContext;
             HttpRequestBase httpRequest = httpContext.Request;
@@ -28,7 +28,7 @@
 
             if (providerResult != null)
             {
-                format = (string) providerResult.ConvertTo(typeof(string), Culture.Current);
+                format = (string)providerResult.ConvertTo(typeof(string), Culture.Current);
             }
 
             ApiResponseFormat responseFormat = ApiResponseFormat.Text;

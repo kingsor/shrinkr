@@ -121,7 +121,7 @@
                 list.Add(new SelectListItem { Text = text, Value = value.ToString(), Selected = value.Equals(selectedValue) });
             }
 
-            return instance.DropDownList(name, list.OrderBy(i => i.Text), (string) null).ToString();
+            return instance.DropDownList(name, list.OrderBy(i => i.Text), (string)null).ToString();
         }
 
         private static string GetValidationMessage(ModelError modelError)

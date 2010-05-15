@@ -22,7 +22,7 @@
 
         public string Pager<TItem>() where TItem : class
         {
-            PagedListViewModel<TItem> model = (PagedListViewModel<TItem>) htmlHelper.ViewContext.ViewData.Model;
+            PagedListViewModel<TItem> model = (PagedListViewModel<TItem>)htmlHelper.ViewContext.ViewData.Model;
 
             return Pager(null, null, null, htmlHelper.ViewContext.RouteData.Values, "page", model.PageCount, model.ItemPerPage, 2, model.CurrentPage);
         }

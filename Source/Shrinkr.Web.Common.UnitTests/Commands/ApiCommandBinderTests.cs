@@ -48,7 +48,7 @@
                                          FallbackToEmptyPrefix = true
                                      };
 
-            var command = (DummyCommand) new ApiCommandBinder().BindModel(controllerContext, bindingContext);
+            var command = (DummyCommand)new ApiCommandBinder().BindModel(controllerContext, bindingContext);
 
             Assert.Equal(apiKey, command.ApiKey);
             Assert.Equal(Url, command.Url);
@@ -92,7 +92,7 @@
                                          FallbackToEmptyPrefix = true
                                      };
 
-            var command = (DummyCommand) new ApiCommandBinder().BindModel(controllerContext, bindingContext);
+            var command = (DummyCommand)new ApiCommandBinder().BindModel(controllerContext, bindingContext);
 
             Assert.Equal(format, command.ResponseFormat);
         }

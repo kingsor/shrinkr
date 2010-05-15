@@ -48,7 +48,7 @@ namespace Shrinkr.DomainObjects
             [DebuggerStepThrough]
             get
             {
-                return (SpamStatus) InternalSpamStatus;
+                return (SpamStatus)InternalSpamStatus;
             }
 
             [DebuggerStepThrough]

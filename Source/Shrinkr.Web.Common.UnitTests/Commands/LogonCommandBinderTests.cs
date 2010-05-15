@@ -43,7 +43,7 @@
                                          FallbackToEmptyPrefix = true
                                      };
 
-            var command = (DummyCommand) new LogOnCommandBinder().BindModel(controllerContext, bindingContext);
+            var command = (DummyCommand)new LogOnCommandBinder().BindModel(controllerContext, bindingContext);
 
             Assert.Equal("joe", command.UserName);
             Assert.True(command.RememberMe.HasValue && command.RememberMe.Value);

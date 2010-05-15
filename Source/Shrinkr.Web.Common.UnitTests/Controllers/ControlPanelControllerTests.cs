@@ -36,7 +36,7 @@
 
             adminService.Setup(svc => svc.GetHealthStatus(It.IsAny<DateTime>())).Returns(status.Object);
 
-            var view = (ViewResult) controller.Summary();
+            var view = (ViewResult)controller.Summary();
 
             Assert.Same(status.Object, view.ViewData.Model);
         }
@@ -48,7 +48,7 @@
             
             adminService.Setup(svc => svc.GetShortUrls()).Returns(shortUrls.Object);
 
-            var view = (ViewResult) controller.Urls(null, null, null);
+            var view = (ViewResult)controller.Urls(null, null, null);
 
             Assert.Same(shortUrls.Object, ((GridModel<ShortUrlDTO>)view.ViewData.Model).Data);
         }
@@ -61,7 +61,7 @@
             
             adminService.Setup(svc => svc.GetShortUrl(It.IsAny<string>())).Returns(shortUrl);
 
-            var view = (ViewResult) controller.ShortUrl(It.IsAny<string>());
+            var view = (ViewResult)controller.ShortUrl(It.IsAny<string>());
 
             Assert.Same(shortUrl, view.ViewData.Model);
         }
@@ -73,7 +73,7 @@
             
             adminService.Setup(svc => svc.GetUsers()).Returns(users.Object);
 
-            var view = (ViewResult) controller.Users(null, null, null);
+            var view = (ViewResult)controller.Users(null, null, null);
 
             Assert.Same(users.Object, ((GridModel<UserDTO>)view.ViewData.Model).Data);
         }
@@ -106,7 +106,7 @@
 
             adminService.Setup(svc => svc.GetBannedIPAddresses()).Returns(bannedIps);
 
-            var view = (AdaptiveViewResult) controller.BannedIPAddresses(page);
+            var view = (AdaptiveViewResult)controller.BannedIPAddresses(page);
             var model = (PagedListViewModel<BannedIPAddress>)view.ViewData.Model;
 
             Assert.Equal(expectedCurrentPage, model.CurrentPage);
@@ -132,7 +132,7 @@
             controller.MockHttpContext("/", "~/ControlPanel/DeleteBannedIPAddress/1", "POST");
 
             string url = controller.Url.BannedIPAddresses(1);
-            var view = (AdaptivePostRedirectGetResult) controller.DeleteBannedIPAddress(It.IsAny<long>());
+            var view = (AdaptivePostRedirectGetResult)controller.DeleteBannedIPAddress(It.IsAny<long>());
 
             Assert.Equal(url.ToLower(), view.Url.ToLower());
         }
@@ -194,7 +194,7 @@
 
             adminService.Setup(svc => svc.GetReservedAliases()).Returns(aliases);
 
-            var view = (AdaptiveViewResult) controller.ReservedAliases(page);
+            var view = (AdaptiveViewResult)controller.ReservedAliases(page);
             var model = (PagedListViewModel<ReservedAlias>)view.ViewData.Model;
 
             Assert.Equal(expectedCurrentPage, model.CurrentPage);

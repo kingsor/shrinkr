@@ -15,7 +15,7 @@
 
             HttpException exception = e.Exception.GetBaseException() as HttpException;
 
-            if ((exception != null) && (exception.GetHttpCode() == (int) HttpStatusCode.NotFound))
+            if ((exception != null) && (exception.GetHttpCode() == (int)HttpStatusCode.NotFound))
             {
                 e.Dismiss();
             }

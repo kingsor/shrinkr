@@ -13,7 +13,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) this["name"];
+                return (string)this["name"];
             }
 
             [DebuggerStepThrough]
@@ -29,7 +29,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) this["email"];
+                return (string)this["email"];
             }
 
             [DebuggerStepThrough]
@@ -45,7 +45,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (Role) this["role"];
+                return (Role)this["role"];
             }
 
             [DebuggerStepThrough]

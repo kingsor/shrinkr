@@ -27,7 +27,7 @@ namespace Shrinkr.Web
 
                 HttpResponseBase response = httpContext.Response;
 
-                response.StatusCode = (int) HttpStatusCode.MovedPermanently;
+                response.StatusCode = (int)HttpStatusCode.MovedPermanently;
                 response.Status = "301 Moved Permanently";
                 response.RedirectLocation = newUrl;
                 response.SuppressContent = true;

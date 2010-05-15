@@ -77,7 +77,7 @@ namespace Shrinkr.Web.UnitTests
 
         public static T Value<T>(this RouteValueDictionary instance, string key)
         {
-            return (T) Convert.ChangeType(instance[key], typeof(T));
+            return (T)Convert.ChangeType(instance[key], typeof(T));
         }
 
         public static string Controller(this RouteData instance)

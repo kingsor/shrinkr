@@ -12,7 +12,7 @@
         {
             Check.Argument.IsNotNull(controllerContext, "controllerContext");
 
-            UserCommand userCommand = (UserCommand) base.BindModel(controllerContext, bindingContext);
+            UserCommand userCommand = (UserCommand)base.BindModel(controllerContext, bindingContext);
 
             HttpContextBase httpContext = controllerContext.HttpContext;
 

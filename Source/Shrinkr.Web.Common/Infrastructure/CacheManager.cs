@@ -24,7 +24,7 @@
 
         public TValue Get<TValue>(string key)
         {
-            return (TValue) HttpRuntime.Cache[MakeKey(key)];
+            return (TValue)HttpRuntime.Cache[MakeKey(key)];
         }
 
         public void Set<TValue>(string key, Func<TValue> value)

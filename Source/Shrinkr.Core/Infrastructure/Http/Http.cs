@@ -170,7 +170,7 @@ namespace Shrinkr.Infrastructure
 
         protected virtual WebRequest CreateRequest(string url, string userAgent, int timeout, bool requestCompressed, int maximumRedirects, string userName, string password, string contentType, IDictionary<string, string> headers, IDictionary<string, string> cookies, bool isPost)
         {
-            HttpWebRequest request = (HttpWebRequest) WebRequest.Create(new Uri(url));
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri(url));
 
             request.Method = isPost ? "POST" : "GET";
             request.UserAgent = userAgent;
@@ -234,7 +234,7 @@ namespace Shrinkr.Infrastructure
 
         private static void RequestCallback(IAsyncResult result)
         {
-            StateContainer states = (StateContainer) result.AsyncState;
+            StateContainer states = (StateContainer)result.AsyncState;
             Exception exception = null;
 
             try
@@ -252,7 +252,7 @@ namespace Shrinkr.Infrastructure
 
         private static void WriteCallback(IAsyncResult result)
         {
-            StateContainer states = (StateContainer) result.AsyncState;
+            StateContainer states = (StateContainer)result.AsyncState;
             Exception exception = null;
 
             try
@@ -275,12 +275,12 @@ namespace Shrinkr.Infrastructure
             IDictionary<string, string> headers = new Dictionary<string, string>();
             IDictionary<string, string> cookies = new Dictionary<string, string>();
 
-            StateContainer states = (StateContainer) result.AsyncState;
+            StateContainer states = (StateContainer)result.AsyncState;
             Exception exception = null;
 
             try
             {
-                HttpWebResponse response = (HttpWebResponse) states.Request.EndGetResponse(result);
+                HttpWebResponse response = (HttpWebResponse)states.Request.EndGetResponse(result);
 
                 if (response.StatusCode < HttpStatusCode.OK && response.StatusCode >= HttpStatusCode.Ambiguous)
                 {
@@ -358,7 +358,7 @@ namespace Shrinkr.Infrastructure
             IDictionary<string, string> headers = new Dictionary<string, string>();
             IDictionary<string, string> cookies = new Dictionary<string, string>();
 
-            using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
                 if (response.StatusCode < HttpStatusCode.OK && response.StatusCode >= HttpStatusCode.Ambiguous)
                 {

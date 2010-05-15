@@ -27,7 +27,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["endpoint"];
+                return (string)base["endpoint"];
             }
 
             [DebuggerStepThrough]
@@ -43,7 +43,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["phishingFile"];
+                return (string)base["phishingFile"];
             }
 
             [DebuggerStepThrough]
@@ -59,7 +59,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["malwareFile"];
+                return (string)base["malwareFile"];
             }
 
             [DebuggerStepThrough]

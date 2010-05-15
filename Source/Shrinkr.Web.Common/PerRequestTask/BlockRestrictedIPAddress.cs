@@ -49,7 +49,7 @@
 
         private static void Block(HttpResponseBase httpResponse)
         {
-            httpResponse.StatusCode = (int) HttpStatusCode.Forbidden;
+            httpResponse.StatusCode = (int)HttpStatusCode.Forbidden;
             httpResponse.StatusDescription = "IPAddress blocked.";
             httpResponse.End();
         }

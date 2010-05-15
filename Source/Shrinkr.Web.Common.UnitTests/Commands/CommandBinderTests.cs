@@ -42,7 +42,7 @@ namespace Shrinkr.Web.UnitTests
                                          FallbackToEmptyPrefix = true
                                      };
 
-            var command = (DummyUserCommand) new UserCommandBinder().BindModel(controllerContext, bindingContext);
+            var command = (DummyUserCommand)new UserCommandBinder().BindModel(controllerContext, bindingContext);
 
             Assert.Equal(IPAddress, command.IPAddress);
             Assert.Equal(Url, command.Referrer);

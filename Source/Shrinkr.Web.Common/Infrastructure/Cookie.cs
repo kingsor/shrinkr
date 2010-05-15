@@ -86,13 +86,13 @@
 
                     try
                     {
-                        value = (T) converter.ConvertFromString(cookie.Value);
+                        value = (T)converter.ConvertFromString(cookie.Value);
                     }
                     catch (NotSupportedException)
                     {
                         if (converter.CanConvertFrom(typeof(string)))
                         {
-                            value = (T) converter.ConvertFrom(cookie.Value);
+                            value = (T)converter.ConvertFrom(cookie.Value);
                         }
                     }
                 }
@@ -143,7 +143,7 @@
             {
                 if (converter.CanConvertTo(typeof(string)))
                 {
-                    cookieValue = (string) converter.ConvertTo(value, typeof(string));
+                    cookieValue = (string)converter.ConvertTo(value, typeof(string));
                 }
             }
 

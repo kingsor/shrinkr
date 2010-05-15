@@ -19,7 +19,7 @@
         [Fact]
         public void Add_should_be_able_to_add_banned_domain()
         {
-            var domain = new BannedDomain {Name="mos.es"};
+            var domain = new BannedDomain { Name = "mos.es" };
 
             repository.Add(domain);
 
