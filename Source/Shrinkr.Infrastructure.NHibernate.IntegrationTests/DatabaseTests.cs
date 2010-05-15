@@ -13,6 +13,5 @@
 
             Assert.DoesNotThrow(() => { count = Database.Users.Count(); });
         }
-
     }
 }

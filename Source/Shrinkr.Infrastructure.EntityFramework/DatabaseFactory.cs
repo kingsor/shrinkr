@@ -56,7 +56,7 @@ namespace Shrinkr.Infrastructure.EntityFramework
                                                                           .GetTypes()
                                                                           .Where(type => type.IsPublic && type.IsClass && !type.IsAbstract && !type.IsGenericType && typeof(StructuralTypeConfiguration).IsAssignableFrom(type) && (type.GetConstructor(Type.EmptyTypes) != null));
 
-            foreach (StructuralTypeConfiguration configuration in configurationTypes.Select(type => (StructuralTypeConfiguration) Activator.CreateInstance(type)))
+            foreach (StructuralTypeConfiguration configuration in configurationTypes.Select(type => (StructuralTypeConfiguration)Activator.CreateInstance(type)))
             {
                 contextBuilder.Configurations.Add(configuration);
             }

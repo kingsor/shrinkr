@@ -111,7 +111,7 @@ namespace Shrinkr.Web.MicrosoftStack
 
         private static Settings CreateSettings(HttpContextBase httpContext)
         {
-            SettingConfigurationSection section = (SettingConfigurationSection) ConfigurationManager.GetSection(SettingConfigurationSection.SectionName);
+            SettingConfigurationSection section = (SettingConfigurationSection)ConfigurationManager.GetSection(SettingConfigurationSection.SectionName);
 
             ApiSettings api = new ApiSettings(section.Api.Allowed, section.Api.DailyLimit);
 

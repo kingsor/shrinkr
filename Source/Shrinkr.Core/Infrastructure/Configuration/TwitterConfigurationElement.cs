@@ -27,7 +27,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["password"];
+                return (string)base["password"];
             }
 
             [DebuggerStepThrough]
@@ -43,7 +43,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["endpoint"];
+                return (string)base["endpoint"];
             }
 
             [DebuggerStepThrough]
@@ -59,7 +59,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (int) base["maximumMessageLength"];
+                return (int)base["maximumMessageLength"];
             }
 
             [DebuggerStepThrough]
@@ -75,7 +75,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["messageTemplate"];
+                return (string)base["messageTemplate"];
             }
 
             [DebuggerStepThrough]

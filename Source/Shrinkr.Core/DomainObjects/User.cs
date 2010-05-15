@@ -83,7 +83,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (Role) InternalRole;
+                return (Role)InternalRole;
             }
 
             [DebuggerStepThrough]

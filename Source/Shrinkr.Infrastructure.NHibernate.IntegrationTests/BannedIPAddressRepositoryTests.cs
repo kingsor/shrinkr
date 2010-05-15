@@ -18,7 +18,7 @@
         [Fact]
         public void Add_should_be_able_to_add_banned_ip()
         {
-            var ip = new BannedIPAddress {IPAddress = "127.0.0.1"};
+            var ip = new BannedIPAddress { IPAddress = "127.0.0.1" };
 
             repository.Add(ip);
 

@@ -50,7 +50,7 @@
         {
             IList<RuleViolation> ruleViolations = Validate();
 
-            return (TServiceResult) Activator.CreateInstance(typeof(TServiceResult), new object[] { ruleViolations });
+            return (TServiceResult)Activator.CreateInstance(typeof(TServiceResult), new object[] { ruleViolations });
         }
 
         protected virtual IList<RuleViolation> Validate()

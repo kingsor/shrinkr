@@ -11,7 +11,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (bool) base["allowed"];
+                return (bool)base["allowed"];
             }
 
             [DebuggerStepThrough]
@@ -27,7 +27,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (int) base["dailyLimit"];
+                return (int)base["dailyLimit"];
             }
 
             [DebuggerStepThrough]

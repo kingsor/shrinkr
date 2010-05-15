@@ -55,7 +55,7 @@
             shortUrlService.Setup(svc => svc.CreateWithUserName(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(result);
 
             Assert.IsType<AdaptivePostRedirectGetResult>(controller.Create(new CreateShortUrlCommand()));
-            Assert.Equal(shortUrl.Url, ((CreateUrlViewModel) controller.ViewData.Model).Url);
+            Assert.Equal(shortUrl.Url, ((CreateUrlViewModel)controller.ViewData.Model).Url);
         }
 
         [Fact]
@@ -140,14 +140,14 @@
             controller.MockHttpContext("/", "~/Visit", "GET");
 
             var shortUrl = new Mock<ShortUrl>();
-            shortUrl.SetupGet(s => s.InternalSpamStatus).Returns((int) SpamStatus.Phishing);
+            shortUrl.SetupGet(s => s.SpamStatus).Returns(SpamStatus.Phishing);
 
             var alias = new Mock<Alias>();
             alias.Setup(a => a.ShortUrl).Returns(shortUrl.Object);
 
             shortUrlService.Setup(svc => svc.GetByAlias(It.IsAny<string>())).Returns(new ShortUrlResult(new ShortUrlDTO(alias.Object, 1, "http://shrinkr.com/1", "http://shrinkr.com/p/1")));
 
-            var result = (RedirectToRouteResult) controller.Visit(new ShortUrlVisitCommand());
+            var result = (RedirectToRouteResult)controller.Visit(new ShortUrlVisitCommand());
 
             Assert.Equal("Preview", result.RouteValues.Action());
         }
@@ -179,7 +179,7 @@
             var result = controller.Visit(new ShortUrlVisitCommand());
 
             Assert.IsType(resultType, result);
-            Assert.Equal(Url, ((RedirectResult) result).Url);
+            Assert.Equal(Url, ((RedirectResult)result).Url);
         }
 
         [Fact]
@@ -213,7 +213,7 @@
 
             shortUrlService.Setup(svc => svc.FindByUser(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>())).Returns(urlResult);
 
-            var view = (AdaptiveViewResult) controller.List(new ShortUrlListCommand { Page = 1 });
+            var view = (AdaptiveViewResult)controller.List(new ShortUrlListCommand { Page = 1 });
 
             Assert.Equal(1, view.ViewData.ModelState.Count);
         }

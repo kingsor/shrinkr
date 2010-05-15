@@ -11,7 +11,7 @@
         {
             Invariant.IsNotNull(bindingContext, "bindingContext");
 
-            LogOnCommand command = (LogOnCommand) base.BindModel(controllerContext, bindingContext);
+            LogOnCommand command = (LogOnCommand)base.BindModel(controllerContext, bindingContext);
 
             if (string.IsNullOrWhiteSpace(command.UserName))
             {
@@ -31,7 +31,7 @@
 
                 if (result != null)
                 {
-                    command.RememberMe = (bool?) result.ConvertTo(typeof(bool?), Culture.Current);
+                    command.RememberMe = (bool?)result.ConvertTo(typeof(bool?), Culture.Current);
                 }
             }
 

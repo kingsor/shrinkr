@@ -5,7 +5,7 @@
         <Configuration>Release</Configuration>
     </PropertyGroup>
     <PropertyGroup>
-        <packageRootPath>$(MSBuildProjectDirectory)\..\Drops</packageRootPath>
+        <artifactPath>$(MSBuildProjectDirectory)\..\Drops</artifactPath>
         <referencePath>$(MSBuildProjectDirectory)\References</referencePath>
 
         <solution>$(MSBuildProjectDirectory)\Shrinkr.sln</solution>
@@ -44,13 +44,7 @@
     <Target Name="Full" DependsOnTargets="Init;Clean;StyleCop;Build;FxCop;Test;Deploy"/>
 
     <Target Name="Init">
-        <Time Format="yyyyMMddHHmmss">
-            <Output TaskParameter="FormattedTime" PropertyName="buildDate" />
-        </Time>
-        <PropertyGroup>
-            <artifactPath>$(MSBuildProjectDirectory)\Build\Artifacts\$(buildDate)</artifactPath>
-        </PropertyGroup>
-        <MakeDir Directories="$(artifactPath)"/>
+        <MakeDir Directories="$(artifactPath)" Condition="!Exists('$(artifactPath)')"/>
     </Target>
 
     <Target Name="Clean">
@@ -141,29 +135,27 @@
 
     <Target Name="Deploy">
         <PropertyGroup>
-            <packagePath>$(packageRootPath)\$(buildDate)</packagePath>
-            <msPackageFile>$(packageRootPath)\$(buildDate).Shrinkr.MicrosoftStack.zip</msPackageFile>
-            <csPackageFile>$(packageRootPath)\$(buildDate).Shrinkr.CommunityStack.zip</csPackageFile>
+            <tempPath>$(artifactPath)\Temp</tempPath>
+            <msPackageFile>$(artifactPath)\Shrinkr.MicrosoftStack.zip</msPackageFile>
+            <csPackageFile>$(artifactPath)\Shrinkr.CommunityStack.zip</csPackageFile>
         </PropertyGroup>
 
-        <MakeDir Directories="$(packagePath)"/>
-        <MSBuild Projects="$(msWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(packagePath)\Shrinkr.zip"/>
-        <CreateItem Include="$(packagePath)\*.*">
+        <MakeDir Directories="$(tempPath)" Condition="!Exists('$(tempPath)')"/>
+
+        <MSBuild Projects="$(msWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(tempPath)\Shrinkr.zip"/>
+        <CreateItem Include="$(tempPath)\*.*">
             <Output TaskParameter="Include" ItemName="msZipFiles"/>
         </CreateItem>
         <Zip Files="@(msZipFiles)" ZipFileName="$(msPackageFile)" Flatten="true" ZipLevel="9"/>
-        <Delete Files="$(packagePath)\*.*"/>
-        <RemoveDir Directories="$(packagePath)"/>
+        <Delete Files="$(tempPath)\*.*"/>
 
-        <MakeDir Directories="$(packagePath)"/>
-        <MSBuild Projects="$(csWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(packagePath)\Shrinkr.zip"/>
-        <CreateItem Include="$(packagePath)\*.*">
+        <MSBuild Projects="$(csWebUI)" Targets="Package" Properties="Configuration=$(Configuration);PackageLocation=$(tempPath)\Shrinkr.zip"/>
+        <CreateItem Include="$(tempPath)\*.*">
             <Output TaskParameter="Include" ItemName="csZipFiles"/>
         </CreateItem>
         <Zip Files="@(csZipFiles)" ZipFileName="$(csPackageFile)" Flatten="true" ZipLevel="9"/>
-        <Delete Files="$(packagePath)\*.*"/>
-        <RemoveDir Directories="$(packagePath)"/>
+        <Delete Files="$(tempPath)\*.*"/>
 
-        <CallTarget Targets="Clean"/>
+        <RemoveDir Directories="$(tempPath)"/>
     </Target>
 </Project>

@@ -32,7 +32,7 @@ namespace Shrinkr.Infrastructure
             [DebuggerStepThrough]
             get
             {
-                return (Action<TPayload>) actionReference.Target;
+                return (Action<TPayload>)actionReference.Target;
             }
         }
 
@@ -41,7 +41,7 @@ namespace Shrinkr.Infrastructure
             [DebuggerStepThrough]
             get
             {
-                return (Predicate<TPayload>) filterReference.Target;
+                return (Predicate<TPayload>)filterReference.Target;
             }
         }
 
@@ -64,7 +64,7 @@ namespace Shrinkr.Infrastructure
 
                                        if (arguments != null && arguments.Length > 0 && arguments[0] != null)
                                        {
-                                           argument = (TPayload) arguments[0];
+                                           argument = (TPayload)arguments[0];
                                        }
 
                                        if (filter(argument))

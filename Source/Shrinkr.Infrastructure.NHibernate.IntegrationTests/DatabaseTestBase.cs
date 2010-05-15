@@ -5,9 +5,6 @@
 
     public abstract class DatabaseTestBase : IDisposable
     {
-        private readonly DatabaseFactory factory;
-        private readonly UnitOfWork unitOfWork;
-        private readonly Database database;
         protected DatabaseTestBase()
         {
             var connectionStringSettings = ConfigurationManager.ConnectionStrings["shrinkr"];
@@ -15,29 +12,21 @@
             var providerName = connectionStringSettings.ProviderName;
             var connectionString = connectionStringSettings.ConnectionString;
 
-            factory = new DatabaseFactory(providerName, connectionString);
-            database = factory.Get();
-            unitOfWork = new UnitOfWork(factory);
-            
+            DatabaseFactory = new DatabaseFactory(providerName, connectionString);
+            Database = DatabaseFactory.Get();
+            UnitOfWork = new UnitOfWork(DatabaseFactory);
         }
 
-        protected DatabaseFactory DatabaseFactory
-        {
-            get { return factory; }
-        }
-        protected UnitOfWork UnitOfWork
-        {
-            get { return unitOfWork; }
-        }
-        protected Database Database
-        {
-            get { return database; }
-        }
+        protected DatabaseFactory DatabaseFactory { get; private set; }
+
+        protected UnitOfWork UnitOfWork { get; private set; }
+
+        protected Database Database { get; private set; }
 
         public virtual void Dispose()
         {
-            database.Dispose();
-            factory.Dispose();
+            Database.Dispose();
+            DatabaseFactory.Dispose();
         }
     }
 }

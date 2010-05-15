@@ -11,7 +11,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["endpoint"];
+                return (string)base["endpoint"];
             }
 
             [DebuggerStepThrough]
@@ -27,7 +27,7 @@
             [DebuggerStepThrough]
             get
             {
-                return (string) base["apiKey"];
+                return (string)base["apiKey"];
             }
 
             [DebuggerStepThrough]
