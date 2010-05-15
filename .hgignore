@@ -10,6 +10,7 @@ syntax: glob
 *.scc
 *.zip
 publish.xml
+[Dd]rop*/
 [Dd]ebug*/
 [Bb]in
 obj/
