@@ -6,7 +6,7 @@ namespace Shrinkr.DomainObjects
 
     public class ShortUrl : IEntity
     {
-        private readonly ICollection<Alias> aliases;
+        private ICollection<Alias> aliases;
 
         public ShortUrl()
         {

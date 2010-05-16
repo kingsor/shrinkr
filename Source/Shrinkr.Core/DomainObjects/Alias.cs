@@ -8,7 +8,7 @@
 
     public class Alias : IEntity
     {
-        private readonly ICollection<Visit> visits;
+        private ICollection<Visit> visits;
         private DateTime createdAt;
 
         public Alias()

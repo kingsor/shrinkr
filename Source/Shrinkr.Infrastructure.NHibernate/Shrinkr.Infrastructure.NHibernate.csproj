@@ -97,8 +97,12 @@
     <Compile Include="Query\IQueryFactory.cs" />
     <Compile Include="Query\QueryBase.cs" />
     <Compile Include="Query\QueryFactory.cs" />
+    <Compile Include="Query\ReservedAliasMatchingQuery.cs" />
+    <Compile Include="Query\VisitCountByAliasNameQuery.cs" />
     <Compile Include="RepositoryBase.cs" />
+    <Compile Include="ReservedAliasRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
+    <Compile Include="VisitRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
