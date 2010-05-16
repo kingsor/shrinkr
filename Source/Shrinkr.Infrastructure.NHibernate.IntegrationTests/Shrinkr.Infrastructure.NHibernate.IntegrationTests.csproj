@@ -97,6 +97,9 @@
     <Compile Include="BadWordRepositoryTests.cs" />
     <Compile Include="BannedDomainRepositoryTests.cs" />
     <Compile Include="BannedIPAddressRepositoryTests.cs" />
+    <Compile Include="ObjectMother.cs" />
+    <Compile Include="VisitRepositoryTests.cs" />
+    <Compile Include="ReservedAliasRepositoryTests.cs" />
     <Compile Include="DatabaseTestBase.cs" />
     <Compile Include="DatabaseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

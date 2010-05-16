@@ -29,5 +29,15 @@
         {
             return new BannedIPAddressMatchingQuery(ipAddress);
         }
+
+        public IQuery<bool> CreateReservedAliasMatching(string alias)
+        {
+            return new ReservedAliasMatchingQuery(CaseSensitive, alias);
+        }
+
+        public IQuery<int> CreateVisitCountByAlias(string alias)
+        {
+            return new VisitCountByAliasNameQuery(CaseSensitive, alias);
+        }
     }
 }

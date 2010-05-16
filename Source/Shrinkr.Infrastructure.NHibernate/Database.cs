@@ -110,12 +110,14 @@
         public virtual TEntity GetById<TEntity>(long id) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNegative(id, "id");
+
             return session.Get<TEntity>(id);
         }
 
         public virtual void Save<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNull(entity, "entity");
+
             EnsureTransaction();
             session.SaveOrUpdate(entity);
         }
@@ -123,6 +125,7 @@
         public virtual void Delete<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNull(entity, "entity");
+
             EnsureTransaction();
             session.Delete(entity);
         }
@@ -163,7 +166,7 @@
             // 1) No transaction is initiated yet
             // 2) Existing transaction isn't active
             // 3) Existing transaction was committed
-            // 4) Existing transaction was rolledback
+            // 4) Existing transaction was rolled back
             if (transaction == null || !transaction.IsActive || transaction.WasCommitted || transaction.WasRolledBack)
             {
                 transaction = session.BeginTransaction();

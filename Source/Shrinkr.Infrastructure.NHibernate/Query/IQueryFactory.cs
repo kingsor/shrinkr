@@ -9,5 +9,9 @@
         IQuery<bool> CreateBannedDomainMatching(string url);
 
         IQuery<bool> CreateBannedIPAddressMatching(string ipAddress);
+
+        IQuery<bool> CreateReservedAliasMatching(string alias);
+
+        IQuery<int> CreateVisitCountByAlias(string alias);
     }
 }
