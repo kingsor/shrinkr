@@ -60,7 +60,7 @@ namespace Shrinkr.AcceptanceTests
     {
         protected override void SetFormValues()
         {
-            SetFormValues(string.Format("http://www.dotnetrocks.com/default.aspx?showNum={0}", new Random().Next(1, 558)), null);
+            SetFormValues(string.Format("http://rdir.in/?ticks={0}", DateTime.Now.Ticks), null);
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Shrinkr.AcceptanceTests
 
         protected override void SetFormValues()
         {
-            SetFormValues(string.Format("http://www.dotnetrocks.com/default.aspx?showNum={0}", new Random().Next(1, 558)), alias);
+            SetFormValues(string.Format("http://rdir.in/?ticks={0}", DateTime.Now.Ticks), alias);
         }
 
         private static string CreateRandomAlias()

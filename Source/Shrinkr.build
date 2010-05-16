@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Full" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildProjectDirectory)\Build\WebApplications\Microsoft.WebApplication.targets"/>
     <Import Project="$(MSBuildProjectDirectory)\Build\CommunityTasks\MSBuild.Community.Tasks.Targets"/>
     <PropertyGroup Condition="'$(Condition)' == ''">
         <Configuration>Release</Configuration>
