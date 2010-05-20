@@ -13,7 +13,7 @@
     {
         private const string rdirApiUrl = "http://rdir.in/api?url={0}&apikey={1}&format=text";
 
-        private static readonly Guid pluginId = new Guid("F32F71BD-807B-4ED3-8E69-212C2BB49B9B");
+        private static readonly Guid pluginId = new Guid("395055B6-2FE7-4617-A0B2-38C856556C3B");
         private static IStorageService storageService;
 
         private static string apiKey;
@@ -54,6 +54,14 @@
             }
         }
 
+        public string Id
+        {
+            get
+            {
+                return pluginId.ToString();
+            }
+        }
+
         public DataTemplate Icon
         {
             get
@@ -71,7 +79,7 @@
         {
             if (!string.IsNullOrEmpty(ApiKey))
             {
-                ShrinkIt(longUrl, userState, callback);
+                Shrink(longUrl, userState, callback);
             }
             else
             {
@@ -82,7 +90,7 @@
                 apiKeyInput.ApiKeyReceived += (s, e) =>
                                                   {
                                                       ApiKey = apiKeyInput.ApiKey;
-                                                      ShrinkIt(longUrl, userState, callback);
+                                                      Shrink(longUrl, userState, callback);
                                                   };
             }
         }
@@ -94,7 +102,7 @@
                                   : new Exception(String.Format("The URL could not be shortened. {0}",shortUrl));
         }
 
-        private void ShrinkIt(string longUrl, object userState, AsyncCompletedCallback<string> callback)
+        private void Shrink(string longUrl, object userState, AsyncCompletedCallback<string> callback)
         {
             string requestUrl = String.Format(rdirApiUrl, longUrl, ApiKey);
             WebRequest request = WebRequest.Create(new Uri(requestUrl));
