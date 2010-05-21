@@ -6,17 +6,17 @@
 
     public partial class ApiKeyInputWindow : ChildWindow
     {
-        public string ApiKey
-        {
-            get { return txtApiKey.Text; }
-        }
-
         public ApiKeyInputWindow()
         {
             InitializeComponent();
         }
 
         public event RoutedEventHandler ApiKeyReceived;
+
+        public string ApiKey
+        {
+            get { return txtApiKey.Text; }
+        }
 
         private void RaiseApiKeyReceived()
         {
@@ -29,6 +29,7 @@
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             Guid apiKey;
+
             if (Guid.TryParse(txtApiKey.Text, out apiKey))
             {
                 DialogResult = true;
@@ -46,4 +47,3 @@
         }
     }
 }
-
