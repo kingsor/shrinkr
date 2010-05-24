@@ -118,22 +118,52 @@
         {
             Check.Argument.IsNotNull(entity, "entity");
 
-            EnsureTransaction();
-            session.SaveOrUpdate(entity);
+            try
+            {
+                EnsureTransaction();
+                
+                if (!session.Contains(entity))
+                {
+                    Merge(ref entity);
+                }
+
+                session.SaveOrUpdate(entity);
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
 
         public virtual void Delete<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNull(entity, "entity");
 
-            EnsureTransaction();
-            session.Delete(entity);
+            try
+            {
+                EnsureTransaction();
+                session.Delete(entity);    
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
 
         public virtual void Commit()
         {
             EnsureTransaction();
-            transaction.Commit();
+            try
+            {
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
 
         protected override void DisposeCore()
@@ -158,6 +188,11 @@
 
                 session.Dispose();
             }
+        }
+
+        private void Merge<TEntity>(ref TEntity entity) where TEntity : class, IEntity
+        {
+            session.Merge(entity);
         }
 
         private void EnsureTransaction()
