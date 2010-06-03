@@ -98,10 +98,23 @@
     <Compile Include="Query\QueryBase.cs" />
     <Compile Include="Query\QueryFactory.cs" />
     <Compile Include="Query\ReservedAliasMatchingQuery.cs" />
+    <Compile Include="Query\ShortUrlByAliasQuery.cs" />
+    <Compile Include="Query\ShortUrlByHashQuery.cs" />
+    <Compile Include="Query\ShortUrlByIdQuery.cs" />
+    <Compile Include="Query\ShortUrlCountByUserIdQuery.cs" />
+    <Compile Include="Query\ShortUrlCreatedCountByDatesQuery.cs" />
+    <Compile Include="Query\ShortUrlsByUserIdQuery.cs" />
+    <Compile Include="Query\ShortUrlVisitedCountByDatesQuery.cs" />
+    <Compile Include="Query\UserByApiKeyQuery.cs" />
+    <Compile Include="Query\UserByIdQuery.cs" />
+    <Compile Include="Query\UserByNameQuery.cs" />
+    <Compile Include="Query\UserCreatedCountByDatesQuery.cs" />
+    <Compile Include="Query\UserVisitedCountByDatesQuery.cs" />
     <Compile Include="Query\VisitCountByAliasNameQuery.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="ReservedAliasRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UserRepository.cs" />
     <Compile Include="VisitRepository.cs" />
   </ItemGroup>
   <ItemGroup>
