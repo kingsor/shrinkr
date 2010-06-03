@@ -1,0 +1,23 @@
+﻿<viewdata  model="CreateUrlViewModel"/>
+<content name="TitleContent">
+    Shrinkr
+</content>
+<content name="MainContent">
+   <div class="shrinkBox">
+        <h2>Tired of long url? Try Shrinkr:</h2>
+        <div class="shrinkForm">
+            <% using (Html.BeginRouteForm("Default", FormMethod.Post, new { id = "create" })){ %>
+                # Html.RenderPartial("CreateForm");
+                !{Html.CustomValidationSummary("Please correct the following errors and try again.", new { id = "errors" }) }
+                # Html.RenderPartial("CreatedBox", Model);
+            <% } %>
+        </div>
+    </div>
+    <% Html.Telerik()
+           .ScriptRegistrar()
+           .OnDocumentReady(() =>
+                                  {%>
+                                    createShortUrl.init('<%= Url.InputValidationErrorIcon() %>');
+                                  <%}
+                           ); %>
+</content>

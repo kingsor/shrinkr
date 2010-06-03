@@ -1,0 +1,45 @@
+﻿<viewdata  model="IDictionary[[TimeSpan, SystemHealthDTO]]"  />
+<content name="TitleContent">
+    Shrinkr : Control Panel
+</content>
+<content name="MainContent">
+   <div class="shrinkBox">
+        <h2>Control Panel : Summary</h2>
+        <div class="shrinkForm">
+            <% Html.Telerik()
+                   .TabStrip()
+                   .Name("tabs")
+                   .Items(tabs =>
+                            {
+                                tabs.Add()
+                                    .Text("Summary")
+                                    .Selected(true)
+                                    .Content(() =>
+                                                {%>
+													<for each="var item in Model">
+														<div style="padding:16px;float:left">
+                                                            <h3 style="margin:2px;padding:0;text-decoration:underline">Last !{ item.Key }</h3>
+                                                            <ul style="margin:0;padding:0px">
+                                                                <li style="list-style: none none;padding:2px">Url Created : !{ item.Value.UrlCreated }</li>
+                                                                <li style="list-style: none none;padding:2px">Url Visited : !{ item.Value.UrlVisited }</li>
+                                                                <li style="list-style: none none;padding:2px">User Created : !{ item.Value.UserCreated }</li>
+                                                                <li style="list-style: none none;padding:2px">User Visited : !{ item.Value.UserVisited }</li>
+                                                            </ul>
+                                                        </div>
+													</for>
+                                                    <div class="clear"></div>
+                                                <%}
+                                            );
+
+                                tabs.AddUrls()
+                                    .AddUsers()
+                                    .AddBannedIPs()
+                                    .AddBannedDomains()
+                                    .AddReservedAliases()
+                                    .AddBadWords();
+                            }
+                        )
+                  .Render();%>
+        </div>
+    </div>
+</content>

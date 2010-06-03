@@ -1,0 +1,27 @@
+syntax: glob
+*.obj
+*.pdb
+*.user
+.ncb
+*.suo
+*.[Cc]ache
+*.log
+*.vspscc
+*.scc
+*.zip
+publish.xml
+[Dd]rop*/
+[Dd]ebug*/
+[Bb]in
+obj/
+[Rr]elease*/
+_Re[Ss]harper*/
+Artifacts*/
+*Stack/Scripts*/
+*Stack/Content*/
+*Stack/App_Data/*.mdf
+*Stack/App_Data/*.ldf
+*Stack/App_Data/*/*.xml
+*Stack/connectionString.config
+*Stack/dotNetOpenAuth.config
+*Stack/shrinkr.config

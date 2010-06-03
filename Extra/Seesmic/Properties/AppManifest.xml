@@ -1,0 +1,17 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.seesmic.com/sdp/2010/deployment" RuntimeVersion="4.0.50401.0">
+  <s:Plugin>
+    <s:Id>395055B6-2FE7-4617-A0B2-38C856556C3B</s:Id>
+    <s:Name>Shrinkr|rdir.in Url Shortening Service.</s:Name>
+    <s:Description>Shrinking the size of URLs and provides tracking data for shortened links.</s:Description>
+    <s:Version>1.0.0.0</s:Version>
+    <s:LogoUri>Resources/shrinkr.png</s:LogoUri>
+    <s:Vendor>Shrinkr</s:Vendor>
+    <s:Copyright>Copyright © Shrinkr 2010|http://rdir.in.</s:Copyright>
+    <s:HomepageUrl>http://rdir.in</s:HomepageUrl>
+    <s:PlatformVersion>0.8</s:PlatformVersion>
+  </s:Plugin>
+  <Deployment.Parts>
+      <AssemblyPart x:Name="Shrinkr" Source="Shrinkr.dll" />
+      <AssemblyPart x:Name="System.ComponentModel.Composition" Source="System.ComponentModel.Composition.dll" />
+  </Deployment.Parts>
+</Deployment>

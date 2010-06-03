@@ -1,0 +1,15 @@
+﻿<content name="TitleContent">
+    Shrinkr : Log Off
+</content>
+<content name="MainContent">
+   <div class="shrinkBox">
+        <h2>Are you sure you want to log off?</h2>
+        <div class="shrinkForm">
+            <% using (Html.BeginForm()){%>
+                <div>
+                    <span>You can log on anytime with your Open ID account.</span> <input type="submit" value="Log off" class="largeButton"/>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</content>
