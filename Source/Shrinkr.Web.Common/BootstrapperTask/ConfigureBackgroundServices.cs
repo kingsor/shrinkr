@@ -1,23 +1,24 @@
 ﻿namespace Shrinkr.Web
 {
     using System.Collections.Generic;
-    using System.Linq;
 
     using Infrastructure;
 
-    using Microsoft.Practices.ServiceLocation;
     using MvcExtensions;
 
     public class ConfigureBackgroundServices : BootstrapperTask
     {
-        private IEnumerable<IBackgroundService> backgroundServices;
+        private readonly IEnumerable<IBackgroundService> backgroundServices;
 
-        protected override TaskContinuation ExecuteCore(IServiceLocator serviceLocator)
+        public ConfigureBackgroundServices(IBackgroundService[] backgroundServices)
         {
-            Check.Argument.IsNotNull(serviceLocator, "serviceLocator");
+            Check.Argument.IsNotNull(backgroundServices, "backgroundServices");
 
-            backgroundServices = serviceLocator.GetAllInstances<IBackgroundService>().ToList();
+            this.backgroundServices = backgroundServices;
+        }
 
+        public override TaskContinuation Execute()
+        {
             backgroundServices.Each(service => service.Start());
 
             return TaskContinuation.Continue;

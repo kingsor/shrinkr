@@ -13,12 +13,21 @@
     {
         private static readonly HashSet<string> localIpCache = new HashSet<string>(StringComparer.Ordinal);
 
-        protected override TaskContinuation ExecuteCore(PerRequestExecutionContext executionContext)
-        {
-            Check.Argument.IsNotNull(executionContext, "executionContext");
+        private readonly HttpContextBase httpContext;
+        private readonly IBannedIPAddressRepository bannedIPAddressRepository;
 
+        public BlockRestrictedIPAddress(HttpContextBase httpContext, IBannedIPAddressRepository bannedIPAddressRepository)
+        {
+            Check.Argument.IsNotNull(httpContext, "httpContext");
+            Check.Argument.IsNotNull(bannedIPAddressRepository, "bannedIPAddressRepository");
+
+            this.httpContext = httpContext;
+            this.bannedIPAddressRepository = bannedIPAddressRepository;
+        }
+
+        public override TaskContinuation Execute()
+        {
             bool shouldContinue = true;
-            HttpContextBase httpContext = executionContext.HttpContext;
 
             if (!httpContext.Request.IsLocal)
             {
@@ -36,7 +45,7 @@
                     Block(httpResponse);
                     shouldContinue = false;
                 }
-                else if (executionContext.ServiceLocator.GetInstance<IBannedIPAddressRepository>().IsMatching(ipAddress))
+                else if (bannedIPAddressRepository.IsMatching(ipAddress))
                 {
                     localIpCache.Add(ipAddress);
                     Block(httpResponse);

@@ -1,14 +1,12 @@
 namespace Shrinkr.Web
 {
-    using Microsoft.Practices.ServiceLocation;
-
     using MvcExtensions;
 
     using Telerik.Web.Mvc;
 
     public class ConfigureAssets : BootstrapperTask
     {
-        protected override TaskContinuation ExecuteCore(IServiceLocator serviceLocator)
+        public override TaskContinuation Execute()
         {
             WebAssetDefaultSettings.UseTelerikContentDeliveryNetwork = true;
             WebAssetDefaultSettings.Combined = true;
@@ -16,7 +14,7 @@ namespace Shrinkr.Web
             SharedWebAssets.StyleSheets(
                                         group => group.AddGroup(
                                                     "appStyles",
-                                                    styles => 
+                                                    styles =>
                                                         styles.Add("site.css")
                                                               .Add("openid.css")
                                                               .Add("form.css")
@@ -26,7 +24,7 @@ namespace Shrinkr.Web
             SharedWebAssets.Scripts(
                                         group => group.AddGroup(
                                                     "publicScripts",
-                                                    scripts => 
+                                                    scripts =>
                                                         scripts.Add("jquery.validate.js")
                                                                .Add("jquery.form.js")
                                                                .Add("jquery.color.js")

@@ -51,6 +51,9 @@
     <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\References\autofac\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\References\dotnetopenauth\DotNetOpenAuth.dll</HintPath>
     </Reference>
@@ -61,14 +64,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity">
-      <HintPath>..\References\unity\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
     <Reference Include="MvcExtensions">
       <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="MvcExtensions.Unity">
-      <HintPath>..\References\mvcextensions\MvcExtensions.Unity.dll</HintPath>
+    <Reference Include="MvcExtensions.Autofac">
+      <HintPath>..\References\mvcextensions\MvcExtensions.Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Spark">
       <HintPath>..\References\spark\Spark.dll</HintPath>

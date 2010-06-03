@@ -5,20 +5,30 @@ namespace Shrinkr.Web
     using DomainObjects;
     using Infrastructure;
 
-    using Microsoft.Practices.ServiceLocation;
     using MvcExtensions;
 
     using Repositories;
 
     public class CreateDefaultUsers : BootstrapperTask
     {
-        protected override TaskContinuation ExecuteCore(IServiceLocator serviceLocator)
-        {
-            Check.Argument.IsNotNull(serviceLocator, "serviceLocator");
+        private readonly IUserRepository userRepository;
+        private readonly IUnitOfWork unitOfWork;
+        private readonly Settings settings;
 
-            IUserRepository userRepository = serviceLocator.GetInstance<IUserRepository>();
-            IUnitOfWork unitOfWork = serviceLocator.GetInstance<IUnitOfWork>();
-            IEnumerable<User> users = serviceLocator.GetInstance<Settings>().DefaultUsers;
+        public CreateDefaultUsers(IUserRepository userRepository, IUnitOfWork unitOfWork, Settings settings)
+        {
+            Check.Argument.IsNotNull(userRepository, "userRepository");
+            Check.Argument.IsNotNull(unitOfWork, "unitOfWork");
+            Check.Argument.IsNotNull(settings, "settings");
+
+            this.userRepository = userRepository;
+            this.unitOfWork = unitOfWork;
+            this.settings = settings;
+        }
+
+        public override TaskContinuation Execute()
+        {
+            IEnumerable<User> users = settings.DefaultUsers;
 
             bool shouldCommit = false;
 

@@ -3,11 +3,11 @@
     using System.Net;
     using System.Web;
 
-    using MvcExtensions.Unity;
+    using MvcExtensions.Autofac;
 
     using Elmah;
 
-    public class MvcApplication : UnityMvcApplication
+    public class MvcApplication : AutofacMvcApplication
     {
         public void ErrorLog_Filtering(object sender, ExceptionFilterEventArgs e)
         {

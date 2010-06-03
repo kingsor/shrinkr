@@ -8,7 +8,6 @@
 
     using DomainObjects;
     using Infrastructure;
-    using Microsoft.Practices.ServiceLocation;
     using MvcExtensions;
     using Repositories;
 
@@ -16,28 +15,34 @@
     {
         private static readonly Type controllerType = typeof(Controller);
 
-        public AddReservedAliasFromRoutes()
+        private readonly RouteCollection routes;
+        private readonly IReservedAliasRepository reservedAliasRepository;
+        private readonly IUnitOfWork unitOfWork;
+
+        public AddReservedAliasFromRoutes(RouteCollection routes, IReservedAliasRepository reservedAliasRepository, IUnitOfWork unitOfWork)
         {
+            Check.Argument.IsNotNull(routes, "routes");
+            Check.Argument.IsNotNull(reservedAliasRepository, "reservedAliasRepository");
+            Check.Argument.IsNotNull(unitOfWork, "unitOfWork");
+
+            this.routes = routes;
+            this.reservedAliasRepository = reservedAliasRepository;
+            this.unitOfWork = unitOfWork;
+
             Order = DefaultOrder + 1;
         }
 
-        protected override TaskContinuation ExecuteCore(IServiceLocator serviceLocator)
+        public override TaskContinuation Execute()
         {
-            Check.Argument.IsNotNull(serviceLocator, "serviceLocator");
-
-            RouteCollection routes = serviceLocator.GetInstance<RouteCollection>();
-            IReservedAliasRepository repository = serviceLocator.GetInstance<IReservedAliasRepository>();
-            IUnitOfWork unitOfWork = serviceLocator.GetInstance<IUnitOfWork>();
-
             IList<string> reservedAliases = new List<string>();
 
             Action<string> addIfNotExists = name =>
-                                                {
-                                                    if (!reservedAliases.Contains(name, StringComparer.OrdinalIgnoreCase) && !repository.IsMatching(name))
-                                                    {
-                                                        reservedAliases.Add(name);
-                                                    }
-                                                };
+            {
+                if (!reservedAliases.Contains(name, StringComparer.OrdinalIgnoreCase) && !reservedAliasRepository.IsMatching(name))
+                {
+                    reservedAliases.Add(name);
+                }
+            };
 
             foreach (Route route in routes.OfType<Route>())
             {
@@ -74,7 +79,7 @@
 
             foreach (string aliasName in reservedAliases.OrderBy(ra => ra))
             {
-                repository.Add(new ReservedAlias { Name = aliasName });
+                reservedAliasRepository.Add(new ReservedAlias { Name = aliasName });
                 shouldCommit = true;
             }
 

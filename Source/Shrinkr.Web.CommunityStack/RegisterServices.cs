@@ -4,67 +4,65 @@ namespace Shrinkr.Web.CommunityStack
     using System.Collections.Generic;
     using System.Configuration;
     using System.Data.Common;
-    using System.Linq;
     using System.Web;
 
-    using Microsoft.Practices.Unity;
+    using Autofac;
     using Spark;
 
     using MvcExtensions;
-    using MvcExtensions.Unity;
 
     using DomainObjects;
     using Infrastructure;
     using Infrastructure.EntityFramework;
-    using Repositories;
     using Services;
 
-    public class RegisterServices : IModule
+    public class RegisterServices : Module
     {
-        private static readonly Func<LifetimeManager> transient = () => new TransientLifetimeManager();
-        private static readonly Func<LifetimeManager> perRequest = () => new PerRequestLifetimeManager();
-        private static readonly Func<LifetimeManager> singleton = () => new ContainerControlledLifetimeManager();
-
-        public void Load(IUnityContainer container)
+        protected override void Load(ContainerBuilder builder)
         {
-            Check.Argument.IsNotNull(container, "container");
+            builder.RegisterType<Http>().As<IHttp>().SingleInstance();
+            builder.RegisterType<PageGlimpseThumbnail>().As<IThumbnail>().SingleInstance();
+            builder.RegisterType<EventAggregator>().As<IEventAggregator>().SingleInstance();
+            builder.Register(c => new CacheManager(HttpRuntime.Cache)).As<ICacheManager>().SingleInstance();
+            builder.RegisterType<ExternalContentService>().As<IExternalContentService>().SingleInstance();
+            builder.RegisterType<GoogleSafeBrowsing>().As<IGoogleSafeBrowsing>().SingleInstance();
+            builder.RegisterType<UrlResolver>().As<IUrlResolver>().InstancePerLifetimeScope();
+            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<ShortUrlService>().As<IShortUrlService>().InstancePerLifetimeScope();
+            builder.RegisterType<AdministrativeService>().As<IAdministrativeService>().InstancePerLifetimeScope();
+            builder.RegisterType<OpenIdRelyingParty>().As<IOpenIdRelyingParty>().InstancePerDependency();
+            builder.RegisterType<FormsAuthentication>().As<IFormsAuthentication>().SingleInstance();
+            builder.RegisterType<Cookie>().As<ICookie>().SingleInstance();
 
-            container.RegisterType<IHttp, Http>(singleton())
-                     .RegisterType<IThumbnail, PageGlimpseThumbnail>(singleton())
-                     .RegisterType<IEventAggregator, EventAggregator>(singleton())
-                     .RegisterType<ICacheManager, CacheManager>(singleton(), new InjectionConstructor(HttpRuntime.Cache))
-                     .RegisterType<IExternalContentService, ExternalContentService>(singleton())
-                     .RegisterType<IGoogleSafeBrowsing, GoogleSafeBrowsing>(singleton())
-                     .RegisterType<IUrlResolver, UrlResolver>(perRequest())
-                     .RegisterType<IUnitOfWork, UnitOfWork>(perRequest())
-                     .RegisterType<IUserService, UserService>(perRequest())
-                     .RegisterType<IShortUrlService, ShortUrlService>(perRequest())
-                     .RegisterType<IAdministrativeService, AdministrativeService>(perRequest())
-                     .RegisterType<IOpenIdRelyingParty, OpenIdRelyingParty>(transient())
-                     .RegisterType<IFormsAuthentication, FormsAuthentication>(singleton())
-                     .RegisterType<ICookie, Cookie>(transient());
+            builder.RegisterAssemblyTypes(typeof(RepositoryBase<>).Assembly)
+                   .Where(type => type.Name.EndsWith("Repository"))
+                   .AsImplementedInterfaces()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(typeof(ISpamDetector).Assembly)
+                   .Where(type => type.IsClass && !type.IsAbstract && typeof(ISpamDetector).IsAssignableFrom(type))
+                   .AsImplementedInterfaces()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(typeof(IBackgroundService).Assembly)
+                   .Where(type => type.IsClass && !type.IsAbstract && typeof(IBackgroundService).IsAssignableFrom(type))
+                   .AsImplementedInterfaces()
+                   .SingleInstance();
 
             ISparkSettings sparkSettings = ConfigurationManager.GetSection("spark") as ISparkSettings;
+            builder.RegisterInstance(sparkSettings).As<ISparkSettings>().SingleInstance();
 
-            container.RegisterInstance(sparkSettings);
+            Settings settings = CreateSettings();
+            builder.RegisterInstance(settings).As<Settings>().SingleInstance();
 
-            IBuildManager buildManager = container.Resolve<IBuildManager>();
-
-            RegisterRepositories(buildManager, container);
-            RegisterSpamDetectors(buildManager, container);
-            RegisterBackgroundServices(buildManager, container);
-
-            Settings settings = CreateSettings(container.Resolve<HttpContextBase>());
-
-            container.RegisterInstance(settings)
-                     .RegisterType<IBaseX, BaseX>(singleton(), new InjectionConstructor(settings.BaseType));
+            builder.Register(c => new BaseX(c.Resolve<Settings>().BaseType)).As<IBaseX>().SingleInstance();
 
             ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["Shrinkr"];
 
             string providerName = connectionStringSettings.ProviderName;
 
             DbProviderFactory databaseProviderFactory = DbProviderFactories.GetFactory(providerName);
-            container.RegisterInstance(databaseProviderFactory);
 
             string connectionString = connectionStringSettings.ConnectionString;
             bool? useCompliledQuery = null;
@@ -75,46 +73,13 @@ namespace Shrinkr.Web.CommunityStack
                 useCompliledQuery = temp;
             }
 
-            container.RegisterType<IDatabaseFactory, DatabaseFactory>(perRequest(), new InjectionConstructor(typeof(DbProviderFactory), connectionString))
-                     .RegisterType<IQueryFactory, QueryFactory>(singleton(), new InjectionConstructor(settings.BaseType == BaseType.BaseSixtyTwo, useCompliledQuery ?? true));
+            builder.Register(c => new DatabaseFactory(databaseProviderFactory, connectionString)).As<IDatabaseFactory>().InstancePerLifetimeScope();
+            builder.Register(c => new QueryFactory(settings.BaseType == BaseType.BaseSixtyTwo, useCompliledQuery ?? true)).As<IQueryFactory>().SingleInstance();
+
+            builder.RegisterType<CompressAttribute>().InstancePerDependency();
         }
 
-        private static void RegisterRepositories(IBuildManager buildManager, IUnityContainer container)
-        {
-            Type genericRepositoryType = typeof(IRepository<>);
-
-            IEnumerable<Type> repositoryContractTypes = buildManager.PublicTypes.Where(type => (type != null) && type.IsInterface && type.GetInterfaces().Any(interfaceType => interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition().Equals(genericRepositoryType))).ToList();
-
-            foreach (Type repositoryImplementationType in buildManager.ConcreteTypes.Where(implementationType => repositoryContractTypes.Any(contractType => contractType.IsAssignableFrom(implementationType))))
-            {
-                foreach (Type repositoryInterfaceType in repositoryImplementationType.GetInterfaces())
-                {
-                    container.RegisterType(repositoryInterfaceType, repositoryImplementationType, perRequest());
-                }
-            }
-        }
-
-        private static void RegisterSpamDetectors(IBuildManager buildManager, IUnityContainer container)
-        {
-            Type spamDetectorInterfaceType = typeof(ISpamDetector);
-
-            foreach (Type spamDetectorType in buildManager.ConcreteTypes.Where(spamDetectorInterfaceType.IsAssignableFrom))
-            {
-                container.RegisterType(spamDetectorInterfaceType, spamDetectorType, spamDetectorType.FullName, perRequest());
-            }
-        }
-
-        private static void RegisterBackgroundServices(IBuildManager buildManager, IUnityContainer container)
-        {
-            Type backgroundServiceInterfaceType = typeof(IBackgroundService);
-
-            foreach (Type backgroundServiceType in buildManager.ConcreteTypes.Where(backgroundServiceInterfaceType.IsAssignableFrom))
-            {
-                container.RegisterType(backgroundServiceInterfaceType, backgroundServiceType, backgroundServiceType.FullName, singleton());
-            }
-        }
-
-        private static Settings CreateSettings(HttpContextBase httpContext)
+        private static Settings CreateSettings()
         {
             SettingConfigurationSection section = (SettingConfigurationSection)ConfigurationManager.GetSection(SettingConfigurationSection.SectionName);
 
@@ -122,7 +87,7 @@ namespace Shrinkr.Web.CommunityStack
 
             ThumbnailSettings thumbnail = new ThumbnailSettings(section.Thumbnail.ApiKey, section.Thumbnail.Endpoint);
 
-            GoogleSafeBrowsingSettings google = new GoogleSafeBrowsingSettings(section.Google.ApiKey, section.Google.Endpoint, httpContext.Server.MapPath(section.Google.PhishingFile), httpContext.Server.MapPath(section.Google.MalwareFile));
+            GoogleSafeBrowsingSettings google = new GoogleSafeBrowsingSettings(section.Google.ApiKey, section.Google.Endpoint, HttpContext.Current.Server.MapPath(section.Google.PhishingFile), HttpContext.Current.Server.MapPath(section.Google.MalwareFile));
 
             TwitterSettings twitter = null;
 

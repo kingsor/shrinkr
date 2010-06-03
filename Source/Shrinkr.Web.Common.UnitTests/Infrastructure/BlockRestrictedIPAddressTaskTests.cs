@@ -6,7 +6,6 @@
     using System.Collections.Generic;
     using System.Reflection;
 
-    using Microsoft.Practices.ServiceLocation;
     using MvcExtensions;
 
     using Repositories;
@@ -18,20 +17,16 @@
 
     public class BlockRestrictedIPAddressTaskTests
     {
-        private readonly PerRequestExecutionContext executionContext;
         private readonly Mock<HttpContextBase> httpContext;
-        private readonly Mock<IServiceLocator> serviceLocator;
-        private readonly Mock<IBannedIPAddressRepository> bannedIpAddressRepo;
+        private readonly Mock<IBannedIPAddressRepository> bannedIpAddressRepository;
         private readonly BlockRestrictedIPAddress blockRestrictedIpAddress;
 
         public BlockRestrictedIPAddressTaskTests()
         {
             httpContext = MvcTestHelper.CreateHttpContext();
-            serviceLocator = new Mock<IServiceLocator>();
-            bannedIpAddressRepo = new Mock<IBannedIPAddressRepository>();
-            executionContext = new PerRequestExecutionContext(httpContext.Object, serviceLocator.Object);
-            serviceLocator.Setup(s => s.GetInstance<IBannedIPAddressRepository>()).Returns(bannedIpAddressRepo.Object);
-            blockRestrictedIpAddress = new BlockRestrictedIPAddress();
+            bannedIpAddressRepository = new Mock<IBannedIPAddressRepository>();
+
+            blockRestrictedIpAddress = new BlockRestrictedIPAddress(httpContext.Object, bannedIpAddressRepository.Object);
         }
 
         [Theory]
@@ -44,9 +39,9 @@
         {
             httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
             CacheBlockedIpAddress("192.168.0.1");
-            bannedIpAddressRepo.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
+            bannedIpAddressRepository.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
 
-            blockRestrictedIpAddress.Execute(executionContext);
+            blockRestrictedIpAddress.Execute();
 
             httpContext.VerifySet(c => c.Response.StatusCode = (int)HttpStatusCode.Forbidden);
         }
@@ -60,9 +55,9 @@
         {
             httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
             CacheBlockedIpAddress("192.168.0.1");
-            bannedIpAddressRepo.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
+            bannedIpAddressRepository.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
 
-            blockRestrictedIpAddress.Execute(executionContext);
+            blockRestrictedIpAddress.Execute();
 
             httpContext.Verify(c => c.Response.End());
         }
@@ -78,9 +73,9 @@
         {
             httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(ipAddress);
             CacheBlockedIpAddress("192.168.0.1");
-            bannedIpAddressRepo.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
+            bannedIpAddressRepository.Setup(r => r.IsMatching("192.168.0.2")).Returns(true);
 
-            TaskContinuation actualValue = blockRestrictedIpAddress.Execute(executionContext);
+            TaskContinuation actualValue = blockRestrictedIpAddress.Execute();
             Assert.Equal(expectedValue, actualValue);
         }
 
@@ -90,9 +85,9 @@
             const string IPAddress = "192.168.0.2";
 
             httpContext.SetupGet(c => c.Request.UserHostAddress).Returns(IPAddress);
-            bannedIpAddressRepo.Setup(r => r.IsMatching(IPAddress)).Returns(true);
+            bannedIpAddressRepository.Setup(r => r.IsMatching(IPAddress)).Returns(true);
 
-            blockRestrictedIpAddress.Execute(executionContext);
+            blockRestrictedIpAddress.Execute();
 
             HashSet<string> blockedIps = GetBlockedIpAddressesCache();
 

@@ -2,9 +2,6 @@ namespace Shrinkr.Web.UnitTests
 {
     using System.Web.Routing;
 
-    using Microsoft.Practices.ServiceLocation;
-
-    using Moq;
     using Xunit;
 
     public class RoutingTests
@@ -14,12 +11,7 @@ namespace Shrinkr.Web.UnitTests
         public RoutingTests()
         {
             routes = new RouteCollection();
-
-            var serviceLocator = new Mock<IServiceLocator>();
-
-            serviceLocator.Setup(sl => sl.GetInstance<RouteCollection>()).Returns(routes);
-
-            new ConfigureRoutes().Execute(serviceLocator.Object);
+            new ConfigureRoutes(routes).Execute();
         }
 
         [Fact]

@@ -28,7 +28,7 @@
         </member>
         <member name="M:MvcExtensions.Unity.UnityMvcApplication.OnPerRequestTasksDisposed">
             <summary>
-            Executes after the registered <see cref="T:MvcExtensions.IPerRequestTask"/> disposes.
+            Executes after the registered <see cref="T:MvcExtensions.PerRequestTask"/> disposes.
             </summary>
         </member>
         <member name="T:MvcExtensions.Unity.UnityBootstrapper">
@@ -42,9 +42,9 @@
             </summary>
             <param name="buildManager">The build manager.</param>
         </member>
-        <member name="M:MvcExtensions.Unity.UnityBootstrapper.CreateServiceLocator">
+        <member name="M:MvcExtensions.Unity.UnityBootstrapper.CreateAdapter">
             <summary>
-            Creates the service locator.
+            Creates the container adapter.
             </summary>
             <returns></returns>
         </member>
@@ -55,7 +55,7 @@
         </member>
         <member name="T:MvcExtensions.Unity.UnityAdapter">
             <summary>
-            Defines an adapter class which with backed by Unity <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer">Container</seealso>.
+            Defines an adapter class which is backed by Unity <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer">Container</seealso>.
             </summary>
         </member>
         <member name="M:MvcExtensions.Unity.UnityAdapter.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
@@ -63,17 +63,6 @@
             Initializes a new instance of the <see cref="T:MvcExtensions.Unity.UnityAdapter"/> class.
             </summary>
             <param name="container">The container.</param>
-        </member>
-        <member name="M:MvcExtensions.Unity.UnityAdapter.Finalize">
-            <summary>
-            Releases unmanaged resources and performs other cleanup operations before the
-            <see cref="T:MvcExtensions.Unity.UnityAdapter"/> is reclaimed by garbage collection.
-            </summary>
-        </member>
-        <member name="M:MvcExtensions.Unity.UnityAdapter.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            </summary>
         </member>
         <member name="M:MvcExtensions.Unity.UnityAdapter.RegisterType(System.String,System.Type,System.Type,MvcExtensions.LifetimeType)">
             <summary>
@@ -115,15 +104,9 @@
             <param name="serviceType">Type of the service.</param>
             <returns></returns>
         </member>
-        <member name="M:MvcExtensions.Unity.UnityAdapter.Dispose(System.Boolean)">
+        <member name="M:MvcExtensions.Unity.UnityAdapter.DisposeCore">
             <summary>
             Releases unmanaged and - optionally - managed resources
-            </summary>
-            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-        </member>
-        <member name="M:MvcExtensions.Unity.UnityAdapter.MvcExtensions#IFluentSyntax#GetType">
-            <summary>
-            Defines an adapter class which with backed by Unity <seealso cref="T:Microsoft.Practices.Unity.IUnityContainer">Container</seealso>.
             </summary>
         </member>
         <member name="P:MvcExtensions.Unity.UnityAdapter.Container">

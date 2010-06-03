@@ -8,13 +8,18 @@ namespace Shrinkr.Web
 
     public class RemoveWww : PerRequestTask
     {
-        protected override TaskContinuation ExecuteCore(PerRequestExecutionContext executionContext)
+        private readonly HttpContextBase httpContext;
+
+        public RemoveWww(HttpContextBase httpContext)
+        {
+            Invariant.IsNotNull(httpContext, "httpContext");
+
+            this.httpContext = httpContext;
+        }
+
+        public override TaskContinuation Execute()
         {
             const string Prefix = "http://www.";
-
-            Check.Argument.IsNotNull(executionContext, "executionContext");
-
-            HttpContextBase httpContext = executionContext.HttpContext;
 
             string url = httpContext.Request.Url.ToString();
 

@@ -8,9 +8,13 @@
 
     public class ConfigureFilters : ConfigureFiltersBase
     {
-        protected override void Configure(IFilterRegistry registry)
+        public ConfigureFilters(IFilterRegistry registry) : base(registry)
         {
-            registry.Register<AuthenticationController, ShrinkrAuthorizeAttribute, UpdateUserLastActivityAttribute>(c => c.LogOff())
+        }
+
+        protected override void Configure()
+        {
+            Registry.Register<AuthenticationController, ShrinkrAuthorizeAttribute, UpdateUserLastActivityAttribute>(c => c.LogOff())
                     .Register<AuthenticationController, ShrinkrAuthorizeAttribute>(c => c.LogOff(null))
                     .Register<AuthenticationController, CompressAttribute>(attribute => { attribute.Order = int.MaxValue - 1; })
                     .Register<UserController, ShrinkrAuthorizeAttribute, UpdateUserLastActivityAttribute, CompressAttribute>()
