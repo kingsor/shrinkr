@@ -3,7 +3,6 @@ namespace Shrinkr.Web.CommunityStack
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.Data.Common;
     using System.Web;
 
     using Autofac;
@@ -13,7 +12,7 @@ namespace Shrinkr.Web.CommunityStack
 
     using DomainObjects;
     using Infrastructure;
-    using Infrastructure.EntityFramework;
+    using Infrastructure.NHibernate;
     using Services;
 
     public class RegisterServices : Module
@@ -61,20 +60,10 @@ namespace Shrinkr.Web.CommunityStack
             ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings["Shrinkr"];
 
             string providerName = connectionStringSettings.ProviderName;
-
-            DbProviderFactory databaseProviderFactory = DbProviderFactories.GetFactory(providerName);
-
             string connectionString = connectionStringSettings.ConnectionString;
-            bool? useCompliledQuery = null;
-            bool temp;
 
-            if (bool.TryParse(ConfigurationManager.AppSettings["useCompliedQuery"], out temp))
-            {
-                useCompliledQuery = temp;
-            }
-
-            builder.Register(c => new DatabaseFactory(databaseProviderFactory, connectionString)).As<IDatabaseFactory>().InstancePerLifetimeScope();
-            builder.Register(c => new QueryFactory(settings.BaseType == BaseType.BaseSixtyTwo, useCompliledQuery ?? true)).As<IQueryFactory>().SingleInstance();
+            builder.Register(c => new DatabaseFactory(providerName, connectionString)).As<IDatabaseFactory>().InstancePerLifetimeScope();
+            builder.Register(c => new QueryFactory(settings.BaseType == BaseType.BaseSixtyTwo)).As<IQueryFactory>().SingleInstance();
 
             builder.RegisterType<CompressAttribute>().InstancePerDependency();
         }

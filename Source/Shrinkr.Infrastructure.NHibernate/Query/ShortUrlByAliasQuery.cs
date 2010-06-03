@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, string, ShortUrl>> shortUrlExpression = (database, name) => database.ShortUrls.FirstOrDefault(shortUrl => shortUrl.Aliases.Any(a => a.Name == name));
         private static readonly Func<Database, string, ShortUrl> shortUrlPlainQuery = shortUrlExpression.Compile();
-        
+
         private readonly bool caseSensitive;
         private readonly string alias;
 

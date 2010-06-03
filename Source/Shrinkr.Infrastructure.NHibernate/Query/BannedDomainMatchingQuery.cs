@@ -8,7 +8,7 @@
     {
         private static readonly Expression<Func<Database, string, bool>> expression = (database, name) => database.BannedDomains.Any(domain => domain.Name == name);
         private static readonly Func<Database, string, bool> plainQuery = expression.Compile();
-        
+
         private readonly string url;
 
         public BannedDomainMatchingQuery(string url)

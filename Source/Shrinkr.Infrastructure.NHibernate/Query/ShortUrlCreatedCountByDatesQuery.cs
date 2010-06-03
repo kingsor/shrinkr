@@ -8,7 +8,7 @@
     {
         private static readonly Expression<Func<Database, DateTime, DateTime, int>> expression = (database, start, end) => database.Aliases.Count(alias => alias.CreatedAt >= start && alias.CreatedAt <= end);
         private static readonly Func<Database, DateTime, DateTime, int> plainQuery = expression.Compile();
-        
+
         private readonly DateTime from;
         private readonly DateTime to;
 

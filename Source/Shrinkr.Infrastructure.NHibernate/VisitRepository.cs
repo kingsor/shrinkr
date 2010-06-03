@@ -6,8 +6,7 @@
 
     public class VisitRepository : RepositoryBase<Visit>, IVisitRepository
     {
-        public VisitRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) 
-            : base(databaseFactory, queryFactory)
+        public VisitRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) : base(databaseFactory, queryFactory)
         {
         }
 

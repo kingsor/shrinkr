@@ -4,7 +4,7 @@
     using System.Collections.Generic;
 
     using DomainObjects;
-    
+
     public interface IQueryFactory
     {
         IQuery<User> CreateUserById(long userId);

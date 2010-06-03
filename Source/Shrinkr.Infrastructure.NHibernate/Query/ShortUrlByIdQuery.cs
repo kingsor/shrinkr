@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, long, ShortUrl>> expression = (database, id) => database.ShortUrls.SingleOrDefault(shortUrl => shortUrl.Id == id);
         private static readonly Func<Database, long, ShortUrl> plainQuery = expression.Compile();
-        
+
         private readonly long shortUrlId;
 
         public ShortUrlByIdQuery(long shortUrlId)

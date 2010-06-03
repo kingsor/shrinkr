@@ -8,7 +8,7 @@
     {
         private static readonly Expression<Func<Database, DateTime, DateTime, int>> expression = (database, start, end) => database.Visits.Count(visit => visit.CreatedAt >= start && visit.CreatedAt <= end);
         private static readonly Func<Database, DateTime, DateTime, int> plainQuery = expression.Compile();
-        
+
         private readonly DateTime from;
         private readonly DateTime to;
 

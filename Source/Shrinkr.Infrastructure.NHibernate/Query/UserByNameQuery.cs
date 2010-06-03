@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, string, User>> expression = (database, name) => database.Users.SingleOrDefault(user => user.Name == name);
         private static readonly Func<Database, string, User> plainQuery = expression.Compile();
-        
+
         private readonly string userName;
 
         public UserByNameQuery(string userName)

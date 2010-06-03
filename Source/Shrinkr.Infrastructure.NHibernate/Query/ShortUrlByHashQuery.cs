@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, string, ShortUrl>> expression = (database, hash) => database.ShortUrls.FirstOrDefault(shortUrl => shortUrl.Hash == hash);
         private static readonly Func<Database, string, ShortUrl> plainQuery = expression.Compile();
-        
+
         private readonly string urlHash;
 
         public ShortUrlByHashQuery(string urlHash)

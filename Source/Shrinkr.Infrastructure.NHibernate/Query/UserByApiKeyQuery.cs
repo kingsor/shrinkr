@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, string, User>> expression = (database, key) => database.Users.SingleOrDefault(user => user.ApiSetting.Key == key);
         private static readonly Func<Database, string, User> plainQuery = expression.Compile();
-        
+
         private readonly string apiKey;
 
         public UserByApiKeyQuery(string apiKey)

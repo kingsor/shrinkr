@@ -8,7 +8,7 @@
     {
         private static readonly Expression<Func<Database, long, int>> expression = (database, id) => database.Aliases.Count(alias => alias.User.Id == id);
         private static readonly Func<Database, long, int> plainQuery = expression.Compile();
-        
+
         private readonly long userId;
 
         public ShortUrlCountByUserIdQuery(long userId)
