@@ -5,8 +5,7 @@
 
     public class BannedIPAddressRepository : RepositoryBase<BannedIPAddress>, IBannedIPAddressRepository
     {
-        public BannedIPAddressRepository(IDatabaseFactory database, IQueryFactory queryFactory) 
-            : base(database, queryFactory)
+        public BannedIPAddressRepository(IDatabaseFactory database, IQueryFactory queryFactory) : base(database, queryFactory)
         {
         }
 

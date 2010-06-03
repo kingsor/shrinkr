@@ -5,8 +5,7 @@
 
     public class ReservedAliasRepository : RepositoryBase<ReservedAlias>, IReservedAliasRepository
     {
-        public ReservedAliasRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) 
-            : base(databaseFactory, queryFactory)
+        public ReservedAliasRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) : base(databaseFactory, queryFactory)
         {
         }
 

@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Diagnostics;
-    
+
     using DomainObjects;
-   
+
     public abstract class RepositoryBase<TEntity> where TEntity : class, IEntity
     {
         private Database database;
@@ -45,7 +45,7 @@
 
             Database.Save(entity);
         }
-            
+
         public virtual void Delete(TEntity entity)
         {
             Check.Argument.IsNotNull(entity, "entity");

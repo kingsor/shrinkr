@@ -11,7 +11,7 @@
     {
         private static readonly Expression<Func<Database, long, int, int, IQueryable<ShortUrl>>> expression = (database, id, index, count) => database.Aliases.Where(alias => alias.User.Id == id).OrderByDescending(alias => alias.CreatedAt).Select(alias => alias.ShortUrl).Skip(index).Take(count);
         private static readonly Func<Database, long, int, int, IQueryable<ShortUrl>> plainQuery = expression.Compile();
-        
+
         private readonly long userId;
         private readonly int start;
         private readonly int max;
@@ -21,6 +21,7 @@
             Check.Argument.IsNotNegative(userId, "userId");
             Check.Argument.IsNotNegative(start, "start");
             Check.Argument.IsNotZeroOrNegative(max, "max");
+
             this.userId = userId;
             this.start = start;
             this.max = max;

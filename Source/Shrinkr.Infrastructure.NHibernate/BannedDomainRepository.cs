@@ -5,8 +5,7 @@
 
     public class BannedDomainRepository : RepositoryBase<BannedDomain>, IBannedDomainRepository
     {
-        public BannedDomainRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) 
-            : base(databaseFactory, queryFactory)
+        public BannedDomainRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) : base(databaseFactory, queryFactory)
         {
         }
 

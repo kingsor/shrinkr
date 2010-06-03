@@ -10,7 +10,7 @@
     {
         private static readonly Expression<Func<Database, string, ReservedAlias>> reservedAliasExpression = (database, a) => database.ReservedAliases.Where(reserved => reserved.Name == a).FirstOrDefault();
         private static readonly Func<Database, string, ReservedAlias> reservedAliasPlainQuery = reservedAliasExpression.Compile();
-        
+
         private readonly bool caseSensitive;
         private readonly string aliasName;
 
@@ -28,9 +28,7 @@
             
             ReservedAlias alias = reservedAliasPlainQuery(database, aliasName);
 
-            return caseSensitive
-                       ? alias != null && alias.Name.Equals(aliasName)
-                       : alias != null;
+            return caseSensitive ? alias != null && alias.Name.Equals(aliasName) : alias != null;
         }
     }
 }

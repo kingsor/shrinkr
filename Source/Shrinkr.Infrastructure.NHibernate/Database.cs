@@ -121,7 +121,7 @@
             try
             {
                 EnsureTransaction();
-                
+
                 if (!session.Contains(entity))
                 {
                     Merge(ref entity);
@@ -143,7 +143,7 @@
             try
             {
                 EnsureTransaction();
-                session.Delete(entity);    
+                session.Delete(entity);
             }
             catch
             {
@@ -155,6 +155,7 @@
         public virtual void Commit()
         {
             EnsureTransaction();
+
             try
             {
                 transaction.Commit();

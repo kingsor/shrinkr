@@ -5,8 +5,7 @@
 
     public class BadWordRepository : RepositoryBase<BadWord>, IBadWordRepository
     {
-        public BadWordRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory)
-            : base(databaseFactory, queryFactory)
+        public BadWordRepository(IDatabaseFactory databaseFactory, IQueryFactory queryFactory) : base(databaseFactory, queryFactory)
         {
         }
 
