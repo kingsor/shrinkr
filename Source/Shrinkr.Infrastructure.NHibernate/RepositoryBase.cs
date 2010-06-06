@@ -43,7 +43,7 @@
         {
             Check.Argument.IsNotNull(entity, "entity");
 
-            Database.Save(entity);
+            Database.Add(entity);
         }
 
         public virtual void Delete(TEntity entity)

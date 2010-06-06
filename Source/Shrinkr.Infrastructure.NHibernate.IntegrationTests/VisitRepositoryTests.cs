@@ -22,8 +22,8 @@
         {
             var visit = CreateVisit("a");
 
-            Database.Save(visit.Alias.ShortUrl);
-            Database.Save(visit.Alias);
+            Database.Add(visit.Alias.ShortUrl);
+            Database.Add(visit.Alias);
 
             repository.Add(visit);
 
@@ -35,8 +35,8 @@
         {
             var visit = CreateVisit("a");
 
-            Database.Save(visit.Alias.ShortUrl);
-            Database.Save(visit.Alias);
+            Database.Add(visit.Alias.ShortUrl);
+            Database.Add(visit.Alias);
 
             repository.Add(visit);
 
@@ -58,8 +58,8 @@
             var queryFactory = new QueryFactory(useCaseSensitive);
 
             Visit visit = CreateVisit(alias);
-            Database.Save(visit.Alias.ShortUrl);
-            Database.Save(visit.Alias);
+            Database.Add(visit.Alias.ShortUrl);
+            Database.Add(visit.Alias);
 
             var repo = new VisitRepository(DatabaseFactory, queryFactory);
             

@@ -8,6 +8,8 @@
     {
         public UserMap()
         {
+            Table("[User]");
+
             Id(u => u.Id).GeneratedBy.Identity();
 
             Map(u => u.Name).Not.Nullable().Length(256);
@@ -27,9 +29,7 @@
                                     m.Map(s => s.DailyLimit).Nullable();
                                 }).Not.LazyLoad();
 
-            HasMany(u => u.Aliases).KeyColumn("UserId").Access.LowerCaseField().LazyLoad();
-
-            Table("[User]");
+            HasMany(u => u.Aliases).KeyColumn("UserId").Access.LowerCaseField().LazyLoad().Cascade.All();
         }
     }
 }
