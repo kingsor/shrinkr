@@ -10,7 +10,7 @@
 
     public class User : IEntity
     {
-        private readonly ICollection<Alias> aliases;
+        private ICollection<Alias> aliases;
 
         private DateTime createdAt;
         private DateTime lastActivityAt;

@@ -113,6 +113,7 @@
     <Compile Include="Query\VisitCountByAliasNameQuery.cs" />
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="ReservedAliasRepository.cs" />
+    <Compile Include="ShortUrlRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="UserRepository.cs" />
     <Compile Include="VisitRepository.cs" />
