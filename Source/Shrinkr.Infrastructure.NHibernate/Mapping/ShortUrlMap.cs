@@ -8,6 +8,8 @@
     {
         public ShortUrlMap()
         {
+            Table("ShortUrl");
+
             Id(s => s.Id).GeneratedBy.Identity();
 
             Map(s => s.Url).Not.Nullable().Length(2048);
@@ -16,9 +18,7 @@
             Map(s => s.Title).Not.Nullable().Length(2048);
             Map(s => s.InternalSpamStatus).Not.Nullable().Column("SpamStatus");
 
-            HasMany(s => s.Aliases).KeyColumn("ShortUrlId").Access.LowerCaseField();
-
-            Table("ShortUrl");
+            HasMany(s => s.Aliases).KeyColumn("ShortUrlId").Access.LowerCaseField().Cascade.All();
         }
     }
 }

@@ -8,10 +8,10 @@
     {
         public BannedIPAddressMap()
         {
+            Table("BannedIPAddress");
+
             Id(b => b.Id).GeneratedBy.Identity();
             Map(b => b.IPAddress).Not.Nullable().Length(15);
-
-            Table("BannedIPAddress");
         }
     }
 }

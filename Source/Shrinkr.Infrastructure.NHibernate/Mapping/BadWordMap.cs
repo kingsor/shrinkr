@@ -8,10 +8,10 @@ namespace Shrinkr.Infrastructure.NHibernate.Mapping
     {
         public BadWordMap()
         {
+            Table("BadWord");
+
             Id(b => b.Id).GeneratedBy.Identity();
             Map(b => b.Expression).Not.Nullable().Length(440);
-
-            Table("BadWord");
         }
     }
 }

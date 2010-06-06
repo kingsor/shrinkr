@@ -8,10 +8,10 @@
     {
         public ReservedAliasMap()
         {
+            Table("ReservedAlias");
+
             Id(b => b.Id).GeneratedBy.Identity();
             Map(b => b.Name).Not.Nullable().Length(440);
-
-            Table("ReservedAlias");
         }
     }
 }

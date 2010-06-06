@@ -2,7 +2,9 @@
 {
     using System.Linq;
     using System.Diagnostics;
-
+    using System.Collections.Generic;
+    
+    using Extensions;
     using DomainObjects;
 
     using global::NHibernate.Linq;
@@ -12,6 +14,8 @@
     public class Database : Disposable
     {
         private readonly ISession session;
+        private readonly ICollection<IEntity> transientEntities; 
+
         private ITransaction transaction;
 
         private IQueryable<User> users;
@@ -28,6 +32,7 @@
             Check.Argument.IsNotNull(session, "session");
             
             this.session = session;
+            transientEntities = new List<IEntity>();
         }
 
         public IQueryable<User> Users
@@ -114,7 +119,7 @@
             return session.Get<TEntity>(id);
         }
 
-        public virtual void Save<TEntity>(TEntity entity) where TEntity : class, IEntity
+        public virtual void Add<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNull(entity, "entity");
 
@@ -122,16 +127,12 @@
             {
                 EnsureTransaction();
 
-                if (!session.Contains(entity))
-                {
-                    Merge(ref entity);
-                }
-
-                session.SaveOrUpdate(entity);
+                transientEntities.Add(entity);
             }
             catch
             {
                 transaction.Rollback();
+                transientEntities.Clear();
                 throw;
             }
         }
@@ -158,17 +159,21 @@
 
             try
             {
+                transientEntities.Each(e => session.SaveOrUpdate(e));
                 transaction.Commit();
+                transientEntities.Clear();
             }
             catch
             {
                 transaction.Rollback();
+                transientEntities.Clear();
                 throw;
             }
         }
 
         protected override void DisposeCore()
         {
+            transientEntities.Clear();
             if (transaction != null)
             {
                 if (transaction.IsActive)
@@ -189,11 +194,6 @@
 
                 session.Dispose();
             }
-        }
-
-        private void Merge<TEntity>(ref TEntity entity) where TEntity : class, IEntity
-        {
-            session.Merge(entity);
         }
 
         private void EnsureTransaction()

@@ -8,6 +8,8 @@
     {
         public VisitMap()
         {
+            Table("Visit");
+
             Id(v => v.Id).GeneratedBy.Identity();
 
             Map(v => v.IPAddress).Not.Nullable().Length(15);
@@ -25,8 +27,6 @@
                             }).Not.LazyLoad();
 
             References(v => v.Alias).Not.Nullable().Column("AliasId").LazyLoad();
-
-            Table("Visit");
         }
     }
 }
