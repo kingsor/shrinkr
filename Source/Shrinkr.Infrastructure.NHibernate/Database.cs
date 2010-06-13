@@ -8,9 +8,10 @@
     using DomainObjects;
 
     using global::NHibernate.Linq;
+    using ICriteria = global::NHibernate.ICriteria;
     using ISession = global::NHibernate.ISession;
     using ITransaction = global::NHibernate.ITransaction;
-
+    
     public class Database : Disposable
     {
         private readonly ISession session;
@@ -112,6 +113,11 @@
             return session.Linq<TEntity>();
         }
 
+        public virtual ICriteria CreateCriteria<TEntity>() where TEntity : class, IEntity
+        {
+            return session.CreateCriteria<TEntity>();
+        }
+
         public virtual TEntity GetById<TEntity>(long id) where TEntity : class, IEntity
         {
             Check.Argument.IsNotNegative(id, "id");
@@ -159,7 +165,7 @@
 
             try
             {
-                transientEntities.Each(e => session.SaveOrUpdate(e));
+                transientEntities.Each(e => session.Save(e));
                 transaction.Commit();
                 transientEntities.Clear();
             }
