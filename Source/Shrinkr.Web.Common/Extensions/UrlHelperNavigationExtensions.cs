@@ -145,7 +145,7 @@ namespace Shrinkr.Web
 
         private static string RouteUrl(UrlHelper helper, string routeName, object routeValues)
         {
-            Check.Argument.IsNotNull(helper, "instance");
+            Check.Argument.IsNotNull(helper, "helper");
 
             return (routeValues == null) ? helper.RouteUrl(routeName) : helper.RouteUrl(routeName, routeValues);
         }
