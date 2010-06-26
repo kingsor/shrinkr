@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Shrinkr.Web.MicrosoftNHStack.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Shrinkr.Web.MixStack.MvcApplication" Language="C#" %>
