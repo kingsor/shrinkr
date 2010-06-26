@@ -90,10 +90,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\SharedFiles\Web\App_Data\GoogleSafeBrowsing\malware.xml">
@@ -358,6 +362,63 @@
     <Content Include="..\SharedFiles\Web\Scripts\user.min.js">
       <Link>Scripts\user.min.js</Link>
     </Content>
+    <Content Include="..\SharedFiles\Web\Views\Authentication\LogOff.aspx">
+      <Link>Views\Authentication\LogOff.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\Authentication\LogOn.aspx">
+      <Link>Views\Authentication\LogOn.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\BadWords.aspx">
+      <Link>Views\ControlPanel\BadWords.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\BannedDomains.aspx">
+      <Link>Views\ControlPanel\BannedDomains.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\BannedIPAddresses.aspx">
+      <Link>Views\ControlPanel\BannedIPAddresses.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\ReservedAliases.aspx">
+      <Link>Views\ControlPanel\ReservedAliases.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\Summary.aspx">
+      <Link>Views\ControlPanel\Summary.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\Url.aspx">
+      <Link>Views\ControlPanel\Url.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\Urls.aspx">
+      <Link>Views\ControlPanel\Urls.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\User.aspx">
+      <Link>Views\ControlPanel\User.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ControlPanel\Users.aspx">
+      <Link>Views\ControlPanel\Users.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\Shared\Error.aspx">
+      <Link>Views\Shared\Error.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\Shared\LogOnUserControl.ascx">
+      <Link>Views\Shared\LogOnUserControl.ascx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ShortUrl\Create.aspx">
+      <Link>Views\ShortUrl\Create.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ShortUrl\CreatedBox.ascx">
+      <Link>Views\ShortUrl\CreatedBox.ascx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ShortUrl\CreateForm.ascx">
+      <Link>Views\ShortUrl\CreateForm.ascx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ShortUrl\List.aspx">
+      <Link>Views\ShortUrl\List.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\ShortUrl\Preview.aspx">
+      <Link>Views\ShortUrl\Preview.aspx</Link>
+    </Content>
+    <Content Include="..\SharedFiles\Web\Views\User\Profile.aspx">
+      <Link>Views\User\Profile.aspx</Link>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -367,9 +428,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Shared\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -397,6 +456,11 @@
       <Project>{C93C68EF-0858-4B81-96FA-F570BD83DEEE}</Project>
       <Name>Shrinkr.Web.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\SharedFiles\Web\Views\Shared\Site.Master">
+      <Link>Views\Shared\Site.Master</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
