@@ -1,8 +1,8 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
-    using DomainObjects;
+    using System.Data.Entity.ModelConfiguration;
 
-    using Microsoft.Data.Objects;
+    using DomainObjects;
 
     public class BannedDomainConfiguration : EntityConfiguration<BannedDomain>
     {

@@ -6,11 +6,12 @@ namespace Shrinkr.Infrastructure.EntityFramework
     using System.Diagnostics;
     using System.Linq;
 
-    using Microsoft.Data.Objects;
+    using System.Data.Entity.ModelConfiguration;
+    using System.Data.Entity.Infrastructure;
 
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
-        private static readonly ContextBuilder<Database> builder = CreateBuilder();
+        private static readonly DbModel model = CreateDbModel();
 
         private readonly DbProviderFactory providerFactory;
         private readonly string connectionString;
@@ -33,7 +34,7 @@ namespace Shrinkr.Infrastructure.EntityFramework
                 DbConnection connection = providerFactory.CreateConnection();
                 connection.ConnectionString = connectionString;
 
-                database = builder.Create(connection);
+                database = model.CreateObjectContext<Database>(connection);
             }
 
             return database;
@@ -48,9 +49,9 @@ namespace Shrinkr.Infrastructure.EntityFramework
             }
         }
 
-        private static ContextBuilder<Database> CreateBuilder()
+        private static DbModel CreateDbModel()
         {
-            ContextBuilder<Database> contextBuilder = new ContextBuilder<Database>();
+            var modelBuilder = new ModelBuilder();
 
             IEnumerable<Type> configurationTypes = typeof(DatabaseFactory).Assembly
                                                                           .GetTypes()
@@ -58,10 +59,10 @@ namespace Shrinkr.Infrastructure.EntityFramework
 
             foreach (StructuralTypeConfiguration configuration in configurationTypes.Select(type => (StructuralTypeConfiguration)Activator.CreateInstance(type)))
             {
-                contextBuilder.Configurations.Add(configuration);
+                modelBuilder.Configurations.Add(configuration);
             }
 
-            return contextBuilder;
+            return modelBuilder.CreateModel();
         }
     }
 }
