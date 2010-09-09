@@ -1,8 +1,8 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
-    using DomainObjects;
+    using System.Data.Entity.ModelConfiguration;
 
-    using Microsoft.Data.Objects;
+    using DomainObjects;
 
     public class UserConfiguration : EntityConfiguration<User>
     {
@@ -19,7 +19,7 @@
             Property(u => u.LastActivityAt);
 
             MapSingleType(u => new
-                                    {
+                                   {
                                        u.Id,
                                        u.Name,
                                        u.Email,

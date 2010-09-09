@@ -1,8 +1,8 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
-    using DomainObjects;
+    using System.Data.Entity.ModelConfiguration;
 
-    using Microsoft.Data.Objects;
+    using DomainObjects;
 
     public class VisitConfiguration : EntityConfiguration<Visit>
     {
@@ -16,7 +16,7 @@
             Property(v => v.GeoCode);
             Property(v => v.CreatedAt);
 
-            Relationship(v => v.Alias).FromProperty(a => a.Visits).IsRequired();
+            HasRequired(v => v.Alias).WithMany(a => a.Visits);
 
             MapSingleType(v => new
                                    {

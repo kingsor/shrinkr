@@ -1,8 +1,8 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
-    using DomainObjects;
+    using System.Data.Entity.ModelConfiguration;
 
-    using Microsoft.Data.Objects;
+    using DomainObjects;
 
     public class AliasConfiguration : EntityConfiguration<Alias>
     {
@@ -16,8 +16,8 @@
             Property(a => a.CreatedAt);
             Property(a => a.CreatedByApi);
 
-            Relationship(a => a.ShortUrl).FromProperty(s => s.Aliases).IsRequired();
-            Relationship(a => a.User).FromProperty(u => u.Aliases).IsOptional();
+            HasRequired(a => a.ShortUrl).WithMany(s => s.Aliases);
+            HasOptional(a => a.User).WithMany(u => u.Aliases);
 
             MapSingleType(a => new
                                    {

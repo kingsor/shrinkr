@@ -1,9 +1,9 @@
 namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
+    using System.Data.Entity.ModelConfiguration;
+
     using DomainObjects;
-
-    using Microsoft.Data.Objects;
-
+    
     public class ApiSettingConfiguration : ComplexTypeConfiguration<ApiSetting>
     {
         public ApiSettingConfiguration()
