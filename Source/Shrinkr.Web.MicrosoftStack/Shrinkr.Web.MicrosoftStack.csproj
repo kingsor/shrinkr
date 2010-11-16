@@ -378,6 +378,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets')" />
   <Import Project="$(ProjectDir)..\Build\WebApplications\Microsoft.WebApplication.targets" Condition="!Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets')" />
+  <Import Project="$(ProjectDir)..\Build\Web\Microsoft.Web.Publishing.targets" Condition="!Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.targets')" />
   <PropertyGroup>
     <PreBuildEvent>xcopy "$(ProjectDir)..\SharedFiles\Web\*.*" "$(ProjectDir)*.*" /D /E /I /Y</PreBuildEvent>
   </PropertyGroup>
