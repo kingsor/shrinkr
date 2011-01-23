@@ -1,5 +1,6 @@
 ﻿namespace Shrinkr.Web.UnitTests
 {
+    using System.Globalization;
     using System.Collections.Specialized;
     using System.Web.Mvc;
     using System.Web.Routing;
@@ -32,7 +33,7 @@
 
             controller.ControllerContext = controllerContext;
 
-            var valueProvider = new FormValueProvider(controllerContext);
+            var valueProvider = new NameValueCollectionValueProvider(controllerContext.HttpContext.Request.Form, CultureInfo.CurrentCulture);
             controller.ValueProvider = valueProvider;
 
             var bindingContext = new ModelBindingContext
