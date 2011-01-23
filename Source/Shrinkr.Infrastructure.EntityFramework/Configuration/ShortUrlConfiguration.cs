@@ -1,31 +1,24 @@
 ﻿namespace Shrinkr.Infrastructure.EntityFramework.Configuration
 {
     using System.Data.Entity.ModelConfiguration;
+    using System.ComponentModel.DataAnnotations;
 
     using DomainObjects;
 
-    public class ShortUrlConfiguration : EntityConfiguration<ShortUrl>
+    public class ShortUrlConfiguration : EntityTypeConfiguration<ShortUrl>
     {
         public ShortUrlConfiguration()
         {
             HasKey(s => s.Id);
 
-            Property(s => s.Id).IsIdentity();
+            Property(s => s.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.Identity);
             Property(s => s.Url).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(2048);
             Property(s => s.Domain).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(440);
             Property(s => s.Hash).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(24);
             Property(s => s.Title).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(2048);
-            Property(s => s.InternalSpamStatus);
+            Property(s => s.InternalSpamStatus).HasColumnName("SpamStatus");
 
-            MapSingleType(s => new
-                                   {
-                                       s.Id,
-                                       s.Url,
-                                       s.Domain,
-                                       s.Hash,
-                                       s.Title,
-                                       SpamStatus = s.InternalSpamStatus
-                                   }).ToTable("ShortUrl");
+            ToTable("ShortUrl");
         }
     }
 }
