@@ -8,8 +8,16 @@
     {
         public ReferrerConfiguration()
         {
-            Property(r => r.Domain).IsUnicode().IsOptional().IsVariableLength().HasMaxLength(440);
-            Property(r => r.Url).IsUnicode().IsOptional().IsVariableLength().HasMaxLength(2048);
+            Property(r => r.Domain).IsUnicode()
+                                   .IsOptional()
+                                   .IsVariableLength()
+                                   .HasMaxLength(440)
+                                   .HasColumnName("ReferrerDomain");
+            Property(r => r.Url).IsUnicode()
+                                .IsOptional()
+                                .IsVariableLength()
+                                .HasMaxLength(2048)
+                                .HasColumnName("ReferrerUrl");
         }
     }
 }

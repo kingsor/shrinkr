@@ -1,3 +1,5 @@
+
+
 namespace Shrinkr.Infrastructure.EntityFramework
 {
     using System;
@@ -8,13 +10,16 @@ namespace Shrinkr.Infrastructure.EntityFramework
 
     using System.Data.Entity.ModelConfiguration;
     using System.Data.Entity.Infrastructure;
-
+    using System.Data.Edm.Db.Mapping;
+    
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
-        private static readonly DbModel model = CreateDbModel();
+        private static readonly object syncObject = new object();
 
         private readonly DbProviderFactory providerFactory;
         private readonly string connectionString;
+
+        private static DbModel model;
 
         private Database database;
 
@@ -32,9 +37,26 @@ namespace Shrinkr.Infrastructure.EntityFramework
             if (database == null)
             {
                 DbConnection connection = providerFactory.CreateConnection();
-                connection.ConnectionString = connectionString;
 
-                database = model.CreateObjectContext<Database>(connection);
+                if (connection != null)
+                {
+                    connection.ConnectionString = connectionString;
+
+                    if (model == null)
+                    {
+                        lock (syncObject)
+                        {
+                            if (model == null)
+                            {
+                                model = CreateDbModel(connection);
+                            }
+                        }
+                    }
+
+                    database = model.CreateObjectContext<Database>(connection);
+                }
+
+                return database;
             }
 
             return database;
@@ -49,20 +71,26 @@ namespace Shrinkr.Infrastructure.EntityFramework
             }
         }
 
-        private static DbModel CreateDbModel()
+        private static DbModel CreateDbModel(DbConnection connection)
         {
             var modelBuilder = new ModelBuilder();
 
             IEnumerable<Type> configurationTypes = typeof(DatabaseFactory).Assembly
-                                                                          .GetTypes()
-                                                                          .Where(type => type.IsPublic && type.IsClass && !type.IsAbstract && !type.IsGenericType && typeof(StructuralTypeConfiguration).IsAssignableFrom(type) && (type.GetConstructor(Type.EmptyTypes) != null));
+                .GetTypes()
+                .Where(
+                    type =>
+                    type.IsPublic && type.IsClass && !type.IsAbstract && !type.IsGenericType && type.BaseType != null &&
+                    type.BaseType.IsGenericType &&
+                    (type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>) ||
+                     type.BaseType.GetGenericTypeDefinition() == typeof(ComplexTypeConfiguration<>)) && (type.GetConstructor(Type.EmptyTypes) != null));
 
-            foreach (StructuralTypeConfiguration configuration in configurationTypes.Select(type => (StructuralTypeConfiguration)Activator.CreateInstance(type)))
+            foreach (var configuration in configurationTypes.Select(Activator.CreateInstance))
             {
-                modelBuilder.Configurations.Add(configuration);
+                modelBuilder.Configurations.Add((dynamic)configuration);
             }
 
-            return modelBuilder.CreateModel();
+            DbDatabaseMapping mapping = modelBuilder.Build(connection);
+            return new DbModel(mapping);
         }
     }
 }
