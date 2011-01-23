@@ -1,156 +1,161 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProductVersion>8.0.30703</ProductVersion>
-        <SchemaVersion>2.0</SchemaVersion>
-        <ProjectGuid>{C93C68EF-0858-4B81-96FA-F570BD83DEEE}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Shrinkr.Web</RootNamespace>
-        <AssemblyName>Shrinkr.Web.Common</AssemblyName>
-        <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-        <RunCodeAnalysis>false</RunCodeAnalysis>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-        <RunCodeAnalysis>false</RunCodeAnalysis>
-        <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="DotNetOpenAuth">
-            <HintPath>..\References\dotnetopenauth\DotNetOpenAuth.dll</HintPath>
-        </Reference>
-        <Reference Include="Elmah">
-            <HintPath>..\References\elmah\Elmah.dll</HintPath>
-        </Reference>
-        <Reference Include="Microsoft.Practices.ServiceLocation">
-            <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
-        </Reference>
-        <Reference Include="MvcExtensions">
-            <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
-        </Reference>
-        <Reference Include="System" />
-        <Reference Include="System.configuration" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Runtime.Serialization" />
-        <Reference Include="System.ServiceModel.Web" />
-        <Reference Include="System.Web" />
-        <Reference Include="System.Web.Abstractions" />
-        <Reference Include="System.Web.Extensions" />
-        <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>..\References\aspnetmvc\System.Web.Mvc.dll</HintPath>
-        </Reference>
-        <Reference Include="System.Web.Routing" />
-        <Reference Include="System.XML" />
-        <Reference Include="Telerik.Web.Mvc, Version=2010.1.309.235, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-            <SpecificVersion>False</SpecificVersion>
-            <HintPath>..\References\telerik\Telerik.Web.Mvc.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
-            <Link>Properties\CommonAssemblyInfo.cs</Link>
-        </Compile>
-        <Compile Include="ActionFilters\ElmahHandleErrorAttribute.cs">
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Include="ActionFilters\ShrinkrAuthorizeAttribute.cs" />
-        <Compile Include="ActionResults\ApiResult.cs" />
-        <Compile Include="BootstrapperTask\AddReservedAliasFromRoutes.cs" />
-        <Compile Include="BootstrapperTask\ConfigureBackgroundServices.cs" />
-        <Compile Include="Commands\ApiCommand.cs" />
-        <Compile Include="Commands\ApiCommandBinder.cs" />
-        <Compile Include="Commands\CreateShortUrlApiCommand.cs" />
-        <Compile Include="Commands\ApiResponseFormat.cs" />
-        <Compile Include="Commands\LogonCommand.cs" />
-        <Compile Include="Commands\LogonCommandBinder.cs" />
-        <Compile Include="Commands\ProfileCommand.cs" />
-        <Compile Include="Controllers\ApiController.cs" />
-        <Compile Include="Controllers\AuthenticationController.cs" />
-        <Compile Include="Controllers\ControlPanelController.cs" />
-        <Compile Include="Controllers\ShortUrlController.cs" />
-        <Compile Include="Controllers\UserController.cs" />
-        <Compile Include="Extensions\ControllerExtensions.cs" />
-        <Compile Include="Extensions\EnumExtensions.cs" />
-        <Compile Include="Extensions\SpamStatusExtensions.cs" />
-        <Compile Include="Extensions\TabStripItemFactoryExtensions.cs" />
-        <Compile Include="GlobalSuppressions.cs" />
-        <Compile Include="PerRequestTask\BlockRestrictedIPAddress.cs" />
-        <Compile Include="Infrastructure\CacheManager.cs" />
-        <Compile Include="BootstrapperTask\ConfigureRoutes.cs">
-            <SubType>Code</SubType>
-        </Compile>
-        <Compile Include="Extensions\HtmlHelperExtensions.cs" />
-        <Compile Include="Extensions\HttpContextBaseExtensions.cs" />
-        <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
-        <Compile Include="Extensions\RequestContextExtensions.cs" />
-        <Compile Include="Extensions\UrlHelperAssetExtensions.cs" />
-        <Compile Include="Extensions\UrlHelperNavigationExtensions.cs" />
-        <Compile Include="ActionFilters\AppendOpenIdXrdsLocationAttribute.cs" />
-        <Compile Include="ActionFilters\UpdateUserLastActivityAttribute.cs" />
-        <Compile Include="Helpers\ListHtmlHelper.cs" />
-        <Compile Include="Helpers\PageCalculator.cs" />
-        <Compile Include="Infrastructure\CamelCasedJsonConverter.cs" />
-        <Compile Include="BootstrapperTask\ConfigureAssets.cs" />
-        <Compile Include="Infrastructure\Cookie.cs" />
-        <Compile Include="BootstrapperTask\CreateDefaultUsers.cs" />
-        <Compile Include="Infrastructure\FormsAuthentication.cs" />
-        <Compile Include="Infrastructure\OpenIdRelyingParty.cs" />
-        <Compile Include="BootstrapperTask\ConfigureFilters.cs" />
-        <Compile Include="PerRequestTask\RemoveWww.cs" />
-        <Compile Include="Infrastructure\UrlResolver.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Commands\CreateShortUrlCommand.cs" />
-        <Compile Include="Commands\ShortUrlListCommand.cs" />
-        <Compile Include="Commands\UserCommand.cs" />
-        <Compile Include="Commands\UserCommandBinder.cs" />
-        <Compile Include="Commands\ShortUrlVisitCommand.cs" />
-        <Compile Include="TextMessages.Designer.cs">
-            <AutoGen>True</AutoGen>
-            <DesignTime>True</DesignTime>
-            <DependentUpon>TextMessages.resx</DependentUpon>
-        </Compile>
-        <Compile Include="ViewModels\CreateUrlViewModel.cs" />
-        <Compile Include="ViewModels\PagedListViewModel.cs" />
-    </ItemGroup>
-    <ItemGroup>
-        <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
-            <Project>{0A176C12-F1D9-424E-AC93-F577B960E055}</Project>
-            <Name>Shrinkr.Core</Name>
-        </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-        <EmbeddedResource Include="TextMessages.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>TextMessages.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C93C68EF-0858-4B81-96FA-F570BD83DEEE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Shrinkr.Web</RootNamespace>
+    <AssemblyName>Shrinkr.Web.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\References\dotnetopenauth\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\References\elmah\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\References\commonservicelocator\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions">
+      <HintPath>..\References\mvcextensions\MvcExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\aspnetmvc\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\References\aspnetmvc\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="Telerik.Web.Mvc, Version=2010.1.309.235, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\telerik\Telerik.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedFiles\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ActionFilters\ElmahHandleErrorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ActionFilters\ShrinkrAuthorizeAttribute.cs" />
+    <Compile Include="ActionResults\ApiResult.cs" />
+    <Compile Include="BootstrapperTask\AddReservedAliasFromRoutes.cs" />
+    <Compile Include="BootstrapperTask\ConfigureBackgroundServices.cs" />
+    <Compile Include="Commands\ApiCommand.cs" />
+    <Compile Include="Commands\ApiCommandBinder.cs" />
+    <Compile Include="Commands\CreateShortUrlApiCommand.cs" />
+    <Compile Include="Commands\ApiResponseFormat.cs" />
+    <Compile Include="Commands\LogonCommand.cs" />
+    <Compile Include="Commands\LogonCommandBinder.cs" />
+    <Compile Include="Commands\ProfileCommand.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
+    <Compile Include="Controllers\ShortUrlController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\SpamStatusExtensions.cs" />
+    <Compile Include="Extensions\TabStripItemFactoryExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PerRequestTask\BlockRestrictedIPAddress.cs" />
+    <Compile Include="Infrastructure\CacheManager.cs" />
+    <Compile Include="BootstrapperTask\ConfigureRoutes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HttpContextBaseExtensions.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Extensions\RequestContextExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperAssetExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperNavigationExtensions.cs" />
+    <Compile Include="ActionFilters\AppendOpenIdXrdsLocationAttribute.cs" />
+    <Compile Include="ActionFilters\UpdateUserLastActivityAttribute.cs" />
+    <Compile Include="Helpers\ListHtmlHelper.cs" />
+    <Compile Include="Helpers\PageCalculator.cs" />
+    <Compile Include="Infrastructure\CamelCasedJsonConverter.cs" />
+    <Compile Include="BootstrapperTask\ConfigureAssets.cs" />
+    <Compile Include="Infrastructure\Cookie.cs" />
+    <Compile Include="BootstrapperTask\CreateDefaultUsers.cs" />
+    <Compile Include="Infrastructure\FormsAuthentication.cs" />
+    <Compile Include="Infrastructure\OpenIdRelyingParty.cs" />
+    <Compile Include="BootstrapperTask\ConfigureFilters.cs" />
+    <Compile Include="PerRequestTask\RemoveWww.cs" />
+    <Compile Include="Infrastructure\UrlResolver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Commands\CreateShortUrlCommand.cs" />
+    <Compile Include="Commands\ShortUrlListCommand.cs" />
+    <Compile Include="Commands\UserCommand.cs" />
+    <Compile Include="Commands\UserCommandBinder.cs" />
+    <Compile Include="Commands\ShortUrlVisitCommand.cs" />
+    <Compile Include="TextMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CreateUrlViewModel.cs" />
+    <Compile Include="ViewModels\PagedListViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDictionary Include="..\SharedFiles\CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shrinkr.Core\Shrinkr.Core.csproj">
+      <Project>{0A176C12-F1D9-424E-AC93-F577B960E055}</Project>
+      <Name>Shrinkr.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TextMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
