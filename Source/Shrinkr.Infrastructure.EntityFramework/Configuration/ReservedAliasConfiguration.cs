@@ -11,7 +11,7 @@
         {
             HasKey(r => r.Id);
 
-            Property(r => r.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.Identity);
+            Property(r => r.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(r => r.Name).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(440);
 
             ToTable("ReservedAlias");

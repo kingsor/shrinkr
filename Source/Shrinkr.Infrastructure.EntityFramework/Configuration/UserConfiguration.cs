@@ -11,7 +11,7 @@
         {
             HasKey(u => u.Id);
 
-            Property(u => u.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.Identity);
+            Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(u => u.Name).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(256);
             Property(u => u.Email).IsUnicode().IsOptional().IsVariableLength().HasMaxLength(256);
             Property(u => u.IsLockedOut);
