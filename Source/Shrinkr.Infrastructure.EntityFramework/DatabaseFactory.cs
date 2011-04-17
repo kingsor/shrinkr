@@ -1,5 +1,3 @@
-
-
 namespace Shrinkr.Infrastructure.EntityFramework
 {
     using System;
@@ -8,9 +6,9 @@ namespace Shrinkr.Infrastructure.EntityFramework
     using System.Diagnostics;
     using System.Linq;
 
+    using System.Data.Entity;
     using System.Data.Entity.ModelConfiguration;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Edm.Db.Mapping;
     
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
@@ -19,7 +17,7 @@ namespace Shrinkr.Infrastructure.EntityFramework
         private readonly DbProviderFactory providerFactory;
         private readonly string connectionString;
 
-        private static DbModel model;
+        private static DbCompiledModel model;
 
         private Database database;
 
@@ -71,9 +69,9 @@ namespace Shrinkr.Infrastructure.EntityFramework
             }
         }
 
-        private static DbModel CreateDbModel(DbConnection connection)
+        private static DbCompiledModel CreateDbModel(DbConnection connection)
         {
-            var modelBuilder = new ModelBuilder();
+            var modelBuilder = new DbModelBuilder();
 
             IEnumerable<Type> configurationTypes = typeof(DatabaseFactory).Assembly
                 .GetTypes()
@@ -88,9 +86,8 @@ namespace Shrinkr.Infrastructure.EntityFramework
             {
                 modelBuilder.Configurations.Add((dynamic)configuration);
             }
-
-            DbDatabaseMapping mapping = modelBuilder.Build(connection);
-            return new DbModel(mapping);
+            
+            return modelBuilder.Build(connection).Compile();
         }
     }
 }

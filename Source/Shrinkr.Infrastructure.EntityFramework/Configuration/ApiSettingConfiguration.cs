@@ -14,7 +14,7 @@ namespace Shrinkr.Infrastructure.EntityFramework.Configuration
                                 .HasMaxLength(36)
                                 .HasColumnName("ApiKey");
             Property(s => s.Allowed).HasColumnName("ApiAllowed");
-            Property(s => s.DailyLimit);
+            Property(s => s.DailyLimit).HasColumnName("DailyLimit");
         }
     }
 }

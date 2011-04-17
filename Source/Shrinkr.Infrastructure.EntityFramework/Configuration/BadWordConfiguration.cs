@@ -11,7 +11,7 @@
         {
             HasKey(b => b.Id);
 
-            Property(b => b.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.Identity);
+            Property(b => b.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(b => b.Expression).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(440);
 
             ToTable("BadWord");

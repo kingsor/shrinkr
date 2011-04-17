@@ -11,7 +11,7 @@
         {
             HasKey(s => s.Id);
 
-            Property(s => s.Id).HasDatabaseGenerationOption(DatabaseGenerationOption.Identity);
+            Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(s => s.Url).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(2048);
             Property(s => s.Domain).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(440);
             Property(s => s.Hash).IsUnicode().IsRequired().IsVariableLength().HasMaxLength(24);
